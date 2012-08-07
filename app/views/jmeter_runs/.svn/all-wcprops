@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 62
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs
+END
+_form.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs/_form.html.erb
+END
+edit.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs/edit.html.erb
+END
+index.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 77
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs/index.html.erb
+END
+new.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs/new.html.erb
+END
+show.html.erb
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/uxs/software/jmeter/site/!svn/ver/4/app/views/jmeter_runs/show.html.erb
+END

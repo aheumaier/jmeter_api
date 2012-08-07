@@ -1,0 +1,29 @@
+<h1>Listing jmeter_runs</h1>
+
+<table>
+  <tr>
+    <th>Project</th>
+    <th>Description</th>
+    <th>Jmx source</th>
+    <th>State</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @jmeter_runs.each do |jmeter_run| %>
+  <tr>
+    <td><%= jmeter_run.project_id %></td>
+    <td><%= jmeter_run.description %></td>
+    <td><%= jmeter_run.jmx_source %></td>
+    <td><%= jmeter_run.state %></td>
+    <td><%= link_to 'Show', jmeter_run %></td>
+    <td><%= link_to 'Edit', edit_jmeter_run_path(jmeter_run) %></td>
+    <td><%= link_to 'Destroy', jmeter_run, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Jmeter run', new_jmeter_run_path %>

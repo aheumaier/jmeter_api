@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Project:</b>
+  <%= @jmeter_run.project_id %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @jmeter_run.description %>
+</p>
+
+<p>
+  <b>Jmx source:</b>
+  <%= @jmeter_run.jmx_source %>
+</p>
+
+<p>
+  <b>State:</b>
+  <%= @jmeter_run.state %>
+</p>
+
+
+<%= link_to 'Edit', edit_jmeter_run_path(@jmeter_run) %> |
+<%= link_to 'Back', jmeter_runs_path %>

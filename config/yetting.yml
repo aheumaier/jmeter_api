@@ -1,0 +1,18 @@
+defaults: &defaults
+  jmeter_bin_path: "/app1/jmeter/application/bin"
+  jmeter_theads: 4
+  jmeter_jtl_path: "/app1/jmeter/reports"
+  jmeter_jmx_path: "/app1/jmeter/site/public/testplans"
+  jmeter_log: "/app1/jmeter/site/log/jmeter_default.log"
+  jmeter_script: false
+  svn_user: 'xgujsvn'
+  svn_passwd: 'baumwall'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

@@ -1,0 +1,35 @@
+K 25
+svn:wc:ra_dav:version-url
+V 50
+/svn/uxs/software/jmeter/site/!svn/ver/9/test/unit
+END
+jmeter_run_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 69
+/svn/uxs/software/jmeter/site/!svn/ver/4/test/unit/jmeter_run_test.rb
+END
+setting_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/uxs/software/jmeter/site/!svn/ver/9/test/unit/setting_test.rb
+END
+jmeter_worker_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 72
+/svn/uxs/software/jmeter/site/!svn/ver/4/test/unit/jmeter_worker_test.rb
+END
+.gitkeep
+K 25
+svn:wc:ra_dav:version-url
+V 59
+/svn/uxs/software/jmeter/site/!svn/ver/2/test/unit/.gitkeep
+END
+project_test.rb
+K 25
+svn:wc:ra_dav:version-url
+V 66
+/svn/uxs/software/jmeter/site/!svn/ver/3/test/unit/project_test.rb
+END
