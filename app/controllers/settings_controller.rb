@@ -2,11 +2,10 @@ class SettingsController < ApplicationController
   # GET /settings
   # GET /settings.json
   def index
-    project = Project.find_by_name(params[:project_id])
-    @settings = project.setting
+    @settings ||= Setting.find_by_project_id(params[:project_id])
 
     respond_to do |format|
-      # format.html # index.html.erb
+      format.html # index.html.erb
       format.json { render :json => @settings }
     end
   end
@@ -18,6 +17,7 @@ class SettingsController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
+      format.json { render :json => @setting }
       format.json { render :json => @setting }
     end
   end

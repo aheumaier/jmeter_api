@@ -2,13 +2,9 @@ class JmeterRunsController < ApplicationController
   # GET /jmeter_runs
   # GET /jmeter_runs.json
   def index
-    if params[:project_id].match(/^[\d]+(\.[\d]+){0,1}$/)
-      @project = Project.find(params[:project_id])
-    else
-      @project = Project.find_by_name(params[:project_id])
-    end
+    @project = Project.find_by_param(params[:project_id])
 
-    @jmeter_runs = @project.jmeter_runs
+    @jmeter_runs ||=  @project.jmeter_runs
 
     respond_to do |format|
       format.html # index.html.erb
@@ -19,14 +15,10 @@ class JmeterRunsController < ApplicationController
   # GET /jmeter_runs/1
   # GET /jmeter_runs/1.json
   def show
-    if params[:id].match(/^[\d]+(\.[\d]+){0,1}$/)
-      @jmeter_run = JmeterRun.find(params[:id])
-    else
-      @jmeter_run = Project.find_by_name(params[:name]).jmeter_runs
-    end
+    @project = JmeterRun.find_by_param(params[:id])
 
     respond_to do |format|
-      #format.html # show.html.erb
+      format.html  { render :text => @jmeter_run }# show.html.erb
       format.json { render :json => @jmeter_run }
     end
   end
@@ -50,7 +42,8 @@ class JmeterRunsController < ApplicationController
   # POST /jmeter_runs
   # POST /jmeter_runs.json
   def create
-    @jmeter_run = JmeterRun.new(params[:jmeter_run])
+    @project ||=  Project.find_by_param(params[:project_id])
+    @jmeter_run = @project.jmeter_runs.new(params[:jmeter_run])
 
     respond_to do |format|
       if @jmeter_run.save
@@ -66,7 +59,7 @@ class JmeterRunsController < ApplicationController
   # PUT /jmeter_runs/1
   # PUT /jmeter_runs/1.json
   def update
-    @jmeter_run = JmeterRun.find(params[:id])
+    @jmeter_run ||=  JmeterRun.find(params[:id])
 
     respond_to do |format|
       if @jmeter_run.update_attributes(params[:jmeter_run])
@@ -82,7 +75,7 @@ class JmeterRunsController < ApplicationController
   # DELETE /jmeter_runs/1
   # DELETE /jmeter_runs/1.json
   def destroy
-    @jmeter_run = JmeterRun.find(params[:id])
+    @jmeter_run ||=  JmeterRun.find(params[:id])
     @jmeter_run.destroy
 
     respond_to do |format|
@@ -92,22 +85,25 @@ class JmeterRunsController < ApplicationController
   end
 
   def status
-    @jmeter_run_state = JmeterRun.find(params[:id]).state
+    @jmeter_run ||=  JmeterRun.find(params[:id])
+    @jmeter_run_state ||= @jmeter_run.state
     respond_to do |format|
+      format.html { render :text => @jmeter_run_state  }
       format.json { render :json => @jmeter_run_state  }
     end
   end
 
     def start
-    @jmeter_run_start = JmeterRun.find(params[:id]).start
+    @jmeter_run ||=  JmeterRun.find(params[:id])
+    @jmeter_run_start ||=  @jmeter_run.start
     respond_to do |format|
       format.json {  head :no_content  }
     end
   end
 
   def kill
-    @jmeter_run = JmeterRun.find(params[:id])
-    @jmeter_run_state = JmeterRun.find(params[:id]).kill
+    @jmeter_run ||=  JmeterRun.find(params[:id])
+    @jmeter_run_state =  @jmeter_run.kill
     respond_to do |format|
       format.html { redirect_to @jmeter_run, :notice => 'JmeterRun was successfully killed.' }
       format.json { render :json => @jmeter_run_state }

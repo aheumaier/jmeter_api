@@ -1,6 +1,0 @@
-<h1>Editing jmeter_run</h1>
-
-<%= render 'form' %>
-
-<%= link_to 'Show', @jmeter_run %> |
-<%= link_to 'Back', jmeter_runs_path %>

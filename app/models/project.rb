@@ -12,4 +12,12 @@ class Project < ActiveRecord::Base
     end
   end
 
+  def self.find_by_param(id)
+    if id.match(/^[\d]+(\.[\d]+){0,1}$/)
+      Project.find_by_id(id)
+    else
+      Project.find_by_name(id)
+    end
+  end
+
 end

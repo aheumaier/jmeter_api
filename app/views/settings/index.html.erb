@@ -1,37 +1,50 @@
-<h1>Listing settings</h1>
+<h1>Settings</h1>
 
 <table>
   <tr>
-    <th>Jmx file</th>
-    <th>Jtl file</th>
-    <th>Jmeter threads</th>
-    <th>Remote server</th>
-    <th>Jmeter counter</th>
-    <th>Jmeter troughput</th>
-    <th>Jmeter period</th>
-    <th>Jmeter accesslog</th>
-    <th></th>
-    <th></th>
+    <th>Key</th>
+    <th></th></th>
+    <th>Value</th>
     <th></th>
   </tr>
 
-<% @settings.each do |setting| %>
+
   <tr>
-    <td><%= setting.jmx_file %></td>
-    <td><%= setting.jtl_file %></td>
-    <td><%= setting.jmeter_threads %></td>
-    <td><%= setting.remote_server %></td>
-    <td><%= setting.jmeter_counter %></td>
-    <td><%= setting.jmeter_troughput %></td>
-    <td><%= setting.jmeter_period %></td>
-    <td><%= setting.jmeter_accesslog %></td>
-    <td><%= link_to 'Show', setting %></td>
-    <td><%= link_to 'Edit', edit_setting_path(setting) %></td>
-    <td><%= link_to 'Destroy', setting, :method => :delete, :data => { :confirm => 'Are you sure?' } %></td>
+    <td>Jmx file</td>
+    <td></td>
+    <td><%= @settings.jmx_file %></td>
   </tr>
-<% end %>
+  <tr>
+    <td>Jtl file</td>
+    <td></td>
+    <td><%= @settings.jtl_file %></td>
+  </tr><tr>
+    <td>Jmeter threads</td>
+    <td></td>
+    <td><%= @settings.jmeter_threads %></td>
+  </tr><tr>
+    <td>Remote server</td>
+    <td></td>
+    <td><%= @settings.remote_server %></td>
+  </tr><tr>
+    <td>Jmeter counter</td>
+    <td></td>
+    <td><%= @settings.jmeter_counter %></td>
+  </tr><tr>
+    <td>Jmeter troughput</td>
+    <td></td>
+    <td><%= @settings.jmeter_troughput %></td>
+  </tr><tr>
+    <td>Jmeter period</td>
+    <td></td>
+    <td><%= @settings.jmeter_period %></td>
+  </tr><tr>
+    <td>Jmeter accesslog</td>
+    <td></td>
+    <td><%= @settings.jmeter_accesslog %></td>
+  </tr>
+
 </table>
 
-<br />
 
-<%= link_to 'New Setting', new_setting_path %>
+

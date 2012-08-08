@@ -60,4 +60,13 @@ class JmeterRun < ActiveRecord::Base
     return self.locked
   end
 
+  def self.find_by_param(p_id)
+    if p_id.match(/^[\d]+(\.[\d]+){0,1}$/)
+      Project.find_by_id(p_id)
+    else
+      Project.find_by_name(p_id)
+    end
+  end
+
+
 end
