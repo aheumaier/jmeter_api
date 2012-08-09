@@ -14,7 +14,7 @@ gem 'thin'
 gem 'state_machine'
 gem 'delayed_job_active_record'
 gem "yettings", :git=>"https://github.com/charlotte-ruby/yettings.git", :branch=>"ruby187"
-gem "twitter-bootstrap-rails"
+#gem "twitter-bootstrap-rails"
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'execjs'

@@ -12,11 +12,11 @@ development:
   adapter: mysql2
   encoding: utf8
   reconnect: false
-  database: rails_development
+  database: jmeter_reports
   pool: 5
-  username: rails
-  password: rails
-  host: localhost
+  username: report
+  password: report
+  host: webdb-mysql-vetus.app.webstage.svc.guj.de
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -31,7 +31,8 @@ development:
 #  password: report
 #  host: webdb-mysql-vetus.app.webstage.svc.guj.de
 
-production:
+#
+#production:
 #  adapter: mysql2
 #  encoding: utf8
 #  reconnect: false
@@ -40,12 +41,12 @@ production:
 #  username: report
 #  password: report
 #  host: webdb-mysql-vetus.app.webstage.svc.guj.de
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: rails_development
-  pool: 5
-  username: rails
-  password: rails
-  host: localhost
+#  adapter: mysql2
+#  encoding: utf8
+#  reconnect: false
+#  database: rails_development
+#  pool: 5
+#  username: rails
+#  password: rails
+#  host: localhost
 
