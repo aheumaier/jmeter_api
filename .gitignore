@@ -1,2 +1,5 @@
 .dir
 .idea/
+.log/
+config/database.yml
+

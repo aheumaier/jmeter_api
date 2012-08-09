@@ -66,9 +66,9 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     ci_message = "JmeterRun " + @project.jmeter_run.id + " for "  + @project.name + " checked in File " + @jtl_file
     case type
       when 'svn'
-        %x{ svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd}  }
+        %x{ svn add --force * && svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd}}
       when 'git'
-        %x{git commit -am #{ci__message} }
+        %x{git add . && git commit -am #{ci__message} }
     end
   end
 
