@@ -6,11 +6,11 @@ class Setting < ActiveRecord::Base
   after_initialize :set_defaults
 
   def set_defaults
-    self.jmeter_accesslog = "public/testplans/jmeter_default_access.log"
+    self.jmeter_accesslog = "/app1/jmeter/site/public/testplans/new3.gala.de-dynamic.log.csv"
     self.jmeter_counter = 1
     self.jmeter_period = 3600 
     self.jmeter_threads = 4 
-    self.jmeter_troughput = 500
+    self.jmeter_troughput = 600
     self.jmx_file = "/Grenzwert.UNITY.20120705.jmx"
     self.jtl_file = "/default_project_" + Time.now.to_i.to_s + ".jtl"
     self.remote_server = ""

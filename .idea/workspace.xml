@@ -22,10 +22,37 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="rubytester.rb" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="rubytester.rb" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/rubytester.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="61" column="79" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.40528634">
+            <state line="61" column="79" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="yetting.yml" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/config/yetting.yml">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="18" column="38" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jmeter_worker.rb" pinned="false" current="true" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/app/models/jmeter_worker.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="13" column="29" selection-start="315" selection-end="315" vertical-scroll-proportion="0.21787709">
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="jmeter_runs_controller.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/controllers/jmeter_runs_controller.rb">
+          <provider selected="true" editor-type-id="text-editor">
+            <state line="88" column="43" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -40,28 +67,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="jmeter_runs_controller.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/controllers/jmeter_runs_controller.rb">
+      <file leaf-file-name="setting.rb" pinned="false" current="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/models/setting.rb">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="31" column="83" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="jmeter_run.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/jmeter_run.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="62" column="28" selection-start="1401" selection-end="1420" vertical-scroll-proportion="0.0">
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="project.rb" pinned="false" current="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/models/project.rb">
-          <provider selected="true" editor-type-id="text-editor">
-            <state line="17" column="15" selection-start="342" selection-end="455" vertical-scroll-proportion="0.0">
+            <state line="36" column="66" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -77,9 +86,7 @@
   <component name="IdeDocumentHistory">
     <option name="changedFiles">
       <list>
-        <option value="$PROJECT_DIR$/app/views/layouts/application.html.haml" />
         <option value="$PROJECT_DIR$/config/yetting.yml" />
-        <option value="$PROJECT_DIR$/app/models/jmeter_worker.rb" />
         <option value="$PROJECT_DIR$/app/views/jmeter_runs/new.html.erb" />
         <option value="$PROJECT_DIR$/app/helpers/jmeter_runs_helper.rb" />
         <option value="$PROJECT_DIR$/app/views/jmeter_runs/index.html.erb" />
@@ -93,6 +100,8 @@
         <option value="$PROJECT_DIR$/app/views/jmeter_runs/show.html.erb" />
         <option value="$PROJECT_DIR$/app/controllers/jmeter_runs_controller.rb" />
         <option value="$PROJECT_DIR$/rubytester.rb" />
+        <option value="$PROJECT_DIR$/app/models/setting.rb" />
+        <option value="$PROJECT_DIR$/app/models/jmeter_worker.rb" />
       </list>
     </option>
   </component>
@@ -153,6 +162,20 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="site" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="config" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -404,13 +427,13 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="1364" y="-3" width="1684" height="1057" extended-state="6" />
-    <editor active="false" />
+    <editor active="true" />
     <layout>
       <window_info id="Data Sources" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.21418539" sideWeight="0.3325527" order="1" side_tool="true" content_ui="tabs" />
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16053921" sideWeight="0.65925056" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.16053921" sideWeight="0.65925056" order="0" side_tool="false" content_ui="combo" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
@@ -479,34 +502,14 @@
     <breakpoint-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/views/jmeter_runs/new.html.erb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="78" selection-start="74" selection-end="74" vertical-scroll-proportion="0.08484163" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/db/seeds.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="14" column="73" selection-start="1218" selection-end="1218" vertical-scroll-proportion="0.23127754" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/jmeter_runs/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="29" column="160" selection-start="897" selection-end="897" vertical-scroll-proportion="-18.125" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/models/setting.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="0" column="0" selection-start="0" selection-end="0" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/views/settings/index.html.erb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="16" column="51" selection-start="209" selection-end="209" vertical-scroll-proportion="0.29850745" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/settings_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="79" column="106" selection-start="2058" selection-end="2058" vertical-scroll-proportion="0.0" />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/views/jmeter_runs/show.html.erb">
@@ -534,16 +537,6 @@
         <state line="6" column="53" selection-start="130" selection-end="130" vertical-scroll-proportion="0.11494253" />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="5" column="82" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/controllers/jmeter_runs_controller.rb">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="31" column="83" selection-start="771" selection-end="771" vertical-scroll-proportion="0.0" />
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/models/jmeter_run.rb">
       <provider selected="true" editor-type-id="text-editor">
         <state line="62" column="28" selection-start="1401" selection-end="1420" vertical-scroll-proportion="0.0" />
@@ -556,7 +549,47 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/rubytester.rb">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="61" column="79" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.40528634">
+        <state line="61" column="79" selection-start="1835" selection-end="1835" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/settings_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="79" column="106" selection-start="2058" selection-end="2058" vertical-scroll-proportion="1.3050661">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/config/yetting.yml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="18" column="38" selection-start="396" selection-end="396" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/jmeter_runs_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="88" column="43" selection-start="2447" selection-end="2447" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/setting.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="36" column="66" selection-start="1178" selection-end="1178" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/controllers/projects_controller.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="5" column="82" selection-start="159" selection-end="159" vertical-scroll-proportion="0.0" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/models/jmeter_worker.rb">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="13" column="29" selection-start="315" selection-end="315" vertical-scroll-proportion="0.21787709">
           <folding />
         </state>
       </provider>
