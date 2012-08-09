@@ -67,7 +67,7 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'
-        %x{ svn ci -m "#{ci_message}" --username #{Yetting.svn_user} --password #{Yetting.svn_passwd}  }
+        puts %x{ svn add --force * &&  svn ci -m "#{ci_message}" --username #{Yetting.svn_user} --password #{Yetting.svn_passwd}  }
       when 'git'
         %x{git commit -am #{ci__message} }
     end

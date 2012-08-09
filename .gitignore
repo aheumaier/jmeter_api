@@ -1,3 +1,5 @@
 .dir
 .idea/
 config/database.yml
+tmp/
+public/testplans/
