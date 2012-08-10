@@ -13,10 +13,10 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
       jmeter_obj.locked = true
       jmeter_obj.save
       puts get_jmeter_command
-      status =
-      POpen4::popen4(get_jmeter_command) do |stdout, stderr, stdin, pid|
+      status = POpen4::popen4(get_jmeter_command) do |stdout, stderr, stdin, pid|
         jmeter_obj.jmeter_pid = pid
         jmeter_obj.stderror = stderr.read.strip
+        puts stderr.read.strip
         jmeter_obj.stdout = stdout.read.strip
         jmeter_obj.save
       end
@@ -36,7 +36,7 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     if Yetting.jmeter_script
       "/app1/jmeter/jmetertest-thumbnailer.sh -f /app1/jmeter/UNITY/access_log.thumbnailer-anaco-vi.app.webcloud.guj.de.20120725.log -r SERVICE.THUMBNAILER-`date +\%Y\%m\%d` -H service.thumbnailer -x /app1/jmeter/UNITY/Grenzwert.service.thumbnailer.jmx "
     else
-      Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + get_jmeter_opts
+      "cd /tmp && " + Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + get_jmeter_opts
     end
   end
 
@@ -68,9 +68,9 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'
-        puts %x{ svn add --force * && svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd} }
+        puts %x{ svn add --force * && svn ci -m #{ci_message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd} }
       when 'git'
-        %x{git add . && git commit -am #{ci__message} }
+        %x{git add . && git commit -am #{ci_message} }
     end
   end
 

@@ -48,7 +48,7 @@ class JmeterRunsController < ApplicationController
     respond_to do |format|
       if @jmeter_run.save
         #format.html { redirect_to @jmeter_run, :notice => 'Jmeter run was successfully created.' }
-        #format.json { render :json => @jmeter_run, :status => :created, :location => @jmeter_run }
+        format.json { render :json => @jmeter_run.id }
       else
         format.html { render :action => "new" }
         format.json { render :json => @jmeter_run.errors, :status => :unprocessable_entity }
@@ -94,8 +94,8 @@ class JmeterRunsController < ApplicationController
   end
 
     def start
-    @jmeter_run ||=  JmeterRun.find(params[:id])
-    @jmeter_run_start ||=  @jmeter_run.start
+    @jmeter_run =  JmeterRun.find(params[:id])
+    @jmeter_run_start =  @jmeter_run.push_start
     respond_to do |format|
       format.json {  head :no_content  }
     end

@@ -9,7 +9,7 @@ class JmeterRun < ActiveRecord::Base
     before_transition :running => :finished, :do => :validate_results
     before_transition :running => :failed, :do => :send_error_results
      
-    event :start do 
+    event :push_start do 
       transition :idle => :running
     end
 
@@ -34,7 +34,7 @@ class JmeterRun < ActiveRecord::Base
     end
    
     state :running, :pending do
-      validates_presence_of :jmx_source
+      validates_presence_of :description
     end
   end
 

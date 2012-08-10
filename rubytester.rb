@@ -1,6 +1,6 @@
 #!/usr/bin/ruby 
 require 'net/http'
-require 'uri'
+#require 'uri'
 require 'json'
 
 def find_or_create_project(id=nil)
@@ -40,6 +40,7 @@ def create_run(description="test_description")
   req["Content-Type"] = "application/json"
   http = Net::HTTP.new(uri.host, uri.port)
   response = http.start {|htt| htt.request(req)}
+  @jmeter_id = response.body
 end
 
 
@@ -57,7 +58,7 @@ def read_project(id=nil)
     puts "#{@uri_p.path}/#{id}.json"
     response = request.get("#{@uri_p.path}/#{id}.json")
   end
-  response.body
+  return response.body
 end
 
 def new_run
@@ -71,12 +72,11 @@ def new_run
     end
 end
 
-def run_start(jmeter_id)
-  puts jmeter_id
+def run_start(j_id = @jmeter_id)
   puts 'start run called'
   begin
     request = Net::HTTP.new(@uri_j.host, @uri_j.port)
-    response = request.get("#{@uri_j.path}/start")
+    response = request.get("#{@uri_j.path}/#{j_id}/start")
   rescue Exception=>e 
     raise e
   end
