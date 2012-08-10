@@ -64,7 +64,8 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
   end
 
   def set_commit_message(type='svn')
-    ci_message = "JmeterRun " + @project.jmeter_run.id + " for "  + @project.name + " checked in File " + @jtl_file
+    ci_message = "JmeterRun " + @jr_id.id.to_s + " for "  + @project.name + " checked in File " + @jtl_file
+    Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'
         puts %x{ svn add --force * && svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd} }
