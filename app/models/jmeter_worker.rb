@@ -4,6 +4,7 @@ require 'popen4'
 class JmeterWorker < Struct.new(:jmeter_run_id)
 
   def perform
+    puts "perform called"
     @jr_id = jmeter_run_id
     jmeter_obj = JmeterRun.find(@jr_id)
     if jmeter_obj.locked?
@@ -41,17 +42,17 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
 
   def get_jmeter_opts
     @project = JmeterRun.find(@jr_id).project
-    project_name = project.name
+    project_name = @project.name
     @jtl_file = "/" + project_name + "_" + Time.now.to_i.to_s + ".jtl"
-    jmx_file = project.setting.jmx_file || project_name + ".jmx"
-    opts_field =  project.setting.ext_opts || ""
+    jmx_file = @project.setting.jmx_file || project_name + ".jmx"
+    opts_field =  @project.setting.ext_opts || ""
     return opt_string =
     " -t " + Yetting.jmeter_jmx_path + jmx_file +
-    " -l " + Yetting.jmeter_jtl_path + jtl_file +
+    " -l " + Yetting.jmeter_jtl_path + @jtl_file +
     " -j " + Yetting.jmeter_log +
-    " -Jaccess_log=" + project.setting.jmeter_accesslog +
-    " -Jcounter=" + project.setting.jmeter_counter.to_s +
-    " -Jzeitdauer=" + project.setting.jmeter_period.to_s +
+    " -Jaccess_log=" + @project.setting.jmeter_accesslog +
+    " -Jcounter=" + @project.setting.jmeter_counter.to_s +
+    " -Jzeitdauer=" + @project.setting.jmeter_period.to_s +
     " -Jjmeter.save.saveservice.url=true" +
     " -Jjmeter.save.saveservice.requestHeaders=true" +
     " -Jjmeter.save.saveservice.responseHeaders=true" +
@@ -66,7 +67,7 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     ci_message = "JmeterRun " + @project.jmeter_run.id + " for "  + @project.name + " checked in File " + @jtl_file
     case type
       when 'svn'
-        %x{ svn add --force * && svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd}}
+        puts %x{ svn add --force * && svn ci -m #{ci__message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd} }
       when 'git'
         %x{git add . && git commit -am #{ci__message} }
     end

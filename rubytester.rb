@@ -54,6 +54,7 @@ def read_project(id=nil)
   if id.nil?
     response = request.get("#{@uri_p.path}.json")
   else
+    puts "#{@uri_p.path}/#{id}.json"
     response = request.get("#{@uri_p.path}/#{id}.json")
   end
   response.body
@@ -71,6 +72,7 @@ def new_run
 end
 
 def run_start(jmeter_id)
+  puts jmeter_id
   puts 'start run called'
   begin
     request = Net::HTTP.new(@uri_j.host, @uri_j.port)
