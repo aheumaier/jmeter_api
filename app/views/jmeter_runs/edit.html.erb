@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @jmeter_run %> |
-<%= link_to 'Back', project_jmeter_run %>
+<%= link_to 'Show', @jmeter_run_path %> |
+<%= link_to 'Back', "/projects/#{@project}/jmeter_runs/#{@jmeter_run.id}" %>

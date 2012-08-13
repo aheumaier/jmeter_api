@@ -36,7 +36,8 @@ class JmeterRunsController < ApplicationController
 
   # GET /jmeter_runs/1/edit
   def edit
-    @jmeter_run = JmeterRun.find(params[:id])
+    @jmeter_run ||= JmeterRun.find(params[:id])
+    @project ||=  Project.find_by_param(params[:project_id])
   end
 
   # POST /jmeter_runs

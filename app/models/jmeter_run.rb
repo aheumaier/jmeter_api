@@ -1,5 +1,6 @@
 class JmeterRun < ActiveRecord::Base
-  attr_accessible :description, :jmx_source, :project_id, :state, :stderror, :stdout, :jmeter_pid,:locked 
+  attr_accessible :description, :jmx_source, :project_id, :state, :stderror, :stdout, :jmeter_pid,
+                  :locked
 
   belongs_to :project, :touch => true
 
