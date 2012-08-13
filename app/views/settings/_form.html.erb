@@ -1,4 +1,4 @@
-<%= form_for(@setting) do |f| %>
+<%= form_for [@setting, @project], :url => project_setting_path  do |f| %>
   <% if @setting.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@setting.errors.count, "error") %> prohibited this setting from being saved:</h2>

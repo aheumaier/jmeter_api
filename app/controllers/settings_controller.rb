@@ -25,7 +25,8 @@ class SettingsController < ApplicationController
   # GET /settings/new
   # GET /settings/new.json
   def new
-    @setting = Setting.new
+    @setting ||= Setting.new
+    @project ||= @setting.project
 
     respond_to do |format|
       format.html # new.html.erb
@@ -35,7 +36,8 @@ class SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
-    @setting = Setting.find(params[:id])
+    @setting ||= Setting.find(params[:id])
+    @project ||= @setting.project
   end
 
   # POST /settings
