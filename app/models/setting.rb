@@ -1,5 +1,7 @@
 class Setting < ActiveRecord::Base
-  attr_accessible :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads, :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts
+
+  attr_accessible :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads,
+                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts
 
   belongs_to :project
 

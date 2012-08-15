@@ -95,7 +95,7 @@ class JmeterRunsController < ApplicationController
   end
 
     def start
-    @jmeter_run =  JmeterRun.find(params[:id])
+    @jmeter_run ||=  JmeterRun.find(params[:id])
     @jmeter_run_start =  @jmeter_run.push_start
     respond_to do |format|
       format.json {  head :no_content  }
@@ -109,6 +109,16 @@ class JmeterRunsController < ApplicationController
       format.html { redirect_to @jmeter_run, :notice => 'JmeterRun was successfully killed.' }
       format.json { render :json => @jmeter_run_state }
     end
+  end
+
+  def current
+    @jmeter_run ||=  JmeterRun.find_last_by_project_id(params[:project_id])
+
+    respond_to do |format|
+      format.html { render :text => @jmeter_run  }
+      format.json { render :json => @jmeter_run }
+    end
+
   end
 
 

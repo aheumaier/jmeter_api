@@ -1,7 +1,6 @@
 Site::Application.routes.draw do
 
-  #resources :settings
-
+  match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
   resources :projects do
     resources :jmeter_runs do 
       member do
