@@ -32,11 +32,13 @@ class ProjectsController < ApplicationController
 # GET /projects/new.json
   def new
     @project = Project.new
+    @project.jmeter_runs.build
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render :json => @project }
-    end
+
+   # respond_to do |format|
+    #  format.html # new.html.erb
+     # format.json { render :json => @project }
+    #end
   end
 
 # GET /projects/1/edit

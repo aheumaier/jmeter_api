@@ -1,8 +1,10 @@
 class Project < ActiveRecord::Base
-  attr_accessible :environment, :name
 
   has_many :jmeter_runs, :dependent => :destroy, :order => :updated_at
   has_one :setting, :dependent=> :nullify
+
+  attr_accessible :environment, :name, :jmeter_runs_attributes
+  accepts_nested_attributes_for :jmeter_runs, :allow_destroy => true
 
   before_save :create_settings
 

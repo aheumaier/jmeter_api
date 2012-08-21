@@ -2,9 +2,8 @@ class JmeterRunsController < ApplicationController
   # GET /jmeter_runs
   # GET /jmeter_runs.json
   def index
-    @project = Project.find_by_param(params[:project_id])
-
-    @jmeter_runs ||=  @project.jmeter_runs
+    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
+    @project ||= Project.find_by_id(params[:project_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -15,10 +14,11 @@ class JmeterRunsController < ApplicationController
   # GET /jmeter_runs/1
   # GET /jmeter_runs/1.json
   def show
-    @project = JmeterRun.find_by_param(params[:id])
+    @jmeter_run ||= JmeterRun.find_by_id(params[:id])
+    @project ||= Project.find_by_id(params[:project_id])
 
     respond_to do |format|
-      format.html  { render :text => @jmeter_run }# show.html.erb
+      format.html  #{ render :text => @jmeter_run.to_s }# show.html.erb
       format.json { render :json => @jmeter_run }
     end
   end
@@ -80,7 +80,7 @@ class JmeterRunsController < ApplicationController
     @jmeter_run.destroy
 
     respond_to do |format|
-      format.html { redirect_to jmeter_runs_url }
+      format.html { redirect_to project_jmeter_runs_path(@jmeter_run.project_id) }
       format.json { head :no_content }
     end
   end

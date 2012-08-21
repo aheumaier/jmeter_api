@@ -13,8 +13,8 @@ module JmeterExt
     end
   end
 
-  def jmeter_start(jmeter_obj)
-    status = POpen4::popen4(get_jmeter_command) do |stdout, stderr, stdin, pid|
+  def jmeter_init(jmeter_obj)
+    status = POpen4::popen4( jmeter_command) do |stdout, stderr, stdin, pid|
       jmeter_obj.jmeter_pid = pid
       jmeter_obj.stderror = stderr.read.strip
       puts stderr.read.strip
@@ -28,7 +28,8 @@ module JmeterExt
     if Yetting.jmeter_script
       "/app1/jmeter/jmetertest-thumbnailer.sh -f /app1/jmeter/UNITY/access_log.thumbnailer-anaco-vi.app.webcloud.guj.de.20120725.log -r SERVICE.THUMBNAILER-`date +\%Y\%m\%d` -H service.thumbnailer -x /app1/jmeter/UNITY/Grenzwert.service.thumbnailer.jmx "
     else
-      "cd /tmp && " + Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + get_jmeter_opts
+      puts Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + jmeter_opts
+      "cd /tmp && " + Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + jmeter_opts
     end
   end
 
