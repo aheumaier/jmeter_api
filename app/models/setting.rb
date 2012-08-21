@@ -1,7 +1,7 @@
 class Setting < ActiveRecord::Base
 
   attr_accessible :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads,
-                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts
+                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts, :jtl_path
 
   belongs_to :project
 
@@ -14,7 +14,7 @@ class Setting < ActiveRecord::Base
     self.jmeter_threads = 4 
     self.jmeter_troughput = 600
     self.jmx_file = "/Grenzwert.new3.gala.de_HP.jmx"
-    self.jtl_file = "/default_project_" + Time.now.to_i.to_s + ".jtl"
+    self.jtl_file = self.project.name + Time.now.to_i.to_s + ".jtl"
     self.remote_server = ""
     self.ext_opts = ""
   end

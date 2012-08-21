@@ -47,9 +47,7 @@ class JmeterRun < ActiveRecord::Base
 
   def kill_process
     Rails.logger.debug "Killing jmeter process ..."
-    if self.jmeter_pid != 0
-      Rails.logger.info "kill -9 #{self.jmeter_pid}"
-    end
+    self.stdout = %[/app1/jmeter//application/bin/stoptest.sh]
   end
 
   def validate_results
@@ -68,14 +66,6 @@ class JmeterRun < ActiveRecord::Base
   def lock
     self.locked = true
     self.save!
-  end
-
-  def self.find_by_param(p_id)
-    if p_id.match(/^[\d]+(\.[\d]+){0,1}$/)
-      Project.find_by_id(p_id)
-    else
-      Project.find_by_name(p_id)
-    end
   end
 
 

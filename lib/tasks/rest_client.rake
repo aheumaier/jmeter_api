@@ -6,12 +6,11 @@ def find_or_create_project(id=nil)
     else
       puts  "Entry found"
     end
-  rescue Exception=>e 
+  rescue Exception=>e
     raise e
   end
 end
 
-# Create an project using a predefined json template as a REST request.
 def create_project(name="Default Name", environment="test_env")
   puts  "calling create_project with "
   post_params = { :name => "#{name}", :environment => "#{environment}" }
@@ -22,7 +21,6 @@ def create_project(name="Default Name", environment="test_env")
   response = http.start {|htt| htt.request(req)}
 end
 
-# Create an jmeter_run using a predefined json template as a REST request.
 def create_run(description="test_description")
   puts  "calling create_run"
   post_params = { :description => "#{description}" }
@@ -34,12 +32,6 @@ def create_run(description="test_description")
   @jmeter_id = response.body
 end
 
-
-# Read can get all projects with no arguments or
-# get one project with one argument.  For example:
-# api = Api.new
-# api.read 2 => one employee
-# api.read   => all employees
 def read_project(id=nil)
   puts  "calling read"
   request = Net::HTTP.new(@uri_p.host, @uri_p.port)
@@ -54,9 +46,9 @@ end
 def new_run
   puts  "calling new run"
   find_or_create_project(@project)
-    begin 
+    begin
       create_run('webistrano_run_' + Time.now.to_i.to_s )
-    rescue Exception=>e 
+    rescue Exception=>e
       raise e
     end
 end
@@ -66,7 +58,7 @@ def run_start(j_id = @jmeter_id)
   begin
     request = Net::HTTP.new(@uri_j.host, @uri_j.port)
     response = request.get("#{@uri_j.path}/#{j_id}/start")
-  rescue Exception=>e 
+  rescue Exception=>e
     raise e
   end
 end
@@ -76,8 +68,9 @@ namespace :rest_client do
   require 'json'
 
   desc " # do restful call to Jmeter Server Action"
-  task :runner do
-    @project =  "DefaultTestProject"
+  task :default do
+    @project =  application
+    logger @project
     @url_p = "http://localhost:3000/projects"
     @uri_p = URI.parse @url_p
     @url_j = "http://localhost:3000/projects/#{@project}/jmeter_runs"
@@ -85,9 +78,5 @@ namespace :rest_client do
     run_start( new_run )
   end
 
-  desc " # do restful call to Jmeter Server Actioni, Generic"
-  task :default do
-     :runner
-  end
 
 end # namespace performance_test

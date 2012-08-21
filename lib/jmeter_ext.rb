@@ -25,11 +25,11 @@ module JmeterExt
 
 
   def jmeter_command
-    if Yetting.jmeter_script
+    if APP_CONFIG['jmeter-script']
       "/app1/jmeter/jmetertest-thumbnailer.sh -f /app1/jmeter/UNITY/access_log.thumbnailer-anaco-vi.app.webcloud.guj.de.20120725.log -r SERVICE.THUMBNAILER-`date +\%Y\%m\%d` -H service.thumbnailer -x /app1/jmeter/UNITY/Grenzwert.service.thumbnailer.jmx "
     else
-      puts Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + jmeter_opts
-      "cd /tmp && " + Yetting.jmeter_bin_path + "/jmeter -n" + ' ' + jmeter_opts
+      puts APP_CONFIG['jmeter_bin_path'] + "/jmeter -n" + ' ' + jmeter_opts
+      "cd /tmp && " + APP_CONFIG['jmeter_bin_path'] + "/jmeter -n" + ' ' + jmeter_opts
     end
   end
 
@@ -44,9 +44,9 @@ module JmeterExt
     jmx_file = @project.setting.jmx_file || project_name + ".jmx"
     opts_field =  @project.setting.ext_opts || ""
     return opt_string =
-        " -t " + Yetting.jmeter_jmx_path + jmx_file +
-            " -l " + Yetting.jmeter_jtl_path + @jtl_file +
-            " -j " + Yetting.jmeter_log +
+        " -t " + APP_CONFIG['jmeter_jmx_path'] + jmx_file +
+            " -l " + APP_CONFIG['jmeter_jtl_path'] + @jtl_file +
+            " -j " + APP_CONFIG['jmeter_log'] +
             " -Jaccess_log=" + @project.setting.jmeter_accesslog +
             " -Jcounter=" + @project.setting.jmeter_counter.to_s +
             " -Jzeitdauer=" + @project.setting.jmeter_period.to_s +
@@ -69,7 +69,7 @@ module JmeterExt
     Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'
-        puts %x{ svn add --force * && svn ci -m #{ci_message} --username #{Yetting.svn_user} --password #{Yetting.svn_passwd} }
+        puts %x{ svn add --force * && svn ci -m #{ci_message} --username #{APP_CONFIG['svn_user']} --password #{APP_CONFIG['svn_passwd']} }
       when 'git'
         %x{git add . && git commit -am #{ci_message} }
     end
