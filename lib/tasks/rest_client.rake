@@ -14,24 +14,22 @@ end
 # Create an project using a predefined json template as a REST request.
 def create_project(name="Default Name", environment="test_env")
   puts  "calling create_project with "
-  uri = URI.parse("http://localhost:3000/projects/" )
   post_params = { :name => "#{name}", :environment => "#{environment}" }
-  req = Net::HTTP::Post.new(uri.path)
+  req = Net::HTTP::Post.new(@uri_p.path)
   req.body = JSON.generate(post_params)
   req["Content-Type"] = "application/json"
-  http = Net::HTTP.new(uri.host, uri.port)
+  http = Net::HTTP.new(@uri_p.host, @uri_p.port)
   response = http.start {|htt| htt.request(req)}
 end
 
 # Create an jmeter_run using a predefined json template as a REST request.
 def create_run(description="test_description")
   puts  "calling create_run"
-  uri = URI.parse("http://localhost:3000/projects/" + @project + "/jmeter_runs")
   post_params = { :description => "#{description}" }
-  req = Net::HTTP::Post.new(uri.path)
+  req = Net::HTTP::Post.new(@uri_j.path)
   req.body = JSON.generate(post_params)
   req["Content-Type"] = "application/json"
-  http = Net::HTTP.new(uri.host, uri.port)
+  http = Net::HTTP.new(@uri_j.host, @uri_j.port)
   response = http.start {|htt| htt.request(req)}
   @jmeter_id = response.body
 end
@@ -80,9 +78,9 @@ namespace :rest_client do
   desc " # do restful call to Jmeter Server Action"
   task :runner do
     @project =  "DefaultTestProject"
-    @url_p = "http://service.loadtest.webstage.svc.guj.de:80/projects"
+    @url_p = "http://localhost:3000/projects"
     @uri_p = URI.parse @url_p
-    @url_j = "http://service.loadtest.webstage.svc.guj.de:80/projects/#{@project}/jmeter_runs"
+    @url_j = "http://localhost:3000/projects/#{@project}/jmeter_runs"
     @uri_j = URI.parse @url_j
     run_start( new_run )
   end

@@ -1,4 +1,6 @@
 class JmeterRun < ActiveRecord::Base
+  include JmeterExt
+
   attr_accessible :description, :jmx_source, :project_id, :state, :stderror, :stdout, :jmeter_pid,
                   :locked
 
@@ -55,10 +57,17 @@ class JmeterRun < ActiveRecord::Base
   end
 
   def send_error_results
+    Rails.logger.error self.stdout
+    Rails.logger.error self.stderror
   end
 
   def locked?
     return self.locked
+  end
+
+  def lock
+    self.locked = true
+    self.save!
   end
 
   def self.find_by_param(p_id)
