@@ -14,7 +14,7 @@ class Setting < ActiveRecord::Base
     self.jmeter_threads = 4 
     self.jmeter_troughput = 600
     self.jmx_file = "/Grenzwert.new3.gala.de_HP.jmx"
-    self.jtl_file = self.project.name + Time.now.to_i.to_s + ".jtl"
+    # self.jtl_file = self.project.name + Time.now.to_i.to_s + ".jtl"
     self.remote_server = ""
     self.ext_opts = ""
   end
@@ -22,24 +22,25 @@ class Setting < ActiveRecord::Base
   def update_settings(params)
     params.each do |key,value|
       case key
-      when 'jmeter_threads'
-         self.jmeter_threads = value
-      when 'jmeter_counter'
-         self.jmeter_counter = value
-      when 'jmeter_period'
-         self.jmeter_period = value
-      when 'jmeter_troughput'
-         self.jmeter_troughput = value
-      when 'jmx_file'
-         self.jmx_file = value
-      when 'jtl_file'
-         self.jtl_file = value
-      when 'remote_server'
-         self.remote_server = value
-      else 
-       logger.debug "DEBUG: :"  + key + ' not used'
+        when 'jmeter_threads'
+          self.jmeter_threads = value
+        when 'jmeter_counter'
+          self.jmeter_counter = value
+        when 'jmeter_period'
+          self.jmeter_period = value
+        when 'jmeter_troughput'
+          self.jmeter_troughput = value
+        when 'jmx_file'
+          self.jmx_file = value
+        when 'jtl_file'
+          self.jtl_file = value
+        when 'remote_server'
+          self.remote_server = value
+        when 'jtl_path'
+          self.jtl_file = value
+        else
+          logger.debug "DEBUG: :"  + key + ' not used'
       end
-
     end
     self.save!
   end

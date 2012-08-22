@@ -7,6 +7,8 @@ class Project < ActiveRecord::Base
   accepts_nested_attributes_for :jmeter_runs, :allow_destroy => true
   accepts_nested_attributes_for :setting, :allow_destroy => true
 
+  validates_presence_of :name, :environment
+
   before_save :create_settings
 
   def create_settings
@@ -16,7 +18,7 @@ class Project < ActiveRecord::Base
   end
 
   def self.find_by_param(id)
-    if id.match(/^[\d]+(\.[\d]+){0,1}$/)
+    if id.to_s.match(/^[\d]+(\.[\d]+){0,1}$/)
       Project.find_by_id(id)
     else
       Project.find_by_name(id)

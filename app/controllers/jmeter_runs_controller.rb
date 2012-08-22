@@ -48,7 +48,8 @@ class JmeterRunsController < ApplicationController
 
     respond_to do |format|
       if @jmeter_run.save
-        #format.html { redirect_to @jmeter_run, :notice => 'Jmeter run was successfully created.' }
+        format.html { redirect_to @jmeter_run, :notice => 'Jmeter run was successfully created
+.' }
         format.json { render :json => @jmeter_run.id }
       else
         format.html { render :action => "new" }

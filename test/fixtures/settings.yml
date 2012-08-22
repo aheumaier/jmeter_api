@@ -1,6 +1,6 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+jone:
   jmx_file: MyString
   jtl_file: MyString
   jmeter_threads: 1
@@ -9,8 +9,9 @@ one:
   jmeter_troughput: MyString
   jmeter_period: 1
   jmeter_accesslog: MyString
+  project_id: 1
 
-two:
+jtwo:
   jmx_file: MyString
   jtl_file: MyString
   jmeter_threads: 1
@@ -19,3 +20,4 @@ two:
   jmeter_troughput: MyString
   jmeter_period: 1
   jmeter_accesslog: MyString
+  project_id: 2
