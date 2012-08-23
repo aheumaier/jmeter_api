@@ -48,8 +48,8 @@ class JmeterRunsController < ApplicationController
 
     respond_to do |format|
       if @jmeter_run.save
-        format.html { redirect_to @jmeter_run, :notice => 'Jmeter run was successfully created
-.' }
+        format.html { redirect_to project_jmeter_run_path(@jmeter_run, @jmeter_run.project_id),
+                                  :notice => 'Jmeter run was successfully created.' }
         format.json { render :json => @jmeter_run.id }
       else
         format.html { render :action => "new" }
@@ -65,7 +65,8 @@ class JmeterRunsController < ApplicationController
 
     respond_to do |format|
       if @jmeter_run.update_attributes(params[:jmeter_run])
-        format.html { redirect_to @jmeter_run, :notice => 'Jmeter run was successfully updated.' }
+        format.html { redirect_to project_jmeter_run_path(@jmeter_run), :notice => 'Jmeter run was successfully
+updated.' }
         format.json { head :no_content }
       else
         format.html { render :action => "edit" }

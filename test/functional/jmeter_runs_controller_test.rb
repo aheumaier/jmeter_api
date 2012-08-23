@@ -18,11 +18,12 @@ class JmeterRunsControllerTest < ActionController::TestCase
 
   test "should create jmeter_run" do
     assert_difference('JmeterRun.count') do
-      post :create, :project_id=> 1, :jmeter_run => { :description => @jmeter_run.description,
-                                                       :jmx_source => @jmeter_run.jmx_source, :project_id => @jmeter_run.project_id, :state => @jmeter_run.state }
+      post :create, :project_id=> 1, :id => @jmeter_run, :jmeter_run => { :description => @jmeter_run.description,
+                                     :jmx_source => @jmeter_run.jmx_source, :project_id => @jmeter_run.project_id,
+                                     :state => @jmeter_run.state }
     end
 
-    #assert_redirected_to project_jmeter_runs_path(assigns(:jmeter_run, :project_id => 1))
+    assert_redirected_to project_jmeter_run_path(assigns(:jmeter_run), :project_id=> 1)
   end
 
   test "should show jmeter_run" do
@@ -38,7 +39,7 @@ class JmeterRunsControllerTest < ActionController::TestCase
   test "should update jmeter_run" do
     put :update, :project_id=> 1, :id => @jmeter_run, :jmeter_run => { :description => @jmeter_run.description,
                                                                         :jmx_source => @jmeter_run.jmx_source, :project_id => @jmeter_run.project_id, :state => @jmeter_run.state }
-    assert_redirected_to jmeter_run_path(assigns(:jmeter_run, :project_id=> 1))
+    assert_redirected_to project_jmeter_run_path(assigns(:jmeter_run))
   end
 
   test "should destroy jmeter_run" do

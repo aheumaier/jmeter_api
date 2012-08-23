@@ -25,7 +25,7 @@ class ProjectTest < ActiveSupport::TestCase
   end
 
   test "should have settings" do
-    p2 = Project.new(:name => 'testproject', :environment => 'dev' )
+    p2 = Project.new(:name => 'testproject', :environment => 'dev', :platform => 'testplatform' )
     p2.save
     assert_respond_to  p2, :setting, "Saved the Project without creating settings"
   end

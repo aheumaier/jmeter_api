@@ -53,6 +53,7 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       if @project.save
+        @project.find_or_create_reports_home(params[:project])
         format.html { redirect_to @project, :notice => 'Project was successfully created.' }
         format.json { render :json => @project, :status => :created, :location => @project }
       else
@@ -89,16 +90,6 @@ class ProjectsController < ApplicationController
       format.json { head :no_content }
     end
   end
-
-  #def settings
-  #  @project ||= Project.find_by_param(params[:id])
-  #
-  #  @project_settings.settin update_settings(params)
-  #
-  #  respond_to do |format|
-  #    format.json { render :json => @project_settings }
-  #  end
-  #end
 
 end
 
