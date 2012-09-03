@@ -5,10 +5,12 @@ class Setting < ActiveRecord::Base
 
   belongs_to :project
 
+  validates_presence_of :jmx_file, :jtl_file
+
   after_initialize :set_defaults
 
   def set_defaults
-    self.jmeter_accesslog = "/app1/jmeter/site/public/testplans/stage.gala.de-dynamic.log.csv"
+    self.jmeter_accesslog = "/app1/jmeter/site/public/testplans/stage.gala.de-dynamic.log.csv" if valid_file?("/app1/jmeter/site/public/testplans/stage.gala.de-dynamic.log.csv")
     self.jmeter_counter = 1
     self.jmeter_period = 3600 
     self.jmeter_threads = 4 
@@ -42,7 +44,14 @@ class Setting < ActiveRecord::Base
           logger.debug "DEBUG: :"  + key + ' not used'
       end
     end
+
+
     self.save!
+  end
+
+
+  def valid_file?(a)
+     File.exist?(a)
   end
 
 end

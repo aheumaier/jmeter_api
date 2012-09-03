@@ -29,7 +29,7 @@ class Project < ActiveRecord::Base
   end
 
   def find_or_create_reports_home(params)
-    reports_home_path = "/app1/jmeter/reports" + params[:platform] + "/" + params[:environment] + "/"
+    reports_home_path = "/app1/jmeter/reports/" + params[:platform] + "/" + params[:environment] + "/"
     if Dir.exist?( reports_home_path )
       self.reports_home = reports_home_path
     else

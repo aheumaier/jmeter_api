@@ -21,13 +21,16 @@ class ProjectTest < ActiveSupport::TestCase
     p1 = Project.new( :name => 'testproject' )
     assert !p1.save, "Saved the Project without a environment"
     p1 = Project.new(:name => 'testproject', :environment => 'dev' )
+    assert !p1.save, "Could not save the Project without a platform"
+    p1 = Project.new(:name => 'testproject', :environment => 'dev', :platform => 'testplatform' )
     assert p1.save, "Could not save the Project with a title"
   end
 
   test "should have settings" do
     p2 = Project.new(:name => 'testproject', :environment => 'dev', :platform => 'testplatform' )
-    p2.save
-    assert_respond_to  p2, :setting, "Saved the Project without creating settings"
+    if p2.save!
+      assert_respond_to  p2, :setting, "Saved the Project without creating settings"
+    end
   end
 
   test "should find by param" do
