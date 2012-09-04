@@ -64,8 +64,11 @@ module JmeterExt
 
   end
 
-  def set_commit_message(type='svn')
-    ci_message = "JmeterRun " + @jr_id.id.to_s + " for "  + @project.name + " checked in File " + @jtl_file
+  def ci_message
+    "JmeterRun " + @jr_id.id.to_s + " for "  + @project.name + " checked in File " + @jtl_file
+  end
+
+  def commit(type='svn')
     Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'

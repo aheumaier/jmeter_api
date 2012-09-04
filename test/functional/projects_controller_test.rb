@@ -2,7 +2,7 @@ require 'test_helper'
 
 class ProjectsControllerTest < ActionController::TestCase
   setup do
-    @project = projects(:one)
+    @project = projects(:pone)
   end
 
   test "should get index" do
@@ -18,9 +18,11 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should create project" do
     assert_difference('Project.count') do
-      post :create, :project => { :environment => @project.environment, :name => @project.name }
+      post :create, :project => { :environment => @project.environment, :name => @project.name,
+                                  :platform => 'testplatform'  }
     end
-
+    assert_equal "/app1/jmeter/reports/" + @project.platform + "/" + @project.name + "/" + @project.environment + "/",
+                 Project.last.reports_home
     assert_redirected_to project_path(assigns(:project))
   end
 
@@ -36,7 +38,7 @@ class ProjectsControllerTest < ActionController::TestCase
 
   test "should update project" do
     put :update, :id => @project, :project => { :environment => @project.environment, :name => @project.name }
-    assert_redirected_to project_path(assigns(:project))
+    assert_response :success or assert_redirected_to project_url(assigns(:project))
   end
 
   test "should destroy project" do

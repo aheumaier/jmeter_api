@@ -2,5 +2,5 @@
 
 <%= render 'form' %>
 
-<%= link_to 'Show', @setting %> |
-<%= link_to 'Back', project_settings_path %>
+<%= link_to 'Show', project_setting_path %> |
+<%= link_to 'Back', project_settings_path(@setting.project_id) %>

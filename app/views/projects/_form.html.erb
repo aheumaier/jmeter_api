@@ -19,6 +19,10 @@
     <%= f.label :environment %><br />
     <%= f.text_field :environment %>
   </div>
+  <div class="field">
+    <%= f.label :platform %><br />
+    <%= f.text_field :platform %>
+  </div>
 
   <h3> Tasks</h3>
   <%= f.fields_for :jmeter_runs do |jrun| %>

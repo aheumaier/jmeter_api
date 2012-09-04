@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
+jone:
   project_id: 1
-  description: MyString
-  jmx_source: MyString
-  state: MyString
+  description: MyStringlalallaa
+  jmx_source: MyString_path1
+  state: idle
 
-two:
-  project_id: 1
-  description: MyString
-  jmx_source: MyString
-  state: MyString
+jtwo:
+  project_id: 2
+  description: MyStringwetr54z6
+  jmx_source: MyString_path2
+  state: idle
