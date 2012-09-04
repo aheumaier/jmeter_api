@@ -1,8 +1,9 @@
+require 'rubygems'
 require 'fileutils'
 
 class Project < ActiveRecord::Base
 
-  has_many :jmeter_runs, :dependent => :destroy, :order => :updated_at
+  has_many :jmeter_runs, :dependent => :destroy, :order => :updated_at, :autosave => true
   has_one :setting, :dependent=> :nullify
 
   attr_accessible :environment, :name, :jmeter_runs_attributes, :setting_attributes, :reports_home , :platform
@@ -30,7 +31,7 @@ class Project < ActiveRecord::Base
 
   def find_or_create_reports_home(params)
     reports_home_path = "/app1/jmeter/reports/" + params[:platform] + "/" + params[:environment] + "/"
-    if Dir.exist?( reports_home_path )
+    if File.directory?( reports_home_path )
       self.reports_home = reports_home_path
     else
       FileUtils.mkdir_p reports_home_path

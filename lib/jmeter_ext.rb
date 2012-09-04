@@ -68,8 +68,8 @@ module JmeterExt
     "JmeterRun " + @jr_id.id.to_s + " for "  + @project.name + " checked in File " + @jtl_file
   end
 
-  def comit(type='svn')
-    Dir.chdir(@project.reports_home)
+  def commit(type='svn')
+    Dir.chdir('/app1/jmeter/reports')
     case type
       when 'svn'
         puts %x{ svn add --force * && svn ci -m #{ci_message} --username #{APP_CONFIG['svn_user']} --password #{APP_CONFIG['svn_passwd']} }
