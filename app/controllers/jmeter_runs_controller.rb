@@ -66,7 +66,7 @@ class JmeterRunsController < ApplicationController
       if @jmeter_run.update_attributes(params[:jmeter_run])
         format.html { redirect_to project_jmeter_run_path(@jmeter_run), :notice => 'Jmeter run was successfully
 updated.' }
-        format.json { head :no_content }
+        format.json { render :json => @jmeter_run.id }
       else
         format.html { render :action => "edit" }
         format.json { render :json => @jmeter_run.errors, :status => :unprocessable_entity }
