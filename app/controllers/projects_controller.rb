@@ -50,10 +50,10 @@ class ProjectsController < ApplicationController
 # POST /projects.json
   def create
     @project = Project.new(params[:project])
+    @project.find_or_create_reports_home(params[:project])
 
     respond_to do |format|
       if @project.save
-        @project.find_or_create_reports_home(params[:project])
         format.html { redirect_to @project, :notice => 'Project was successfully created.' }
         format.json { render :json => @project, :status => :created, :location => @project }
       else

@@ -4,8 +4,10 @@ pone:
   id: 1
   name: MyString1
   environment: MyEnvString1
+  platform: testplatform
 
 ptwo:
   id: 2
   name: MyString2
   environment: MyEnvString2
+  platform: testplatform

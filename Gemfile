@@ -14,6 +14,7 @@ gem 'thin'
 gem 'state_machine'
 gem 'delayed_job_active_record'
 #gem "twitter-bootstrap-rails"
+gem 'minitest-reporters'
 gem 'haml-rails'
 gem 'jquery-rails'
 gem 'execjs'

@@ -39,4 +39,17 @@ class ProjectTest < ActiveSupport::TestCase
     assert_equal p3_s, p3_i , 'Find different Projects by string and int'
   end
 
+  test "should set reports_home_path" do
+    p1 = Project.create(:name => 'testproject', :environment => 'dev', :platform => 'testplatform' )
+    assert p1.save!, "Could not save the Project..."
+    p1.find_or_create_reports_home(:name => 'testproject', :environment => 'dev', :platform => 'testplatform')
+    assert_equal "/app1/jmeter/reports/" + p1.platform + "/"  + p1.name + "/" + p1.environment + "/",
+                 p1.reports_home, 'Find different Projects reports path '
+    puts  p1.reports_home
+    assert File.exist?( p1.reports_home)
+
+  end
+
+
+
 end
