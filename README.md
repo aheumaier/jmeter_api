@@ -1,3 +1,5 @@
+https://travis-ci.org/aheumaier/jmeter_api.png?branch=develop
+
 JmeterApi
 ======
 
