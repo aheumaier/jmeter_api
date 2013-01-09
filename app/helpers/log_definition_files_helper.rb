@@ -1,0 +1,2 @@
+module LogDefinitionFilesHelper
+end

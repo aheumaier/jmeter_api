@@ -1,0 +1,17 @@
+%h1 Listing log_definition_files
+
+%table
+  %tr
+    %th
+    %th
+    %th
+
+  - @log_definition_files.each do |log_definition_file|
+    %tr
+      %td= link_to 'Show', log_definition_file
+      %td= link_to 'Edit', edit_log_definition_file_path(log_definition_file)
+      %td= link_to 'Destroy', log_definition_file, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Log definition file', new_log_definition_file_path

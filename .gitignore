@@ -17,7 +17,6 @@ log/
 *.log
 *.sql
 *.sqlite
-config/database.yml
 tmp/
 public/testplans/
 

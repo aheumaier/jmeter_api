@@ -5,6 +5,8 @@ class JmeterRun < ActiveRecord::Base
                   :locked
 
   belongs_to :project, :touch => true
+  has_one :jmx_definition_file, :dependent=> :nullify
+  has_one :log_definition_file, :dependent=> :nullify
 
   state_machine :initial => :idle do
     before_transition :idle => :running, :do => :perform_test

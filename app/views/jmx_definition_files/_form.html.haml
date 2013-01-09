@@ -1,0 +1,10 @@
+= form_for @jmx_definition_file do |f|
+  -if @jmx_definition_file.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@jmx_definition_file.errors.count, "error")} prohibited this jmx_definition_file from being saved:"
+      %ul
+        - @jmx_definition_file.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'

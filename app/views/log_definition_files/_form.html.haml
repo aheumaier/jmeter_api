@@ -1,0 +1,10 @@
+= form_for @log_definition_file do |f|
+  -if @log_definition_file.errors.any?
+    #error_explanation
+      %h2= "#{pluralize(@log_definition_file.errors.count, "error")} prohibited this log_definition_file from being saved:"
+      %ul
+        - @log_definition_file.errors.full_messages.each do |msg|
+          %li= msg
+
+  .actions
+    = f.submit 'Save'
