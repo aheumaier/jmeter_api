@@ -1,4 +1,4 @@
-https://travis-ci.org/aheumaier/jmeter_api.png?branch=develop
+[![Build Status](https://travis-ci.org/aheumaier/jmeter_api.png?branch=develop)](https://travis-ci.org/aheumaier/jmeter_api)
 
 JmeterApi
 ======
