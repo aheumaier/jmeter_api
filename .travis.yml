@@ -1,3 +1,9 @@
 # .travis.yml
+language: ruby
+rvm:
+  - 1.9.3
+  env:
+    - DB=mysql
+
 before_script:
   - mysql -e 'create database rails_test ;'
