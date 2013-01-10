@@ -11,18 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130110083302) do
-
-  create_table "definition_files", :force => true do |t|
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
-    t.integer  "jmeter_run_id"
-    t.string   "df"
-    t.string   "df_name"
-    t.string   "df_type"
-    t.string   "df_path"
-    t.string   "df_file_dir"
-  end
+ActiveRecord::Schema.define(:version => 20130109144057) do
 
   create_table "delayed_jobs", :force => true do |t|
     t.integer  "priority",   :default => 0
@@ -59,15 +48,25 @@ ActiveRecord::Schema.define(:version => 20130110083302) do
   end
 
   create_table "jmx_definition_files", :force => true do |t|
+    t.integer  "jmeter_run_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "jmeter_run_id"
+    t.string   "df_name"
+    t.string   "df_type"
+    t.string   "df_path"
+    t.string   "df_file_dir"
+    t.string   "df"
   end
 
   create_table "log_definition_files", :force => true do |t|
+    t.integer  "jmeter_run_id"
     t.datetime "created_at",    :null => false
     t.datetime "updated_at",    :null => false
-    t.integer  "jmeter_run_id"
+    t.string   "df_name"
+    t.string   "df_type"
+    t.string   "df_path"
+    t.string   "df_file_dir"
+    t.string   "df"
   end
 
   create_table "projects", :force => true do |t|
