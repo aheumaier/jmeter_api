@@ -5,13 +5,16 @@
     %th
     %th
     %th
+    %th
+    %th
 
   - @jmx_definition_files.each do |jmx_definition_file|
     %tr
+      %td= jmx_definition_file.df.file.filename unless jmx_definition_file.df.nil?
+      %td :
       %td= link_to 'Show', jmx_definition_file
       %td= link_to 'Edit', edit_jmx_definition_file_path(jmx_definition_file)
-      %td= link_to 'Destroy', jmx_definition_file, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', jmx_definition_file, :data => { :confirm => 'Are you sure?' } , :method => :delete
 
 %br
 
-= link_to 'New Jmx definition file', new_jmx_definition_file_path

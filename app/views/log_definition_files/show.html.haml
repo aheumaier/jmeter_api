@@ -1,5 +1,8 @@
 %p#notice= notice
 
+= simple_format h(@log_definition_file.df.read) if @log_definition_file.df?
+
+%br
 
 = link_to 'Edit', edit_log_definition_file_path(@log_definition_file)
 \|
