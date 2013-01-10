@@ -5,6 +5,12 @@
       %ul
         - @jmx_definition_file.errors.full_messages.each do |msg|
           %li= msg
+  %p
+
+  %p
+    = f.file_field :df
+
 
   .actions
     = f.submit 'Save'
+  = link_to 'Back', jmx_definition_files_path

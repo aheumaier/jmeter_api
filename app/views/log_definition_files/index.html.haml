@@ -8,9 +8,11 @@
 
   - @log_definition_files.each do |log_definition_file|
     %tr
+      %td= log_definition_file.df.file.filename
+      %td :
       %td= link_to 'Show', log_definition_file
-      %td= link_to 'Edit', edit_log_definition_file_path(log_definition_file)
-      %td= link_to 'Destroy', log_definition_file, :confirm => 'Are you sure?', :method => :delete
+      -#%td= link_to 'Edit', edit_log_definition_file_path(log_definition_file)
+      %td= link_to 'Destroy', log_definition_file, :data => { :confirm => 'Are you sure?' }, :method => :delete
 
 %br
 

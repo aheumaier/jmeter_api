@@ -9,6 +9,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+gem 'carrierwave'
 gem 'POpen4'
 gem 'thin'
 gem 'state_machine'

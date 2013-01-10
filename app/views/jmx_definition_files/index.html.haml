@@ -10,7 +10,7 @@
     %tr
       %td= link_to 'Show', jmx_definition_file
       %td= link_to 'Edit', edit_jmx_definition_file_path(jmx_definition_file)
-      %td= link_to 'Destroy', jmx_definition_file, :confirm => 'Are you sure?', :method => :delete
+      %td= link_to 'Destroy', jmx_definition_file, :data => { :confirm => 'Are you sure?' } , :method => :delete
 
 %br
 
