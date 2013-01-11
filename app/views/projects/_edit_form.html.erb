@@ -1,0 +1,43 @@
+<%= nested_form_for @project do |f| %>
+    <% if @project.errors.any? %>
+        <div id="error_explanation">
+          <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
+
+          <ul>
+            <% @project.errors.full_messages.each do |msg| %>
+                <li><%= msg %></li>
+            <% end %>
+          </ul>
+        </div>
+    <% end %>
+
+    <div class="field">
+      <%= f.label :name %><br />
+      <%= f.text_field :name %>
+    </div>
+    <div class="field">
+      <%= f.label :environment %><br />
+      <%= f.text_field :environment %>
+    </div>
+    <div class="field">
+      <%= f.label :platform %><br />
+      <%= f.text_field :platform %>
+    </div>
+
+    <h3> Tasks</h3>
+
+    <%= f.fields_for :jmeter_runs do |jrun| %>
+        <%= jrun.label :jmx_source %><br />
+        <%= jrun.text_field :jmx_source %><br />
+        <%= jrun.link_to_remove "Remove this run" %>
+        <br>
+        --- --- --- ---
+        <br>
+    <% end %>
+
+    <p><%= f.link_to_add "Add a Run", :jmeter_runs %>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+<% end %>
