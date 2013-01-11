@@ -34,12 +34,29 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
     t.string   "description"
     t.string   "jmx_source"
     t.string   "state"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
     t.string   "stderror",    :default => "0"
+    t.string   "stdout",      :default => "0"
     t.integer  "jmeter_pid",  :default => 0
     t.boolean  "locked",      :default => false
-    t.string   "stdout",      :default => "0"
+    t.datetime "created_at",                     :null => false
+    t.datetime "updated_at",                     :null => false
+  end
+
+  create_table "jmeter_settings", :force => true do |t|
+    t.string   "jmx_file"
+    t.string   "jtl_file"
+    t.integer  "jmeter_threads"
+    t.string   "remote_server"
+    t.integer  "jmeter_counter"
+    t.string   "jmeter_troughput"
+    t.integer  "jmeter_period"
+    t.string   "jmeter_accesslog"
+    t.string   "jtl_path"
+    t.string   "string"
+    t.integer  "jmeter_run_id"
+    t.text     "ext_opts"
+    t.datetime "created_at",       :null => false
+    t.datetime "updated_at",       :null => false
   end
 
   create_table "jmeter_workers", :force => true do |t|
@@ -72,26 +89,10 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "environment"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.string   "reports_home"
     t.string   "platform"
-  end
-
-  create_table "settings", :force => true do |t|
-    t.string   "jmx_file"
-    t.string   "jtl_file"
-    t.integer  "jmeter_threads"
-    t.string   "remote_server"
-    t.integer  "jmeter_counter"
-    t.string   "jmeter_troughput"
-    t.integer  "jmeter_period"
-    t.string   "jmeter_accesslog"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "project_id"
-    t.text     "ext_opts"
-    t.string   "jtl_path"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

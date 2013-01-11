@@ -5,8 +5,19 @@ class JmeterRun < ActiveRecord::Base
                   :locked
 
   belongs_to :project, :touch => true
+  has_one :jmeter_setting, :dependent=> :nullify
   has_one :jmx_definition_file, :dependent=> :nullify
   has_one :log_definition_file, :dependent=> :nullify
+  accepts_nested_attributes_for :jmeter_setting, :allow_destroy => true
+
+  before_save :create_settings
+
+  def create_settings
+    if self.jmeter_setting == nil
+      self.build_jmeter_setting
+      self.save!
+    end
+  end
 
   state_machine :initial => :idle do
     before_transition :idle => :running, :do => :perform_test

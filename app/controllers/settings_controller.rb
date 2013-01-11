@@ -2,7 +2,7 @@ class SettingsController < ApplicationController
   # GET /settings
   # GET /settings.json
   def index
-    @settings ||= Setting.find_by_project_id(params[:project_id])
+    @settings ||= JmeterSetting.find_by_project_id(params[:project_id])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -13,7 +13,7 @@ class SettingsController < ApplicationController
   # GET /settings/1
   # GET /settings/1.json
   def show
-    @setting = Setting.find(params[:id])
+    @setting = JmeterSetting.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -24,7 +24,7 @@ class SettingsController < ApplicationController
   # GET /settings/new
   # GET /settings/new.json
   def new
-    @setting ||= Setting.new
+    @setting ||= JmeterSetting.new
 
     respond_to do |format|
       format.html # new.html.erb
@@ -34,14 +34,14 @@ class SettingsController < ApplicationController
 
   # GET /settings/1/edit
   def edit
-    @setting ||= Setting.find(params[:id])
+    @setting ||= JmeterSetting.find(params[:id])
     @project ||=  Project.find_by_param(params[:project_id])
   end
 
   # POST /settings
   # POST /settings.json
   def create
-    @setting = Setting.new(params[:setting])
+    @setting = JmeterSetting.new(params[:setting])
 
     respond_to do |format|
       if @setting.save
@@ -58,7 +58,7 @@ class SettingsController < ApplicationController
   # PUT /settings/1
   # PUT /settings/1.json
   def update
-    @setting = Setting.find(params[:id])
+    @setting = JmeterSetting.find(params[:id])
 
     respond_to do |format|
       if @setting.update_attributes(params[:setting])
@@ -74,7 +74,7 @@ class SettingsController < ApplicationController
   # DELETE /settings/1
   # DELETE /settings/1.json
   def destroy
-    @setting = Setting.find(params[:id])
+    @setting = JmeterSetting.find(params[:id])
     @setting.destroy
 
     respond_to do |format|

@@ -1,6 +1,6 @@
-class CreateSettings < ActiveRecord::Migration
+class CreateJmeterSettings < ActiveRecord::Migration
   def change
-    create_table :settings do |t|
+    create_table :jmeter_settings do |t|
       t.string :jmx_file
       t.string :jtl_file
       t.integer :jmeter_threads
@@ -9,6 +9,9 @@ class CreateSettings < ActiveRecord::Migration
       t.string :jmeter_troughput
       t.integer :jmeter_period
       t.string :jmeter_accesslog
+      t.string :jtl_path, :string
+      t.integer :jmeter_run_id
+      t.text :ext_opts
 
       t.timestamps
     end
