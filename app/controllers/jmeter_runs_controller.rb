@@ -49,10 +49,8 @@ class JmeterRunsController < ApplicationController
     respond_to do |format|
       if @jmeter_run.save
         format.html { render :text => @jmeter_run.id }
-        format.json { render :json => @jmeter_run.id }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @jmeter_run.errors, :status => :unprocessable_entity }
       end
     end
   end

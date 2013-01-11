@@ -1,6 +1,7 @@
 require 'test_helper'
 
-class V1::BaseControllerTest < ActionDispatch::IntegrationTest
+
+class Api::V1::ProjectControllerTest < ActionController::TestCase
   # Replace this with your real tests.
   test "the truth" do
     assert true

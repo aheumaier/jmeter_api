@@ -4,8 +4,18 @@
 # model remove the '{}' from the fixture names and add the columns immediately
 # below each fixture, per the syntax in the comments below
 #
-one: {}
+one:
+  df_name: 'testplan'
+  df_type: 'jmx'
+  df_path: '/home/aheumaier/codebox/site/public/definition_files/testplan.jmx'
+  df_file_dir: '/home/aheumaier/codebox/site/public/definition_files'
+  df: 'definition_files/testplan.jmx'
 # column: value
 #
-two: {}
-#  column: value
+two:
+  df_name: 'testplan2'
+  df_type: 'jmx'
+  df_path: '/home/aheumaier/codebox/site/public/definition_files/testplan2.jmx'
+  df_file_dir: '/home/aheumaier/codebox/site/public/definition_files'
+  df: 'definition_files/testplan2.jmx'
+

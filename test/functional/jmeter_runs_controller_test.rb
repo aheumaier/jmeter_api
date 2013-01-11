@@ -22,8 +22,7 @@ class JmeterRunsControllerTest < ActionController::TestCase
                                      :jmx_source => @jmeter_run.jmx_source, :project_id => @jmeter_run.project_id,
                                      :state => @jmeter_run.state }
     end
-
-    assert_redirected_to project_jmeter_run_path(assigns(:jmeter_run), :project_id=> 1)
+    assert_response :success
   end
 
   test "should show jmeter_run" do
