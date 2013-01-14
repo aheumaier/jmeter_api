@@ -12,6 +12,7 @@ class LogDefinitionFilesController < ApplicationController
 
   # GET /log_definition_files/1
   # GET /log_definition_files/1.json
+
   def show
     @log_definition_file = LogDefinitionFile.find(params[:id])
 
@@ -23,6 +24,7 @@ class LogDefinitionFilesController < ApplicationController
 
   # GET /log_definition_files/new
   # GET /log_definition_files/new.json
+
   def new
     @log_definition_file = LogDefinitionFile.new
 
@@ -33,12 +35,14 @@ class LogDefinitionFilesController < ApplicationController
   end
 
   # GET /log_definition_files/1/edit
+
   def edit
     @log_definition_file = LogDefinitionFile.find(params[:id])
   end
 
   # POST /log_definition_files
   # POST /log_definition_files.json
+
   def create
     @log_definition_file = LogDefinitionFile.new(params[:log_definition_file])
 
@@ -55,6 +59,7 @@ class LogDefinitionFilesController < ApplicationController
 
   # PUT /log_definition_files/1
   # PUT /log_definition_files/1.json
+
   def update
     @log_definition_file = LogDefinitionFile.find(params[:id])
 
@@ -71,6 +76,7 @@ class LogDefinitionFilesController < ApplicationController
 
   # DELETE /log_definition_files/1
   # DELETE /log_definition_files/1.json
+
   def destroy
     @log_definition_file = LogDefinitionFile.find(params[:id])
     @log_definition_file.destroy

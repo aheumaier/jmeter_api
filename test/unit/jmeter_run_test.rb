@@ -15,6 +15,13 @@ class JmeterRunTest < ActiveSupport::TestCase
     assert_equal 'MyString1', j1.project.name
   end
 
+  test "should have settings" do
+    j10 = JmeterRun.new(:description => 'this is a test-description')
+    if j10.save!
+      assert_respond_to  j10, :jmeter_setting, "Saved the JmeterRun without creating default settings"
+    end
+  end
+
   test "should create jmeter_run" do
     project = projects(:pone)
     j0 = nil

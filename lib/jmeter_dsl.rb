@@ -1,9 +1,12 @@
 require 'nokogiri'
 require 'rest_client'
 require 'json'
+require 'popen4'
 require 'cgi'
 
 require 'jmeter-dsl/dsl'
+require 'jmeter-dsl/jmeter_ext'
+require 'jmeter-dsl/jmeter_core'
 require 'jmeter-dsl/fallback_content_proxy'
 require 'jmeter-dsl/logger-colors'
 require 'jmeter-dsl/strip-heredoc'

@@ -11,6 +11,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects/1
   # GET /projects/1.json
+
   def show
     @project ||= Project.find_by_param(params[:id])
 
@@ -30,6 +31,7 @@ class ProjectsController < ApplicationController
 
 # GET /projects/new
 # GET /projects/new.json
+
   def new
     @project = Project.new
     @project.jmeter_runs.build
@@ -42,12 +44,14 @@ class ProjectsController < ApplicationController
   end
 
 # GET /projects/1/edit
+
   def edit
     @project ||= Project.find(params[:id])
   end
 
 # POST /projects
 # POST /projects.json
+
   def create
     @project = Project.new(params[:project])
     @project.find_or_create_reports_home(params[:project])
@@ -65,6 +69,7 @@ class ProjectsController < ApplicationController
 
 # PUT /projects/1
 # PUT /projects/1.json
+
   def update
     @project ||= Project.find(params[:id])
 

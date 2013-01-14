@@ -1,3 +1,5 @@
+
+
 module JmeterDsl
 
   def dsl_eval(dsl, &block)
@@ -17,6 +19,7 @@ module JmeterDsl
   module Jmeter
 
     class DSL
+
       attr_accessor :root
 
       def initialize
@@ -140,98 +143,95 @@ module JmeterDsl
 
       def out(params={})
         puts doc.to_xml(:indent => 2)
+        logger.info "JMX saved to: #{params[:file]}"
       end
 
-      logger.info "JMX saved to: #{params[:file]}"
-    end
-
-    def run(params={})
-      file(params)
-      raise 'ERROR: Jmeter path not found' unless File.exists?("#{params[:path]}jmeter")
-      logger.warn "Test executing locally ..."
-      cmd = "#{params[:path]}jmeter -n -t #{params[:file]} -j #{params[:log] ? params[:log] : 'jmeter.log' } -l #{params[:jtl] ? params[:jtl] : 'jmeter.jtl' }"
-      logger.info cmd
-      `#{cmd}`
-      logger.info "Results at: #{params[:jtl] ? params[:jtl] : 'jmeter.jtl'}"
-    end
-
-    def grid(token, params={})
-      RestClient.proxy = params[:proxy] if params[:proxy]
-      begin
-        file = Tempfile.new('jmeter')
-        file.write(doc.to_xml(:indent => 2))
-        file.rewind
-        response = RestClient.post "http://#{params[:endpoint] ? params[:endpoint] : 'StackTest.com'}/api?token=#{token}",
-                                   {
-                                       :name => 'attachment',
-                                       :attachment => File.new("#{file.path}", 'rb'),
-                                       :multipart => true,
-                                       :content_type => 'application/octet-stream'
-                                   }
-        logger.info "Results at: #{JSON.parse(response)["results"]}" if response.code == 200
-      rescue => e
-        logger.fatal "There was an error: #{e.message}"
+      def run(params={})
+        file(params)
+        raise 'ERROR: Jmeter path not found' unless File.exists?("#{params[:path]}jmeter")
+        logger.warn "Test executing locally ..."
+        cmd = "#{params[:path]}jmeter -n -t #{params[:file]} -j #{params[:log] ? params[:log] : 'jmeter.log' } -l #{params[:jtl] ? params[:jtl] : 'jmeter.jtl' }"
+        logger.info cmd
+        `#{cmd}`
+        logger.info "Results at: #{params[:jtl] ? params[:jtl] : 'jmeter.jtl'}"
       end
-    end
 
-    private
-
-    def hash_tree
-      Nokogiri::XML::Node.new("hashTree", @root)
-    end
-
-    def last_node_from(calling_method)
-      xpath = xpath_from(calling_method)
-      node  = @root.xpath(xpath).last
-      node
-    end
-
-    def xpath_from(calling_method)
-      case calling_method.grep(/dsl/)[1][/`.*'/][1..-2]
-        when 'threads'
-          '//ThreadGroup/following-sibling::hashTree'
-        when 'transaction'
-          '//TransactionController/following-sibling::hashTree'
-        when 'once'
-          '//OnceOnlyController/following-sibling::hashTree'
-        when 'exists'
-          '//IfController/following-sibling::hashTree'
-        when 'visit'
-          '//HTTPSamplerProxy/following-sibling::hashTree'
-        when 'submit'
-          '//HTTPSamplerProxy/following-sibling::hashTree'
-        when 'extract'
-          '//RegexExtractor/following-sibling::hashTree'
-        when 'random_timer'
-          '//GaussianRandomTimer/following-sibling::hashTree'
-        else
-          '//TestPlan/following-sibling::hashTree'
+      def grid(token, params={})
+        RestClient.proxy = params[:proxy] if params[:proxy]
+        begin
+          file = Tempfile.new('jmeter')
+          file.write(doc.to_xml(:indent => 2))
+          file.rewind
+          response = RestClient.post "http://#{params[:endpoint] ? params[:endpoint] : 'StackTest.com'}/api?token=#{token}",
+                                     {
+                                         :name => 'attachment',
+                                         :attachment => File.new("#{file.path}", 'rb'),
+                                         :multipart => true,
+                                         :content_type => 'application/octet-stream'
+                                     }
+          logger.info "Results at: #{JSON.parse(response)["results"]}" if response.code == 200
+        rescue => e
+          logger.fatal "There was an error: #{e.message}"
+        end
       end
-    end
 
-    def file(params={})
-      params[:file] ||= 'jmeter.jmx'
-      File.open(params[:file], 'w') { |file| file.write(doc.to_xml(:indent => 2)) }
-    end
+      def hash_tree
+        Nokogiri::XML::Node.new("hashTree", @root)
+      end
 
-    def doc
-      Nokogiri::XML(@root.to_s,&:noblanks)
-    end
+      def last_node_from(calling_method)
+        xpath = xpath_from(calling_method)
+        node  = @root.xpath(xpath).last
+        node
+      end
 
-    def logger
-      @log ||= Logger.new(STDOUT)
-      @log.level = Logger::DEBUG
-      @log
+      def xpath_from(calling_method)
+        case calling_method.grep(/dsl/)[1][/`.*'/][1..-2]
+          when 'threads'
+            '//ThreadGroup/following-sibling::hashTree'
+          when 'transaction'
+            '//TransactionController/following-sibling::hashTree'
+          when 'once'
+            '//OnceOnlyController/following-sibling::hashTree'
+          when 'exists'
+            '//IfController/following-sibling::hashTree'
+          when 'visit'
+            '//HTTPSamplerProxy/following-sibling::hashTree'
+          when 'submit'
+            '//HTTPSamplerProxy/following-sibling::hashTree'
+          when 'extract'
+            '//RegexExtractor/following-sibling::hashTree'
+          when 'random_timer'
+            '//GaussianRandomTimer/following-sibling::hashTree'
+          else
+            '//TestPlan/following-sibling::hashTree'
+        end
+      end
+
+      def file(params={})
+        params[:file] ||= 'jmeter.jmx'
+        File.open(params[:file], 'w') { |file| file.write(doc.to_xml(:indent => 2)) }
+      end
+
+      def doc
+        Nokogiri::XML(@root.to_s,&:noblanks)
+      end
+
+      def logger
+        @log ||= Logger.new(STDOUT)
+        @log.level = Logger::DEBUG
+        @log
+      end
+
     end
 
   end
-
 end
 
-def test(&block)
+def jmetertest(&block)
   t = JmeterDsl.dsl_eval(JmeterDsl::Jmeter::DSL.new, &block)
   t.out
   t
 end
 
-alias_method :webtest, :jmetertest
+#alias_method :webtest, :jmetertest

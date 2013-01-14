@@ -1,6 +1,7 @@
 class SettingsController < ApplicationController
   # GET /settings
   # GET /settings.json
+
   def index
     @settings ||= JmeterSetting.find_by_project_id(params[:project_id])
 
@@ -33,6 +34,7 @@ class SettingsController < ApplicationController
   end
 
   # GET /settings/1/edit
+
   def edit
     @setting ||= JmeterSetting.find(params[:id])
     @project ||=  Project.find_by_param(params[:project_id])
@@ -40,6 +42,7 @@ class SettingsController < ApplicationController
 
   # POST /settings
   # POST /settings.json
+
   def create
     @setting = JmeterSetting.new(params[:setting])
 
@@ -57,6 +60,7 @@ class SettingsController < ApplicationController
 
   # PUT /settings/1
   # PUT /settings/1.json
+
   def update
     @setting = JmeterSetting.find(params[:id])
 
@@ -73,6 +77,7 @@ class SettingsController < ApplicationController
 
   # DELETE /settings/1
   # DELETE /settings/1.json
+
   def destroy
     @setting = JmeterSetting.find(params[:id])
     @setting.destroy

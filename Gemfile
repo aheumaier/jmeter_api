@@ -9,6 +9,9 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
+gem 'nokogiri'
+gem 'rest-client'
 gem 'carrierwave'
 gem 'POpen4'
 gem 'thin'

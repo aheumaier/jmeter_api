@@ -1,5 +1,4 @@
 Site::Application.routes.draw do
-
   namespace :api do # JSON REST ::API
     namespace :v1 do
       match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
@@ -10,10 +9,10 @@ Site::Application.routes.draw do
             get 'start'
             get 'kill'
           end
-          resources :log_definition_files
-          resources :jmx_definition_files
+          #resources :log_definition_files
+          #resources :jmx_definition_files
         end
-        resources :settings
+        #resources :jmeter_settings
       end
     end
     match 'v:api/*path', :to => redirect("/api/v1/%{path}")

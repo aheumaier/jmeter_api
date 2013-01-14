@@ -8,6 +8,8 @@ rescue Bundler::BundlerError => e
   exit e.status_code
 end
 require 'minitest/unit'
+require 'logger'
+require 'jmeter_dsl'
 
 $LOAD_PATH.unshift(File.dirname(__FILE__))
 $LOAD_PATH.unshift(File.join(File.dirname(__FILE__), '..', 'lib'))

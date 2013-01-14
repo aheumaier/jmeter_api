@@ -1,5 +1,5 @@
 class JmeterWorker < Struct.new(:jmeter_run_id)
-  include JmeterExt
+  include JmeterDsl
 
   def perform
     puts "perform called"

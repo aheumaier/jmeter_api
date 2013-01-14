@@ -26,13 +26,6 @@ class ProjectTest < ActiveSupport::TestCase
     assert p1.save, "Could not save the Project with a title"
   end
 
-  test "should have settings" do
-    p2 = Project.new(:name => 'testproject', :environment => 'dev', :platform => 'testplatform' )
-    if p2.save!
-      assert_respond_to  p2, :setting, "Saved the Project without creating settings"
-    end
-  end
-
   test "should find by param" do
     p3_s = Project.find_by_param('MyString1')
     p3_i = Project.find_by_param(@project.id)

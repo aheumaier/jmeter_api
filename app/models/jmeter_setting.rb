@@ -5,18 +5,19 @@ class JmeterSetting < ActiveRecord::Base
 
   belongs_to :jmeter_run
 
-  validates_presence_of :jmx_file, :jtl_file
+  #validates_presence_of
 
-  after_initialize :set_defaults
+  after_save :set_defaults
 
   def set_defaults
-    self.jmeter_accesslog = "/app1/jmeter/site/public/testplans/stage.gala.de-dynamic.log.csv" #if valid_file?("/app1/jmeter/site/public/testplans/stage.gala.de-dynamic.log.csv")
+    self.jmeter_accesslog = ""
+    self.jmx_file = ""+ self.jmeter_run.description + '.jmx'
     self.jmeter_counter = 1
     self.jmeter_period = 3600 
-    self.jmeter_threads = 4 
+    self.jmeter_threads = 20
     self.jmeter_troughput = 600
-    self.jmx_file = "/Grenzwert.new3.gala.de_HP.jmx"
-    self.jtl_file = "DefaultProjectName_" + Time.now.to_i.to_s + ".jtl"
+    self.jmx_file = ""
+    self.jtl_file =  "run_log_" + Time.now.to_i.to_s + ".jtl"
     self.remote_server = ""
     self.ext_opts = ""
   end

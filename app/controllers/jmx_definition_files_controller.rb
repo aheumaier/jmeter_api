@@ -12,6 +12,7 @@ class JmxDefinitionFilesController < ApplicationController
 
   # GET /jmx_definition_files/1
   # GET /jmx_definition_files/1.json
+
   def show
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
 
@@ -23,6 +24,7 @@ class JmxDefinitionFilesController < ApplicationController
 
   # GET /jmx_definition_files/new
   # GET /jmx_definition_files/new.json
+
   def new
     @jmx_definition_file = JmxDefinitionFile.new
 
@@ -33,12 +35,14 @@ class JmxDefinitionFilesController < ApplicationController
   end
 
   # GET /jmx_definition_files/1/edit
+
   def edit
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
   end
 
   # POST /jmx_definition_files
   # POST /jmx_definition_files.json
+
   def create
     @jmx_definition_file = JmxDefinitionFile.new(params[:jmx_definition_file])
 
@@ -55,6 +59,7 @@ class JmxDefinitionFilesController < ApplicationController
 
   # PUT /jmx_definition_files/1
   # PUT /jmx_definition_files/1.json
+
   def update
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
 
@@ -71,6 +76,7 @@ class JmxDefinitionFilesController < ApplicationController
 
   # DELETE /jmx_definition_files/1
   # DELETE /jmx_definition_files/1.json
+
   def destroy
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
     @jmx_definition_file.destroy

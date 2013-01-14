@@ -1,5 +1,5 @@
 class JmeterRun < ActiveRecord::Base
-  include JmeterExt
+  include JmeterDsl
 
   attr_accessible :description, :jmx_source, :project_id, :state, :stderror, :stdout, :jmeter_pid,
                   :locked

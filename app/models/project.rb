@@ -2,10 +2,9 @@ require 'rubygems'
 require 'fileutils'
 
 class Project < ActiveRecord::Base
+  attr_accessible :environment, :name, :jmeter_runs_attributes, :setting_attributes, :reports_home , :platform
 
   has_many :jmeter_runs, :dependent => :destroy, :order => :updated_at, :autosave => true
-
-  attr_accessible :environment, :name, :jmeter_runs_attributes, :setting_attributes, :reports_home , :platform
   accepts_nested_attributes_for :jmeter_runs, :allow_destroy => true
 
   validates_presence_of :name, :environment, :platform

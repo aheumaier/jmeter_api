@@ -7,12 +7,13 @@ class JmeterRunsController < ApplicationController
 
     respond_to do |format|
       format.html # index.html.erb
-      #format.json { render :json => @jmeter_runs }
+                  #format.json { render :json => @jmeter_runs }
     end
   end
 
   # GET /jmeter_runs/1
   # GET /jmeter_runs/1.json
+
   def show
     @jmeter_run ||= JmeterRun.find_by_id(params[:id])
     @project ||= Project.find_by_id(params[:project_id])
@@ -25,6 +26,7 @@ class JmeterRunsController < ApplicationController
 
   # GET /jmeter_runs/new
   # GET /jmeter_runs/new.json
+
   def new
     @jmeter_run = JmeterRun.new
 
@@ -35,6 +37,7 @@ class JmeterRunsController < ApplicationController
   end
 
   # GET /jmeter_runs/1/edit
+
   def edit
     @jmeter_run ||= JmeterRun.find(params[:id])
     @project ||=  Project.find_by_param(params[:project_id])
@@ -42,6 +45,7 @@ class JmeterRunsController < ApplicationController
 
   # POST /jmeter_runs
   # POST /jmeter_runs.json
+
   def create
     @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run = @project.jmeter_runs.new(params[:jmeter_run])
@@ -59,6 +63,7 @@ class JmeterRunsController < ApplicationController
 
   # PUT /jmeter_runs/1
   # PUT /jmeter_runs/1.json
+
   def update
     @jmeter_run ||=  JmeterRun.find(params[:id])
 
@@ -76,6 +81,7 @@ updated.' }
 
   # DELETE /jmeter_runs/1
   # DELETE /jmeter_runs/1.json
+
   def destroy
     @jmeter_run ||=  JmeterRun.find(params[:id])
     @jmeter_run.destroy
@@ -95,7 +101,8 @@ updated.' }
     end
   end
 
-    def start
+
+  def start
     @jmeter_run ||=  JmeterRun.find(params[:id])
     @jmeter_run_start =  @jmeter_run.push_start
     respond_to do |format|
@@ -119,8 +126,5 @@ updated.' }
       format.html { render :text => @jmeter_run  }
       format.json { render :json => @jmeter_run }
     end
-
   end
-
-
 end
