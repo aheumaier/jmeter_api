@@ -7,9 +7,9 @@ class LogDefinitionFile < ActiveRecord::Base
   before_validation :set_metadata
 
   def set_metadata
-    self.df_type = 'jmx'
+    self.df_type = 'access_log'
     self.df_path = self.df.path
-    #self.df_name = self.df.file.filename
+    self.df_name = self.df.file.filename
   end
 
 end
