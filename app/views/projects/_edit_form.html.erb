@@ -27,8 +27,8 @@
     <h3> Tasks</h3>
 
     <%= f.fields_for :jmeter_runs do |jrun| %>
-        <%= jrun.label :jmx_source %><br />
-        <%= jrun.text_field :jmx_source %><br />
+        <%= jrun.label :jmx_file%><br />
+        <%= jrun.text_field :jmx_file %><br />
         <%= jrun.link_to_remove "Remove this run" %>
         <br>
         --- --- --- ---

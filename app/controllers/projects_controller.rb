@@ -34,7 +34,7 @@ class ProjectsController < ApplicationController
 
   def new
     @project = Project.new
-    @project.jmeter_runs.build
+    #@project.jmeter_runs.build()
 
 
    # respond_to do |format|
@@ -55,9 +55,10 @@ class ProjectsController < ApplicationController
   def create
     @project = Project.new(params[:project])
     @project.find_or_create_reports_home(params[:project])
-
     respond_to do |format|
       if @project.save
+
+
         format.html { redirect_to @project, :notice => 'Project was successfully created.' }
         format.json { render :json => @project, :status => :created, :location => @project }
       else

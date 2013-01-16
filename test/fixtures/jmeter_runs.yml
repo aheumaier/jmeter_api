@@ -3,11 +3,9 @@
 jone:
   project_id: 1
   description: MyStringlalallaa
-  jmx_source: MyString_path1
   state: idle
 
 jtwo:
   project_id: 2
   description: MyStringwetr54z6
-  jmx_source: MyString_path2
   state: idle

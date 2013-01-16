@@ -21,6 +21,7 @@ class ProjectsControllerTest < ActionController::TestCase
       post :create, :project => { :environment => @project.environment, :name => @project.name,
                                   :platform => 'testplatform'  }
     end
+
     assert_equal "/app1/jmeter/reports/" + @project.platform + "/" + @project.name + "/" + @project.environment + "/",
                  Project.last.reports_home
     assert_redirected_to project_path(assigns(:project))

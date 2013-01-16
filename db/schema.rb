@@ -31,32 +31,23 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
 
   create_table "jmeter_runs", :force => true do |t|
     t.integer  "project_id"
-    t.string   "description"
-    t.string   "jmx_source"
+    t.string   "description",      :default => "default jmeter run description. CHANGE ME"
     t.string   "state"
-    t.string   "stderror",    :default => "0"
-    t.string   "stdout",      :default => "0"
-    t.integer  "jmeter_pid",  :default => 0
-    t.boolean  "locked",      :default => false
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-  end
-
-  create_table "jmeter_settings", :force => true do |t|
+    t.string   "stderror"
+    t.string   "stdout"
+    t.integer  "jmeter_pid",       :default => 0
+    t.boolean  "locked",           :default => false
+    t.string   "jmeter_accesslog"
+    t.integer  "jmeter_counter",   :default => 1
+    t.integer  "jmeter_period",    :default => 3600
+    t.integer  "jmeter_threads",   :default => 20
+    t.integer  "jmeter_troughput", :default => 600
     t.string   "jmx_file"
     t.string   "jtl_file"
-    t.integer  "jmeter_threads"
     t.string   "remote_server"
-    t.integer  "jmeter_counter"
-    t.string   "jmeter_troughput"
-    t.integer  "jmeter_period"
-    t.string   "jmeter_accesslog"
-    t.string   "jtl_path"
-    t.string   "string"
-    t.integer  "jmeter_run_id"
-    t.text     "ext_opts"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
+    t.string   "ext_opts"
+    t.datetime "created_at",                                                                :null => false
+    t.datetime "updated_at",                                                                :null => false
   end
 
   create_table "jmeter_workers", :force => true do |t|

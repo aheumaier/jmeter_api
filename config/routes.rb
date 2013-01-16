@@ -33,8 +33,6 @@ Site::Application.routes.draw do
         get 'kill'
       end
     end
-    resources :settings do
-    end
   end
 
   get "dashboard/index"

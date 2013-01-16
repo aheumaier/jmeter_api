@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :environment %><br />
-    <%= f.text_field :environment %>
+    <%= f.select :environment, [['live', 'live'], ['stage', 'stage'], ['integration', 'integration']]  %>
   </div>
   <div class="field">
     <%= f.label :platform %><br />

@@ -1,80 +1,70 @@
 class JmeterRunsController < ApplicationController
-  # GET /jmeter_runs
-  # GET /jmeter_runs.json
+
   def index
-    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
     @project ||= Project.find_by_id(params[:project_id])
+    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
 
     respond_to do |format|
       format.html # index.html.erb
-                  #format.json { render :json => @jmeter_runs }
     end
   end
 
   # GET /jmeter_runs/1
   # GET /jmeter_runs/1.json
-
   def show
-    @jmeter_run ||= JmeterRun.find_by_id(params[:id])
     @project ||= Project.find_by_id(params[:project_id])
+    @jmeter_run ||= JmeterRun.find_by_id(params[:id])
 
     respond_to do |format|
       format.html  #{ render :text => @jmeter_run.to_s }# show.html.erb
-      format.json { render :json => @jmeter_run }
     end
   end
 
   # GET /jmeter_runs/new
   # GET /jmeter_runs/new.json
-
   def new
-    @jmeter_run = JmeterRun.new
+    @project ||=  Project.find_by_param(params[:project_id])
+    @jmeter_run = @project.jmeter_runs.build
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render :json => @jmeter_run }
     end
   end
 
   # GET /jmeter_runs/1/edit
-
   def edit
-    @jmeter_run ||= JmeterRun.find(params[:id])
     @project ||=  Project.find_by_param(params[:project_id])
+    @jmeter_run ||= JmeterRun.find(params[:id])
   end
 
   # POST /jmeter_runs
   # POST /jmeter_runs.json
-
   def create
     @project ||=  Project.find_by_param(params[:project_id])
-    @jmeter_run = @project.jmeter_runs.new(params[:jmeter_run])
+    @jmeter_run = @project.jmeter_runs.build(params[:jmeter_run])
 
     respond_to do |format|
       if @jmeter_run.save
-        format.html { render :text => @jmeter_run.id }
-        format.json { render :json => @jmeter_run.id }
+        format.html { redirect_to project_jmeter_runs_path(@project), :notice => 'JmeterRun was successfully
+created.' }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @jmeter_run.errors, :status => :unprocessable_entity }
       end
     end
   end
 
   # PUT /jmeter_runs/1
   # PUT /jmeter_runs/1.json
-
   def update
+    @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run ||=  JmeterRun.find(params[:id])
 
     respond_to do |format|
       if @jmeter_run.update_attributes(params[:jmeter_run])
-        format.html { redirect_to project_jmeter_run_path(@jmeter_run), :notice => 'Jmeter run was successfully
-updated.' }
-        format.json { render :json => @jmeter_run.id }
+        format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run),
+                                  :notice => 'Jmeter run was successfully updated.' }
       else
         format.html { render :action => "edit" }
-        format.json { render :json => @jmeter_run.errors, :status => :unprocessable_entity }
       end
     end
   end

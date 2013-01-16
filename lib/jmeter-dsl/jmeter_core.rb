@@ -1,8 +1,8 @@
 module JmeterDsl
-  module JmeterCore
+  module Jmeter
     class JmeterCore
 
-      attr_accessor :bin, :work_dir, :access_log , :counter
+      attr_accessor :bin, :work_dir, :access_log, :counter
 
       def initialize
         @bin = APP_CONFIG['jmeter_bin_path'] || '/usr/bin/jmeter'

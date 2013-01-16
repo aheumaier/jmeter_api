@@ -18,14 +18,18 @@ class Project < ActiveRecord::Base
   end
 
   def find_or_create_reports_home(params)
-    reports_home_path = "/app1/jmeter/reports/" + params[:platform] + "/" + params[:name] + "/" + params[:environment] + "/"
-    Rails.logger.debug reports_home_path
-    if File.directory?( reports_home_path )
-      self.reports_home = reports_home_path
+    if params.nil?
+      return 'No parameters'
     else
-      FileUtils.mkdir_p reports_home_path
-      self.reports_home = reports_home_path
+      reports_home_path = "/app1/jmeter/reports/" + params[:platform] + "/" + params[:name] + "/" + params[:environment] + "/"
+      if File.directory?( reports_home_path )
+        self.reports_home = reports_home_path
+      else
+        FileUtils.mkdir_p reports_home_path
+        self.reports_home = reports_home_path
+      end
     end
   end
+
 
 end

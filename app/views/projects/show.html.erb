@@ -1,5 +1,17 @@
-<p id="notice"><%= notice %></p>
+<ul class="breadcrumb">
+  <li><a href="/">Home</a> <span class="divider">/</span></li>
+  <li><a href="/projects">Projects</a> <span class="divider">/</span></li>
+  <li><a href=/projects/<%=@project.id%>><%=@project.name%></a> <span class="divider">/</span></li>
+</ul>
 
+<% if notice %>
+  <div class="alert alert-success">
+    <button type="button" class="close" data-dismiss="alert">×</button>
+    <%= notice %>
+  </div>
+<%end %>
+
+<div class="well">
 <p>
   <b>Name:</b>
   <%= @project.name %>
@@ -11,7 +23,15 @@
 </p>
 
 <p>
+  <b>Platform:</b>
+  <%= @project.platform %>
+</p>
+</div>
+
+  <p>
+  <button type="submit" class="btn btn-large">
   <b><%= link_to 'Show JmeterRuns', "/projects/#{@project.id}/jmeter_runs" %>  </b>
+  </button>
 </p>
 
 
