@@ -3,11 +3,11 @@
   <li><a href="/projects">Projects</a> <span class="divider">/</span></li>
 </ul>
 
-<table class="table">
+<table class="table table-striped">
   <tr>
     <th>Name</th>
-    <th>Environment</th>
     <th>Platform</th>
+    <th>Environment</th>
     <th></th>
     <th></th>
   </tr>
@@ -15,12 +15,11 @@
 <% @projects.each do |project| %>
   <tr>
     <td><%= project.name %></td>
-    <td><%= project.environment %></td>
     <td><%= project.platform %></td>
+    <td><%= project.environment %></td>
     <td>
       <div class="btn-toolbar">
         <div class="btn-group">
-
           <a class="btn" href=<%='/projects/'+project.name%>><i class="icon-eye-open"></i></a>
           <a class="btn" href=<%=edit_project_path(project)%>><i class="icon-pencil"></i></a>
           <a class="btn" href=<%='/projects/'+project.id.to_s%> data-method="delete" ><i
@@ -32,7 +31,5 @@
 <% end %>
 </table>
 
-<br />
-<button type="submit" class="btn">
 <%= link_to 'New Project', new_project_path %>
-</button>
+<br>

@@ -1,4 +1,4 @@
-<%= form_for([@project,@jmeter_run]) do |f| %>
+<%= simple_form_for([@project,@jmeter_run]) do |f| %>
   <% if @jmeter_run.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jmeter_run.errors.count, "error") %> prohibited this jmeter_run from being saved:</h2>

@@ -1,20 +1,23 @@
-%h1 Listing jmx_definition_files
+%h1 Uploaded JMX Files
+%br
 
-%table
+%table.table.table-striped
   %tr
-    %th
-    %th
-    %th
-    %th
+    %th Filename
     %th
 
   - @jmx_definition_files.each do |jmx_definition_file|
     %tr
-      %td= jmx_definition_file.df.file.filename unless jmx_definition_file.df.nil?
-      %td :
-      %td= link_to 'Show', jmx_definition_file
-      %td= link_to 'Edit', edit_jmx_definition_file_path(jmx_definition_file)
-      %td= link_to 'Destroy', jmx_definition_file, :data => { :confirm => 'Are you sure?' } , :method => :delete
+      %td= jmx_definition_file.df.file.filename unless jmx_definition_file.df.file.nil?
+      %td
+        .btn-toolbar
+          .btn-group
+            %a.btn{:href => jmx_definition_file_path(jmx_definition_file)}
+              %i.icon-eye-open
+            %a.btn{:href => edit_jmx_definition_file_path(jmx_definition_file)}
+              %i.icon-pencil
+            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+              %i.icon-trash
 
 %br
 

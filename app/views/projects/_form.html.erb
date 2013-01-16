@@ -1,4 +1,4 @@
-<%= nested_form_for @project do |f| %>
+<%= form_for @project do |f| %>
   <% if @project.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@project.errors.count, "error") %> prohibited this project from being saved:</h2>
@@ -12,15 +12,15 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :name %><br />
+    <label><%= f.label :name %> </label>
     <%= f.text_field :name %>
   </div>
   <div class="field">
-    <%= f.label :environment %><br />
+    <label><%= f.label :environment %></label>
     <%= f.select :environment, [['live', 'live'], ['stage', 'stage'], ['integration', 'integration']]  %>
   </div>
   <div class="field">
-    <%= f.label :platform %><br />
+    <label> <%= f.label :platform %></label>
     <%= f.text_field :platform %>
   </div>
 

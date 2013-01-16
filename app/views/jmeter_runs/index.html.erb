@@ -5,9 +5,9 @@
   <li><a href="/projects/<%=@project.id%>/jmeter_runs">JmeterRuns</a> <span class="divider">/</span></li>
 </ul>
 
-<h1>Jmeter_runs</h1>
-
-<table class="table">
+<h1>JmeterRuns</h1>
+<br>
+<table class="table table-striped">
   <tr>
     <th>Project</th>
     <th>Description</th>
@@ -21,8 +21,8 @@
 <% @jmeter_runs.each do |jmeter_run| %>
   <tr>
     <td><%= jmeter_run.project.name %></td>
-    <td><%= jmeter_run.description %></td>
-    <td><%= jmeter_run.jmx_file %></td>
+    <td><%= truncate(jmeter_run.description, :length => 25, :separator => ' ') %></td>
+    <td><%= truncate(jmeter_run.jmx_file, :length => 25, :separator => ' ') %></td>
     <td><%= jmeter_run.state %></td>
     <td>
     <div class="btn-toolbar">

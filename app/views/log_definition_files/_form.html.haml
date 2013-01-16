@@ -1,10 +1,11 @@
-= form_for( @log_definition_file, :html => { :multipart => true } ) do |f|
+= simple_form_for( @log_definition_file, :html => {:class => 'form-horizontal', :multipart => true } ) do |f|
   -if @log_definition_file.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@log_definition_file.errors.count, "error")} prohibited this log_definition_file from being saved:"
+    .alert.alert-error.alert-block
       %ul
         - @log_definition_file.errors.full_messages.each do |msg|
           %li= msg
+        %button.close{"data-dismiss" => "alert", :type => "button"}
+
 
   %p
 

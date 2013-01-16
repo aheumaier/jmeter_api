@@ -3,7 +3,7 @@
 <div class="well">
 <p>
   <b>Project:</b>
-  <%= @jmeter_run.project.name %>
+  <%= @jmeter_run.project.name unless @jmeter_run.project.nil?  %>
 </p>
 
 <p>
@@ -17,7 +17,7 @@
 </p>
 
 <p>
-  <b>Acces Log:</b>
+  <b>Access Log:</b>
   <%= @jmeter_run.jmeter_accesslog%>
 </p>
 
