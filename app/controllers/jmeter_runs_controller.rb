@@ -13,10 +13,10 @@ class JmeterRunsController < ApplicationController
   # GET /jmeter_runs/1.json
   def show
     @project ||= Project.find_by_id(params[:project_id])
-    @jmeter_run ||= JmeterRun.find_by_id(params[:id])
+    @jmeter_run ||= JmeterRun.find_by_id(params[:id], :include => [:log_definition_file, :jmx_definition_file] )
 
     respond_to do |format|
-      format.html  #{ render :text => @jmeter_run.to_s }# show.html.erb
+      format.html  #{ render :text => @jmeter_run.to_s }# show.html.haml
     end
   end
 
@@ -26,8 +26,9 @@ class JmeterRunsController < ApplicationController
     @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run = @project.jmeter_runs.build
 
+
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
     end
   end
 
@@ -74,11 +75,11 @@ created.' }
 
   def destroy
     @jmeter_run ||=  JmeterRun.find(params[:id])
+    @project = @jmeter_run.project_id
     @jmeter_run.destroy
 
     respond_to do |format|
-      format.html { redirect_to project_jmeter_runs_path(@jmeter_run.project_id) }
-      format.json { head :no_content }
+      format.html { redirect_to project_jmeter_runs_path(@project), :notice => 'Jmeter run was successfully deleted.' }
     end
   end
 

@@ -13,11 +13,11 @@ class ProjectsController < ApplicationController
 
   def show
     @project ||= Project.find_by_param(params[:id])
-    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
+    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:id])
 
     if @project
       respond_to do |format|
-        format.html # show.html.erb
+        format.html # show.html.haml
       end
     else
       respond_to do |format|
@@ -36,7 +36,7 @@ class ProjectsController < ApplicationController
 
 
    # respond_to do |format|
-    #  format.html # new.html.erb
+    #  format.html # new.html.haml
      # format.json { render :json => @project }
     #end
   end
