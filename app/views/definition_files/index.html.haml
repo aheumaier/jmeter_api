@@ -34,4 +34,5 @@
               %i.icon-eye-open
             %a.btn{:href => "/log_definition_files/#{log_definition_file.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
               %i.icon-trash
-%br
+
+= link_to 'Back', dashboard_index_path
