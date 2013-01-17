@@ -5,7 +5,7 @@ class JmxDefinitionFilesController < ApplicationController
     @jmx_definition_files = JmxDefinitionFile.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @jmx_definition_files }
     end
   end
@@ -48,11 +48,10 @@ class JmxDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       if @jmx_definition_file.save
-        format.html { redirect_to @jmx_definition_file, notice: 'Jmx definition file was successfully created.' }
-        format.json { render json: @jmx_definition_file, status: :created, location: @jmx_definition_file }
+        format.html { redirect_to definition_files_index_path, notice: 'Jmx definition file was successfully created.' }
       else
         format.html { render action: "new" }
-        format.json { render json: @jmx_definition_file.errors, status: :unprocessable_entity }
+
       end
     end
   end
@@ -65,7 +64,7 @@ class JmxDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       if @jmx_definition_file.update_attributes(params[:jmx_definition_file])
-        format.html { redirect_to @jmx_definition_file, notice: 'Jmx definition file was successfully updated.' }
+        format.html { redirect_to definition_files_index_path, notice: 'Jmx definition file was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
@@ -82,7 +81,7 @@ class JmxDefinitionFilesController < ApplicationController
     @jmx_definition_file.destroy
 
     respond_to do |format|
-      format.html { redirect_to jmx_definition_files_url }
+      format.html { redirect_to definition_files_index_path }
       format.json { head :no_content }
     end
   end
