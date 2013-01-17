@@ -1,5 +1,5 @@
 class JmxDefinitionFile < ActiveRecord::Base
-  attr_accessible :df_name, :df_type, :df_path, :df_file_dir, :df
+  attr_accessible :df_name, :df_type, :df_path, :df_file_dir, :df, :jmeter_run_id
   mount_uploader :df, DefinitionFileUploader
 
   belongs_to :jmeter_run, :touch => true
