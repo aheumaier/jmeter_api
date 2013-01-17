@@ -4,8 +4,7 @@ class ProjectsController < ApplicationController
   def index
     @projects ||=  Project.all
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render :json => @projects }
+      format.html # index.html.haml
     end
   end
 
@@ -14,16 +13,15 @@ class ProjectsController < ApplicationController
 
   def show
     @project ||= Project.find_by_param(params[:id])
+    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
 
     if @project
       respond_to do |format|
         format.html # show.html.erb
-        format.json { render :json => @project }
       end
     else
       respond_to do |format|
         format.html { render :text => "Entry not found \n"}
-        format.json { render :json => "Entry not found \n" }
       end
     end
   end
@@ -57,13 +55,9 @@ class ProjectsController < ApplicationController
     @project.find_or_create_reports_home(params[:project])
     respond_to do |format|
       if @project.save
-
-
         format.html { redirect_to @project, :notice => 'Project was successfully created.' }
-        format.json { render :json => @project, :status => :created, :location => @project }
       else
         format.html { render :action => "new" }
-        format.json { render :json => @project.errors, :status => :unprocessable_entity }
       end
     end
   end
@@ -91,7 +85,6 @@ class ProjectsController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to projects_url }
-      format.json { head :no_content }
     end
   end
 
