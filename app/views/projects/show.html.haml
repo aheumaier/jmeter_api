@@ -1,0 +1,45 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/"} Home
+    %span.divider /
+  %li
+    %a{:href => "/projects"} Projects
+    %span.divider /
+  %li
+    %a{ :href=>"/projects/#{@project.id}"} #{@project.name}
+    %span.divider /
+- if notice
+  .alert.alert-success
+    %button.close{"data-dismiss" => "alert", :type => "button"} x
+    = notice
+.well
+  %p
+    %b Project:
+    = @project.name
+    = @project.platform
+    %i
+      \-
+      = @project.environment
+
+%table.table.table-striped
+  %tr
+    %th Description
+    %th Jmx File
+    %th State
+    %th
+
+  - @jmeter_runs.each do |jmeter_run|
+    %tr
+      %td= truncate(jmeter_run.description, :length => 25, :separator => ' ')
+      %td= truncate(jmeter_run.jmx_file, :length => 25, :separator => ' ')
+      %td= jmeter_run.state
+      %td
+        .btn-toolbar
+          .btn-group
+            <a class="btn" href=#{project_jmeter_run_path(@project, jmeter_run)}>
+            %i.icon-eye-open
+            <a class="btn" href=#{edit_project_jmeter_run_path(@project, jmeter_run)}>
+            %i.icon-pencil
+            %a.btn{:href => project_jmeter_run_path(@project, jmeter_run), :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+              %i.icon-trash
+= link_to 'Back', projects_path

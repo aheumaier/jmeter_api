@@ -1,0 +1,27 @@
+%p#notice= notice
+.well
+  %p
+    %b Project:
+    = @jmeter_run.project.name unless @jmeter_run.project.nil?
+  %p
+    %b Description:
+    = @jmeter_run.description
+  %p
+    %b Jmx File:
+    = @jmeter_run.jmx_file
+  %p
+    %b Access Log:
+    = @jmeter_run.jmeter_accesslog
+  %p
+    %b State:
+    = @jmeter_run.state
+  %p
+    %b StdError:
+    = @jmeter_run.stderror
+  %p
+    %b StdOut:
+    = @jmeter_run.stdout
+  %p
+= link_to 'Edit', edit_project_jmeter_run_path(@project ,@jmeter_run)
+|
+= link_to 'Back', project_jmeter_runs_path(@project)

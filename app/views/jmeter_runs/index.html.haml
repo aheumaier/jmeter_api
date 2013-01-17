@@ -1,0 +1,43 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/"} Home
+    %span.divider /
+  %li
+    %a{:href => "/projects"} Projects
+    %span.divider /
+  %li
+    <a href=/projects/#{@project.id}>#{@project.name}
+    %span.divider /
+  %li
+    %a{:href => "/projects/#{@project.id}/jmeter_runs"} JmeterRuns
+    %span.divider /
+%h1 JmeterRuns
+%br
+%table.table.table-striped
+  %tr
+    %th Project
+    %th Description
+    %th Jmx File
+    %th State
+    %th
+    %th
+    %th
+  - @jmeter_runs.each do |jmeter_run|
+    %tr
+      %td= jmeter_run.project.name
+      %td= truncate(jmeter_run.description, :length => 25, :separator => ' ')
+      %td= truncate(jmeter_run.jmx_file, :length => 25, :separator => ' ')
+      %td= jmeter_run.state
+      %td
+        .btn-toolbar
+          .btn-group
+            %a.btn{ :href=>project_jmeter_run_path(@project, jmeter_run)}
+              %i.icon-eye-open
+            %a.btn{:href=>edit_project_jmeter_run_path(@project, jmeter_run)}
+              %i.icon-pencil
+            %a.btn{:href => "/projects/#{@project.id}/jmeter_runs/#{jmeter_run.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+              %i.icon-trash
+%br/
+%button.btn.btn-large{:type => "submit"}
+  = link_to 'New Jmeter run', new_project_jmeter_run_path
+%p

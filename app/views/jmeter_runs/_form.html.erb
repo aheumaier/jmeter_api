@@ -1,4 +1,4 @@
-<%= simple_form_for([@project,@jmeter_run]) do |f| %>
+<%= form_for([@project,@jmeter_run]) do |f| %>
   <% if @jmeter_run.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@jmeter_run.errors.count, "error") %> prohibited this jmeter_run from being saved:</h2>
@@ -13,15 +13,15 @@
 
   <div class="fieldset">
     <label><%= f.label :description %></label>
-    <%= f.text_field :description %>
+    <textarea rows="3"><%= f.text_field :description %></textarea>
   </div>
   <div class="field">
     <label><%= f.label :jmx_file %></label>
-    <%= f.collection_select :jmx_file, JmxDefinitionFile.all, :id, :df_name %>
+    <%= f.collection_select :jmx_definition_file, JmxDefinitionFile.all, :id, :df_name %>
   </div>
   <div class="fieldset">
     <label><%= f.label :log_file %></label>
-    <%= f.collection_select :jmeter_accesslog, LogDefinitionFile.all, :id, :df_name %>
+    <%= f.select :log_definition_file_id, LogDefinitionFile.all.collect {|p| [ p.df_name, p.id ] } %>
   </div>
     <br>
 
