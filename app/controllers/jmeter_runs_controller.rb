@@ -5,7 +5,7 @@ class JmeterRunsController < ApplicationController
     @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
     end
   end
 
