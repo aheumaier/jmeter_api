@@ -16,7 +16,7 @@ class JmxDefinitionFilesController < ApplicationController
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @jmx_definition_file }
     end
   end
@@ -27,7 +27,7 @@ class JmxDefinitionFilesController < ApplicationController
     @jmx_definition_file = JmxDefinitionFile.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @jmx_definition_file }
     end
   end
