@@ -5,7 +5,7 @@ class JmxDefinitionFilesController < ApplicationController
     @jmx_definition_files = JmxDefinitionFile.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @jmx_definition_files }
     end
   end

@@ -1,4 +1,10 @@
 Site::Application.routes.draw do
+  get "versuch_class/index"
+
+  get "versuch_class/show"
+
+  get "definition_files/index"
+
   namespace :api do # JSON REST ::API
     namespace :v1 do
       match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'

@@ -5,7 +5,7 @@ class SettingsController < ApplicationController
     @settings ||= JmeterSetting.find_by_project_id(params[:project_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render :json => @settings }
     end
   end

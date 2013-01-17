@@ -5,7 +5,7 @@ class LogDefinitionFilesController < ApplicationController
     @log_definition_files = LogDefinitionFile.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @log_definition_files }
     end
   end
