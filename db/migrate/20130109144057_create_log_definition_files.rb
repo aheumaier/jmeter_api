@@ -1,7 +1,6 @@
 class CreateLogDefinitionFiles < ActiveRecord::Migration
   def change
     create_table :log_definition_files do |t|
-      t.integer :jmeter_run_id
       t.timestamps
       t.string :df_name
       t.string :df_type

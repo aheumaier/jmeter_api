@@ -17,6 +17,7 @@ class CreateJmeterRuns < ActiveRecord::Migration
       t.string :jtl_file, :default => nil
       t.string :remote_server, :default => nil
       t.string :ext_opts, :default => nil
+      t.integer :log_definition_file_id, :default => nil
       t.timestamps
     end
   end
