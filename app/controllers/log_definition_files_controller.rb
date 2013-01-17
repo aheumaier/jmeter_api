@@ -5,8 +5,7 @@ class LogDefinitionFilesController < ApplicationController
     @log_definition_files = LogDefinitionFile.all
 
     respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @log_definition_files }
+      format.html # index.html.haml
     end
   end
 
@@ -18,7 +17,6 @@ class LogDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @log_definition_file }
     end
   end
 
@@ -30,7 +28,6 @@ class LogDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @log_definition_file }
     end
   end
 
@@ -49,10 +46,8 @@ class LogDefinitionFilesController < ApplicationController
     respond_to do |format|
       if @log_definition_file.save
         format.html { redirect_to @log_definition_file, notice: 'Log definition file was successfully created.' }
-        format.json { render json: @log_definition_file, status: :created, location: @log_definition_file }
       else
         format.html { render action: "new" }
-        format.json { render json: @log_definition_file.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -66,10 +61,8 @@ class LogDefinitionFilesController < ApplicationController
     respond_to do |format|
       if @log_definition_file.update_attributes(params[:log_definition_file])
         format.html { redirect_to @log_definition_file, notice: 'Log definition file was successfully updated.' }
-        format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @log_definition_file.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -83,7 +76,6 @@ class LogDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       format.html { redirect_to log_definition_files_url }
-      format.json { head :no_content }
     end
   end
 end
