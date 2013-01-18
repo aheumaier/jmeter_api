@@ -1,7 +1,8 @@
 class JmeterRunsController < ApplicationController
 
+  # GET /jmeter_runs/index
   def index
-    @project ||= Project.find_by_id(params[:project_id])
+    @project ||= Project.find_by_param(params[:project_id])
     @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:project_id])
 
     respond_to do |format|
@@ -10,7 +11,6 @@ class JmeterRunsController < ApplicationController
   end
 
   # GET /jmeter_runs/1
-  # GET /jmeter_runs/1.json
   def show
     @project ||= Project.find_by_id(params[:project_id])
     @jmeter_run ||= JmeterRun.find_by_id(params[:id], :include => [:log_definition_file, :jmx_definition_file] )
@@ -21,11 +21,9 @@ class JmeterRunsController < ApplicationController
   end
 
   # GET /jmeter_runs/new
-  # GET /jmeter_runs/new.json
   def new
     @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run = @project.jmeter_runs.build
-
 
     respond_to do |format|
       format.html # new.html.haml
@@ -39,7 +37,6 @@ class JmeterRunsController < ApplicationController
   end
 
   # POST /jmeter_runs
-  # POST /jmeter_runs.json
   def create
     @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run = @project.jmeter_runs.build(params[:jmeter_run])
@@ -55,7 +52,6 @@ created.' }
   end
 
   # PUT /jmeter_runs/1
-  # PUT /jmeter_runs/1.json
   def update
     @project ||=  Project.find_by_param(params[:project_id])
     @jmeter_run ||=  JmeterRun.find(params[:id])
@@ -71,8 +67,6 @@ created.' }
   end
 
   # DELETE /jmeter_runs/1
-  # DELETE /jmeter_runs/1.json
-
   def destroy
     @jmeter_run ||=  JmeterRun.find(params[:id])
     @project = @jmeter_run.project_id
@@ -83,39 +77,42 @@ created.' }
     end
   end
 
+  # GET /jmeter_runs/1/status
   def status
     @jmeter_run ||=  JmeterRun.find(params[:id])
     @jmeter_run_state ||= @jmeter_run.state
     respond_to do |format|
       format.html { render :text => @jmeter_run_state  }
-      format.json { render :json => @jmeter_run_state  }
     end
   end
 
-
+  # GET /jmeter_runs/1/start
   def start
     @jmeter_run ||=  JmeterRun.find(params[:id])
+    @project = @jmeter_run.project_id
     @jmeter_run_start =  @jmeter_run.push_start
+
     respond_to do |format|
-      format.json {  head :no_content  }
+      format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run), :notice => 'JmeterRun was successfully started.' }
     end
   end
 
+  # GET /jmeter_runs/1/kill
   def kill
     @jmeter_run ||=  JmeterRun.find(params[:id])
+    @project = @jmeter_run.project_id
     @jmeter_run_state =  @jmeter_run.kill
     respond_to do |format|
-      format.html { redirect_to @jmeter_run, :notice => 'JmeterRun was successfully killed.' }
-      format.json { render :json => @jmeter_run_state }
+      format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run), :notice => 'JmeterRun was successfully  killed.' }
     end
   end
 
+  # GET /jmeter_runs/current
   def current
     @jmeter_run ||=  JmeterRun.find_last_by_project_id(params[:project_id])
 
     respond_to do |format|
       format.html { render :text => @jmeter_run  }
-      format.json { render :json => @jmeter_run }
     end
   end
 end

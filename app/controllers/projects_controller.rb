@@ -13,7 +13,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project ||= Project.find_by_param(params[:id])
-    @jmeter_runs ||= JmeterRun.find_all_by_project_id(params[:id])
+    @jmeter_runs ||= JmeterRun.find_all_by_project_id(@project.id)
 
     if @project
       respond_to do |format|

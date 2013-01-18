@@ -45,7 +45,7 @@ class LogDefinitionFilesController < ApplicationController
 
     respond_to do |format|
       if @log_definition_file.save
-        format.html { redirect_to @log_definition_file, notice: 'Log definition file was successfully created.' }
+        format.html { redirect_to definition_files_index_path, notice: 'AccessLog was successfully created.' }
       else
         format.html { render action: "new" }
       end
