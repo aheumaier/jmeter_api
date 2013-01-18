@@ -20,7 +20,7 @@
           .btn-group
             %a.btn{:href => jmx_definition_file_path(jmx_definition_file)}
               %i.icon-eye-open
-            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}", :data => {:method=>'delete', :confirm => 'This removes all dependent JmeterRuns!'} }
               %i.icon-trash
 
   - @log_definition_files.each do |log_definition_file|
@@ -32,7 +32,7 @@
           .btn-group
             %a.btn{:href => log_definition_file_path(log_definition_file)}
               %i.icon-eye-open
-            %a.btn{:href => "/log_definition_files/#{log_definition_file.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+            %a.btn{:href => "/log_definition_files/#{log_definition_file.id}", :data => {:method=>'delete', :confirm => 'This removes all dependent JmeterRuns!'} }
               %i.icon-trash
 
 = link_to 'Back', dashboard_index_path

@@ -23,16 +23,18 @@
 
 %table.table.table-striped
   %tr
+    %th
     %th Description
-    %th Jmx File
-    %th State
+    %th JmxFile
+    %th AcessLog
     %th
 
   - @jmeter_runs.each do |jmeter_run|
     %tr
+      %td= localize(jmeter_run.created_at, :format => :short)
       %td= truncate(jmeter_run.description, :length => 25, :separator => ' ')
       %td= truncate(jmeter_run.jmx_file, :length => 25, :separator => ' ')
-      %td= jmeter_run.state
+      %td= truncate(jmeter_run.jmeter_accesslog, :length => 25, :separator => ' ')
       %td
         .btn-toolbar
           .btn-group
@@ -42,4 +44,10 @@
             %i.icon-pencil
             %a.btn{:href => project_jmeter_run_path(@project, jmeter_run), :data => {:method=>'delete', :confirm => 'Are you sure?'} }
               %i.icon-trash
+            .btn
+              %i.icon-flag
+              = jmeter_run.state
+
 = link_to 'Back', projects_path
+|
+= link_to 'New Jmeter run', new_project_jmeter_run_path(@project)

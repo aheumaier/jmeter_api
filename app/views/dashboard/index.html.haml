@@ -2,8 +2,35 @@
   %li
     %a{:href => "/"} Home
     %span.divider /
+
+- if notice
+  .alert.alert-success
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = notice
+
 .well
   %h1 Dashboard
-  %p
-    Jobs in Queue
-    =  @jobs.count
+
+%table.table
+  %tr
+    %th Jobs in Queue
+    %th Jobs failed
+    %th Jobs Idle
+    %th Jobs Running
+  %tr
+    %td
+      %span.badge.badge-info
+        =  @jobs.count
+
+    %td
+      %span.badge.badge-important
+        = @jobs_failed.count
+    %td
+      %span.badge.badge-info
+        = @jmeter_runs_idle.count
+    %td
+      %span.badge.badge-warning
+        =  @jmeter_runs_running.count
+
+= link_to 'Clear Queue', dashboard_clear_queue_path
+
