@@ -5,11 +5,15 @@ module JmeterDsl
       attr_accessor :bin, :work_dir, :access_log, :counter
 
       def initialize
-        @bin = APP_CONFIG['jmeter_bin_path'] || '/usr/bin/jmeter'
+        puts 'JmeterCore called'
+        @bin = APP_CONFIG['jmeter_bin_path'] || 'bin/jmeter.sh'
         @work_dir = APP_CONFIG['jmeter_work_dir'] || '/tmp'
+        puts bin
+        puts work_dir
       end
 
       def jmeter_init(jmeter_obj)
+        puts 'JmeterInit called'
         status = POpen4::popen4( jmeter_command) do |stdout, stderr, stdin, pid|
           jmeter_obj.jmeter_pid = pid
           jmeter_obj.stderror = stderr.read.strip
