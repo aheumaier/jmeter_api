@@ -3,18 +3,19 @@ class JmeterRun < ActiveRecord::Base
 
   attr_accessible :description, :project_id, :state, :stderror, :stdout, :jmeter_pid,
                   :locked, :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads,
-                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts, :log_definition_file_id
+                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts, :log_definition_file_id,
+                  :jmx_definition_file_id
 
   belongs_to :project, :touch => true
-  belongs_to :jmx_definition_file, :dependent=> :delete, :touch => true
-  belongs_to :log_definition_file, :dependent=> :delete, :touch => true
+  belongs_to :jmx_definition_file, :touch => true
+  belongs_to :log_definition_file, :touch => true
 
   validates_presence_of :jmx_file, :jtl_file, :description, :project_id
 
   before_validation :build_settings
 
   def build_settings
-    self.jmx_file = self.description.gsub(' ', '_') + '.jmx' if self.jmx_definition_file.nil?
+    self.jmx_file = self.jmx_definition_file.df_name
     self.jmeter_accesslog = self.log_definition_file.df_name
     self.jtl_file = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
   end
@@ -85,7 +86,7 @@ class JmeterRun < ActiveRecord::Base
 
   def kill_process
     Rails.logger.debug "Killing jmeter process ..."
-    self.stdout = %[/app1/jmeter//application/bin/stoptest.sh]
+    self.stdout = %[/bin/stoptest.sh]
   end
 
   def validate_results
