@@ -19,11 +19,11 @@ module JmeterDsl
         end
       end
 
-      def access_log
-        " -Jaccess_log=" + accesslog
+      def access_log_opt
+        " -Jaccess_log=" + access_log
       end
 
-      def counter
+      def counter_opt
         " -Jcounter=" + counter.to_s
       end
 

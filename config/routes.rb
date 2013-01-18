@@ -1,9 +1,4 @@
 Site::Application.routes.draw do
-  get "versuch_class/index"
-
-  get "versuch_class/show"
-
-  get "definition_files/index"
 
   namespace :api do # JSON REST ::API
     namespace :v1 do
@@ -25,12 +20,8 @@ Site::Application.routes.draw do
     match '*path', :to => redirect("/api/v1/%{path}")
   end
 
-
-
-  resources :log_definition_files
-  resources :jmx_definition_files
-
   match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
+
   resources :projects do
     resources :jmeter_runs do
       member do
@@ -41,6 +32,10 @@ Site::Application.routes.draw do
     end
   end
 
+  resources :log_definition_files
+  resources :jmx_definition_files
+  get "dashboard/clear_queue"
+  get "definition_files/index"
   get "dashboard/index"
   root :to => 'dashboard#index'
 
