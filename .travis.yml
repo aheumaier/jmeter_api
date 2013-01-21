@@ -7,5 +7,3 @@ rvm:
 
 before_script:
   - mysql -e 'create database rails_test ;'
-  - mysql -e 'CREATE USER 'rails'@'%' IDENTIFIED BY 'rails';'
-  - mysql -e 'GRANT ALL PRIVILEGES ON *.* TO 'rails'@'%' WITH GRANT OPTION;'

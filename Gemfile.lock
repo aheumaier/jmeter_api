@@ -130,6 +130,7 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sqlite3 (1.3.6)
     state_machine (1.1.2)
     therubyracer (0.11.3)
       libv8 (~> 3.11.8.12)
@@ -172,6 +173,7 @@ DEPENDENCIES
   rest-client
   sass-rails (~> 3.2.3)
   simple_form
+  sqlite3
   state_machine
   therubyracer
   thin
