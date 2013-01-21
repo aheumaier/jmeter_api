@@ -9,12 +9,16 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+
+gem 'simple_form'
+gem 'nokogiri'
+gem 'rest-client'
 gem 'carrierwave'
 gem 'POpen4'
 gem 'thin'
 gem 'state_machine'
 gem 'delayed_job_active_record'
-#gem "twitter-bootstrap-rails"
+gem "twitter-bootstrap-rails"
 gem 'minitest-reporters'
 gem 'haml-rails'
 gem 'jquery-rails'

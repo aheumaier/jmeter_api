@@ -1,0 +1,21 @@
+= form_for([@project,@jmeter_run]) do |f|
+  - if @jmeter_run.errors.any?
+    #error_explanation
+      %h2
+        = pluralize(@jmeter_run.errors.count, "error")
+        prohibited this jmeter_run from being saved:
+      %ul
+        - @jmeter_run.errors.full_messages.each do |msg|
+          %li= msg
+  .fieldset
+    %label= f.label :description
+    = f.text_field :description
+  .field
+    %label= f.label :jmx_file
+    = f.select :jmx_definition_file_id, JmxDefinitionFile.all.collect {|p| [ p.df_name, p.id ] }
+  .fieldset
+    %label= f.label :log_file
+    = f.select :log_definition_file_id, LogDefinitionFile.all.collect {|p| [ p.df_name, p.id ] }
+  %br
+    .actions
+      = f.submit

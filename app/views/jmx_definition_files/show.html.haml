@@ -1,6 +1,8 @@
 %p#notice= notice
+%p
+  = link_to 'Back', definition_files_index_path
 
+.well
+  = simple_format h(@jmx_definition_file.df.read) if @jmx_definition_file.df?
 
-= link_to 'Edit', edit_jmx_definition_file_path(@jmx_definition_file)
-\|
-= link_to 'Back', jmx_definition_files_path
+= link_to 'Back', definition_files_index_path

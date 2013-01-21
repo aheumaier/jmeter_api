@@ -1,3 +1,6 @@
+require 'net/http'
+require 'json'
+
 def find_or_create_project(id=nil)
   begin
     if read_project(id).match(/^Entry/)
@@ -63,20 +66,13 @@ def run_start(j_id = @jmeter_id)
   end
 end
 
-namespace :rest_client do 
-  require 'net/http'
-  require 'json'
 
-  desc " # do restful call to Jmeter Server Action"
-  task :default do
-    @project =  application
-    logger @project
-    @url_p = "http://localhost:3000/projects"
-    @uri_p = URI.parse @url_p
-    @url_j = "http://localhost:3000/projects/#{@project}/jmeter_runs"
-    @uri_j = URI.parse @url_j
-    run_start( new_run )
-  end
-
-
-end # namespace performance_test
+desc " # do restful call to Jmeter Server Action"
+task :default do
+  @project =  application
+  @url_p = "http://localhost:3000/projects"
+  @uri_p = URI.parse @url_p
+  @url_j = "http://localhost:3000/projects/#{@project}/jmeter_runs"
+  @uri_j = URI.parse @url_j
+  run_start( new_run )
+ end

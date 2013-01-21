@@ -1,0 +1,54 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/"} Home
+    %span.divider /
+  %li
+    %a{:href => "/projects"} Projects
+    %span.divider /
+  %li
+    %a{ :href=>"/projects/#{@project.name}"} #{@project.name}
+    %span.divider /
+  %li
+    %a{:href => "/projects/#{@project.id}/jmeter_runs"} JmeterRuns
+    %span.divider /
+  %li
+    %a{:href => project_jmeter_run_path} #{@jmeter_run.id}
+
+- if notice
+  .alert.alert-success
+    %button.close{"data-dismiss" => "alert", :type => "button"} ×
+    = notice
+.well
+  %p
+    %b
+      = @jmeter_run.project.name unless @jmeter_run.project.nil?
+    jmeter run from
+    = localize(@jmeter_run.created_at, :format => :long)
+    %p
+      %dd
+        %i
+          = @jmeter_run.description
+
+
+  .btn-toolbar
+    .btn-group
+      %a.btn{ :href=>start_project_jmeter_run_path(@project)}
+        %i.icon-play
+      %a.btn{ :href=> kill_project_jmeter_run_path(@project), :data => {:confirm => 'Killing curent Job!'}}
+        %i.icon-stop
+      .btn
+        %i.icon-flag
+        = @jmeter_run.state
+
+%table.table.table-striped
+  %tr
+    %th Type
+    %th Atrribute
+  - @jmeter_run.attributes.each do |key, value|
+    %tr
+      %td= key
+      %td= value
+  %p
+= link_to 'Back', project_jmeter_runs_path(@project)
+|
+= link_to 'Edit', edit_project_jmeter_run_path(@project ,@jmeter_run)

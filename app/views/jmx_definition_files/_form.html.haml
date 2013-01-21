@@ -1,4 +1,4 @@
-= form_for @jmx_definition_file do |f|
+= simple_form_for(@jmx_definition_file, :html => {:class => 'form-horizontal', :multipart => true }) do |f|
   -if @jmx_definition_file.errors.any?
     #error_explanation
       %h2= "#{pluralize(@jmx_definition_file.errors.count, "error")} prohibited this jmx_definition_file from being saved:"
@@ -13,4 +13,4 @@
 
   .actions
     = f.submit 'Save'
-  = link_to 'Back', jmx_definition_files_path
+

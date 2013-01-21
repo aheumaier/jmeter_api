@@ -1,0 +1,29 @@
+%ul.breadcrumb
+  %li
+    %a{:href => "/"} Home
+    %span.divider /
+  %li
+    %a{:href => "/projects"} Projects
+    %span.divider /
+%table.table.table-striped
+  %tr
+    %th Name
+    %th Platform
+    %th Environment
+    %th
+  - @projects.each do |project|
+    %tr
+      %td= project.name
+      %td= project.platform
+      %td= project.environment
+      %td
+        .btn-toolbar
+          .btn-group
+            <a class="btn" href=#{'/projects/'+project.name}>
+            %i.icon-eye-open
+            <a class="btn" href=#{edit_project_path(project)}>
+            %i.icon-pencil
+            %a.btn{:href => "/projects/#{project.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+              %i.icon-trash
+= link_to 'New Project', new_project_path
+%br/

@@ -5,7 +5,7 @@ class LogDefinitionFilesController < ApplicationController
     @log_definition_files = LogDefinitionFile.all
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render json: @log_definition_files }
     end
   end
@@ -16,7 +16,7 @@ class LogDefinitionFilesController < ApplicationController
     @log_definition_file = LogDefinitionFile.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render json: @log_definition_file }
     end
   end
@@ -27,7 +27,7 @@ class LogDefinitionFilesController < ApplicationController
     @log_definition_file = LogDefinitionFile.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render json: @log_definition_file }
     end
   end

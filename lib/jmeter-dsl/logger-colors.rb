@@ -1,4 +1,4 @@
-require 'logger' 
+require 'logger'
 
 class Logger
   module Colors
@@ -23,8 +23,8 @@ class Logger
     WHITE        = '1;37'
 
     SCHEMA = {
-      STDOUT => %w[nothing green brown red purple cyan],
-      STDERR => %w[nothing green yellow light_red light_purple light_cyan],
+        STDOUT => %w[nothing green brown red purple cyan],
+        STDERR => %w[nothing green yellow light_red light_purple light_cyan],
     }
   end
 end
@@ -40,7 +40,7 @@ class Logger
       rescue NameError
         "0;0"
       end
-      "\e[#{ color }m#{ format_message_colorless(level, *args) }\e[0;0m" 
+      "\e[#{ color }m#{ format_message_colorless(level, *args) }\e[0;0m"
     else
       format_message_colorless(level, *args)
     end

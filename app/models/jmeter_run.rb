@@ -1,12 +1,49 @@
 class JmeterRun < ActiveRecord::Base
-  include JmeterExt
+  include JmeterDsl
 
-  attr_accessible :description, :jmx_source, :project_id, :state, :stderror, :stdout, :jmeter_pid,
-                  :locked
+  attr_accessible :description, :project_id, :state, :stderror, :stdout, :jmeter_pid,
+                  :locked, :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads,
+                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts, :log_definition_file_id,
+                  :jmx_definition_file_id
 
   belongs_to :project, :touch => true
-  has_one :jmx_definition_file, :dependent=> :nullify
-  has_one :log_definition_file, :dependent=> :nullify
+  belongs_to :jmx_definition_file, :touch => true
+  belongs_to :log_definition_file, :touch => true
+
+  validates_presence_of :jmx_file, :jtl_file, :description, :project_id
+
+  before_validation :build_settings
+
+  def build_settings
+    self.jmx_file = self.jmx_definition_file.df_name unless self.jmx_definition_file.nil?
+    self.jmeter_accesslog = self.log_definition_file.df_name unless self.log_definition_file.nil?
+    self.jtl_file = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
+  end
+
+  #
+  #def update_settings(params)
+  #  params.each do |key,value|
+  #    case key
+  #      when 'jmeter_threads'
+  #        self.jmeter_threads = value
+  #      when 'jmeter_counter'
+  #        self.jmeter_counter = value
+  #      when 'jmeter_period'
+  #        self.jmeter_period = value
+  #      when 'jmeter_troughput'
+  #        self.jmeter_troughput = value
+  #      when 'jmx_file'
+  #        self.jmx_file = value
+  #      when 'jtl_file'
+  #        self.jtl_file = value
+  #      when 'remote_server'
+  #        self.remote_server = value
+  #      when 'jtl_path'
+  #        self.jtl_file = value
+  #      else
+  #        logger.debug "DEBUG: :"  + key + ' not used'
+  #    end
+  #  end
 
   state_machine :initial => :idle do
     before_transition :idle => :running, :do => :perform_test
@@ -49,7 +86,7 @@ class JmeterRun < ActiveRecord::Base
 
   def kill_process
     Rails.logger.debug "Killing jmeter process ..."
-    self.stdout = %[/app1/jmeter//application/bin/stoptest.sh]
+    self.stdout = %[/bin/stoptest.sh]
   end
 
   def validate_results

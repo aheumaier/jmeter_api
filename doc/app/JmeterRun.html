@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+
+<title>class JmeterRun - Rails Application Documentation</title>
+
+<link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
+
+<script type="text/javascript">
+  var rdoc_rel_prefix = "./";
+</script>
+
+<script type="text/javascript" charset="utf-8" src="./js/jquery.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/navigation.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search_index.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/search.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/searcher.js"></script>
+<script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
+
+
+<body id="top" class="class">
+<nav id="metadata">
+  <nav id="home-section" class="section">
+  <h3 class="section-header">
+    <a href="./index.html">Home</a>
+    <a href="./table_of_contents.html#classes">Classes</a>
+    <a href="./table_of_contents.html#methods">Methods</a>
+  </h3>
+</nav>
+
+
+  <nav id="search-section" class="section project-section" class="initially-hidden">
+  <form action="#" method="get" accept-charset="utf-8">
+    <h3 class="section-header">
+      <input type="text" name="search" placeholder="Search" id="search-field"
+             title="Type to search, Up and Down to navigate, Enter to load">
+    </h3>
+  </form>
+
+  <ul id="search-results" class="initially-hidden"></ul>
+</nav>
+
+
+  <div id="file-metadata">
+    <nav id="file-list-section" class="section">
+  <h3 class="section-header">Defined In</h3>
+  <ul>
+    <li>app/models/jmeter_run.rb
+  </ul>
+</nav>
+
+    
+  </div>
+
+  <div id="class-metadata">
+    
+    <nav id="parent-class-section" class="section">
+  <h3 class="section-header">Parent</h3>
+  
+  <p class="link">ActiveRecord::Base
+  
+</nav>
+
+    <!-- Included Modules -->
+<nav id="includes-section" class="section">
+  <h3 class="section-header">Included Modules</h3>
+
+  <ul class="link-list">
+  
+  
+    <li><span class="include">JmeterExt</span>
+  
+  
+  </ul>
+</nav>
+
+    <!-- Method Quickref -->
+<nav id="method-list-section" class="section">
+  <h3 class="section-header">Methods</h3>
+
+  <ul class="link-list">
+    
+    <li><a href="#method-i-create_settings">#create_settings</a>
+    
+    <li><a href="#method-i-kill_process">#kill_process</a>
+    
+    <li><a href="#method-i-lock">#lock</a>
+    
+    <li><a href="#method-i-locked-3F">#locked?</a>
+    
+    <li><a href="#method-i-perform_test">#perform_test</a>
+    
+    <li><a href="#method-i-send_error_results">#send_error_results</a>
+    
+    <li><a href="#method-i-validate_results">#validate_results</a>
+    
+  </ul>
+</nav>
+
+  </div>
+
+  <div id="project-metadata">
+    <nav id="fileindex-section" class="section project-section">
+  <h3 class="section-header">Pages</h3>
+
+  <ul>
+  
+    <li class="file"><a href="./doc/README_FOR_APP.html">README_FOR_APP</a>
+  
+  </ul>
+</nav>
+
+    <nav id="classindex-section" class="section project-section">
+  <h3 class="section-header">Class and Module Index</h3>
+
+  <ul class="link-list">
+  
+    <li><a href="./JmeterDsl.html">JmeterDsl</a>
+  
+    <li><a href="./JmeterDsl/Jmeter.html">JmeterDsl::Jmeter</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/AuthManager.html">JmeterDsl::Jmeter::AuthManager</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/CacheManager.html">JmeterDsl::Jmeter::CacheManager</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/CookieManager.html">JmeterDsl::Jmeter::CookieManager</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/DSL.html">JmeterDsl::Jmeter::DSL</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/FallbackContextProxy.html">JmeterDsl::Jmeter::FallbackContextProxy</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/GaussianRandomTimer.html">JmeterDsl::Jmeter::GaussianRandomTimer</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/HttpSampler.html">JmeterDsl::Jmeter::HttpSampler</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/RequestDefaults.html">JmeterDsl::Jmeter::RequestDefaults</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/ResponseAssertion.html">JmeterDsl::Jmeter::ResponseAssertion</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/TestPlan.html">JmeterDsl::Jmeter::TestPlan</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/ThreadGroup.html">JmeterDsl::Jmeter::ThreadGroup</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/Transaction.html">JmeterDsl::Jmeter::Transaction</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
+  
+    <li><a href="./JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
+  
+    <li><a href="./JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
+  
+    <li><a href="./Api.html">Api</a>
+  
+    <li><a href="./Api/V1.html">Api::V1</a>
+  
+    <li><a href="./Api/V1/JmeterRunsController.html">Api::V1::JmeterRunsController</a>
+  
+    <li><a href="./Api/V1/ProjectsController.html">Api::V1::ProjectsController</a>
+  
+    <li><a href="./Logger.html">Logger</a>
+  
+    <li><a href="./Logger/Colors.html">Logger::Colors</a>
+  
+    <li><a href="./ApplicationController.html">ApplicationController</a>
+  
+    <li><a href="./ApplicationHelper.html">ApplicationHelper</a>
+  
+    <li><a href="./DashboardController.html">DashboardController</a>
+  
+    <li><a href="./DashboardHelper.html">DashboardHelper</a>
+  
+    <li><a href="./DefinitionFileUploader.html">DefinitionFileUploader</a>
+  
+    <li><a href="./JmeterRun.html">JmeterRun</a>
+  
+    <li><a href="./JmeterRunsController.html">JmeterRunsController</a>
+  
+    <li><a href="./JmeterRunsHelper.html">JmeterRunsHelper</a>
+  
+    <li><a href="./JmeterSetting.html">JmeterSetting</a>
+  
+    <li><a href="./JmeterWorker.html">JmeterWorker</a>
+  
+    <li><a href="./JmxDefinitionFile.html">JmxDefinitionFile</a>
+  
+    <li><a href="./JmxDefinitionFilesController.html">JmxDefinitionFilesController</a>
+  
+    <li><a href="./JmxDefinitionFilesHelper.html">JmxDefinitionFilesHelper</a>
+  
+    <li><a href="./LogDefinitionFile.html">LogDefinitionFile</a>
+  
+    <li><a href="./LogDefinitionFilesController.html">LogDefinitionFilesController</a>
+  
+    <li><a href="./LogDefinitionFilesHelper.html">LogDefinitionFilesHelper</a>
+  
+    <li><a href="./Object.html">Object</a>
+  
+    <li><a href="./Project.html">Project</a>
+  
+    <li><a href="./ProjectsController.html">ProjectsController</a>
+  
+    <li><a href="./ProjectsHelper.html">ProjectsHelper</a>
+  
+    <li><a href="./SettingsController.html">SettingsController</a>
+  
+    <li><a href="./SettingsHelper.html">SettingsHelper</a>
+  
+    <li><a href="./String.html">String</a>
+  
+  </ul>
+</nav>
+
+  </div>
+</nav>
+
+<div id="documentation">
+  <h1 class="class">class JmeterRun</h1>
+
+  <div id="description" class="description">
+    
+  </div><!-- description -->
+
+  
+  
+  
+  <section id="5Buntitled-5D" class="documentation-section">
+    
+
+    
+
+    
+
+    
+
+    <!-- Methods -->
+    
+     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
+      <h3 class="section-header">Public Instance Methods</h3>
+
+    
+      <div id="method-i-create_settings" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">create_settings</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="create_settings-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 15</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">create_settings</span>
+  <span class="ruby-keyword">if</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">jmeter_setting</span> <span class="ruby-operator">==</span> <span class="ruby-keyword">nil</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">build_jmeter_setting</span>
+    <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
+  <span class="ruby-keyword">end</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- create_settings-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- create_settings-method -->
+
+    
+      <div id="method-i-kill_process" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">kill_process</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="kill_process-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 61</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">kill_process</span>
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-string">&quot;Killing jmeter process ...&quot;</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stdout</span> = <span class="ruby-string">%Q[/app1/jmeter//application/bin/stoptest.sh]</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- kill_process-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- kill_process-method -->
+
+    
+      <div id="method-i-lock" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">lock</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="lock-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 79</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">lock</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">locked</span> = <span class="ruby-keyword">true</span>
+  <span class="ruby-keyword">self</span>.<span class="ruby-identifier">save!</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- lock-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- lock-method -->
+
+    
+      <div id="method-i-locked-3F" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">locked?</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="locked-3F-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 75</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">locked?</span>
+  <span class="ruby-keyword">return</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">locked</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- locked-3F-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- locked-3F-method -->
+
+    
+      <div id="method-i-perform_test" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">perform_test</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="perform_test-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 57</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">perform_test</span>
+  <span class="ruby-constant">Delayed</span><span class="ruby-operator">::</span><span class="ruby-constant">Job</span>.<span class="ruby-identifier">enqueue</span> <span class="ruby-constant">JmeterWorker</span>.<span class="ruby-identifier">new</span>( <span class="ruby-keyword">self</span>.<span class="ruby-identifier">id</span> ) 
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- perform_test-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- perform_test-method -->
+
+    
+      <div id="method-i-send_error_results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">send_error_results</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="send_error_results-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 70</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">send_error_results</span>
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stdout</span>
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">error</span> <span class="ruby-keyword">self</span>.<span class="ruby-identifier">stderror</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- send_error_results-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- send_error_results-method -->
+
+    
+      <div id="method-i-validate_results" class="method-detail ">
+        
+        <div class="method-heading">
+          <span class="method-name">validate_results</span><span
+            class="method-args">()</span>
+          <span class="method-click-advice">click to toggle source</span>
+        </div>
+        
+
+        <div class="method-description">
+          
+          
+          
+
+          
+          <div class="method-source-code" id="validate_results-source">
+            <pre><span class="ruby-comment"># File app/models/jmeter_run.rb, line 66</span>
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">validate_results</span>
+  <span class="ruby-constant">Rails</span>.<span class="ruby-identifier">logger</span>.<span class="ruby-identifier">debug</span> <span class="ruby-string">&quot;Dummy: validate_results&quot;</span>
+<span class="ruby-keyword">end</span></pre>
+          </div><!-- validate_results-source -->
+          
+        </div>
+
+        
+
+        
+      </div><!-- validate_results-method -->
+
+    
+    </section><!-- public-instance-method-details -->
+  
+  </section><!-- 5Buntitled-5D -->
+
+</div><!-- documentation -->
+
+
+<footer id="validator-badges">
+  <p><a href="http://validator.w3.org/check/referer">[Validate]</a>
+  <p>Generated by <a href="https://github.com/rdoc/rdoc">RDoc</a> 3.12.
+  <p>Generated with the <a href="http://deveiate.org/projects/Darkfish-Rdoc/">Darkfish Rdoc Generator</a> 3.
+</footer>
+

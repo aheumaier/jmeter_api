@@ -30,7 +30,7 @@
             %ul.nav
               %li= link_to "Dashboard", "/"
               %li= link_to "Projects", "/projects"
-              %li= link_to "About", "/about"
+              %li= link_to "DefinitionFiles", "/definition_files/index"
 
     .container
 
@@ -40,18 +40,19 @@
             = yield
           .span3
             .well.sidebar-nav
-              %h3 Actions
+              %h3 Tasks
               %ul.nav.nav-list
-                %li.nav-header Jmeter
                 %li= link_to "Upload Jmx File", "/jmx_definition_files/new"
                 %li= link_to "Upload Log File", "/log_definition_files/new"
-                %li.nav-header Site
                 %li= link_to "Create Project", "/projects/new"
+                %li.nav-header
                 %li= link_to "About", "/about"
 
     
       %footer
-        %p &copy; Gruner+Jahr 2012
+        %br
+        %p
+          &copy; Gruner+Jahr 2012
     /
       Javascripts
       \==================================================

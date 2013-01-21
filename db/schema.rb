@@ -31,15 +31,25 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
 
   create_table "jmeter_runs", :force => true do |t|
     t.integer  "project_id"
-    t.string   "description"
-    t.string   "jmx_source"
+    t.string   "description",            :default => "CHANGE ME - default jmeter run description."
     t.string   "state"
-    t.datetime "created_at",                     :null => false
-    t.datetime "updated_at",                     :null => false
-    t.string   "stderror",    :default => "0"
-    t.integer  "jmeter_pid",  :default => 0
-    t.boolean  "locked",      :default => false
-    t.string   "stdout",      :default => "0"
+    t.string   "stderror"
+    t.string   "stdout"
+    t.integer  "jmeter_pid",             :default => 0
+    t.boolean  "locked",                 :default => false
+    t.string   "jmeter_accesslog"
+    t.integer  "jmeter_counter",         :default => 1
+    t.integer  "jmeter_period",          :default => 3600
+    t.integer  "jmeter_threads",         :default => 20
+    t.integer  "jmeter_troughput",       :default => 600
+    t.string   "jmx_file"
+    t.string   "jtl_file"
+    t.string   "remote_server"
+    t.string   "ext_opts"
+    t.integer  "log_definition_file_id"
+    t.integer  "jmx_definition_file_id"
+    t.datetime "created_at",                                                                        :null => false
+    t.datetime "updated_at",                                                                        :null => false
   end
 
   create_table "jmeter_workers", :force => true do |t|
@@ -48,9 +58,8 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
   end
 
   create_table "jmx_definition_files", :force => true do |t|
-    t.integer  "jmeter_run_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "df_name"
     t.string   "df_type"
     t.string   "df_path"
@@ -59,9 +68,8 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
   end
 
   create_table "log_definition_files", :force => true do |t|
-    t.integer  "jmeter_run_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.string   "df_name"
     t.string   "df_type"
     t.string   "df_path"
@@ -72,26 +80,10 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
   create_table "projects", :force => true do |t|
     t.string   "name"
     t.string   "environment"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
     t.string   "reports_home"
     t.string   "platform"
-  end
-
-  create_table "settings", :force => true do |t|
-    t.string   "jmx_file"
-    t.string   "jtl_file"
-    t.integer  "jmeter_threads"
-    t.string   "remote_server"
-    t.integer  "jmeter_counter"
-    t.string   "jmeter_troughput"
-    t.integer  "jmeter_period"
-    t.string   "jmeter_accesslog"
-    t.datetime "created_at",       :null => false
-    t.datetime "updated_at",       :null => false
-    t.integer  "project_id"
-    t.text     "ext_opts"
-    t.string   "jtl_path"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
 end

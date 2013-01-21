@@ -5,7 +5,7 @@ class SettingsController < ApplicationController
     @settings ||= JmeterSetting.find_by_project_id(params[:project_id])
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html # index.html.haml
       format.json { render :json => @settings }
     end
   end
@@ -16,7 +16,7 @@ class SettingsController < ApplicationController
     @setting = JmeterSetting.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html # show.html.haml
       format.json { render :json => @setting }
     end
   end
@@ -27,7 +27,7 @@ class SettingsController < ApplicationController
     @setting ||= JmeterSetting.new
 
     respond_to do |format|
-      format.html # new.html.erb
+      format.html # new.html.haml
       format.json { render :json => @setting }
     end
   end

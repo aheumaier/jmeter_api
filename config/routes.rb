@@ -10,22 +10,18 @@ Site::Application.routes.draw do
             get 'start'
             get 'kill'
           end
-          resources :log_definition_files
-          resources :jmx_definition_files
+          #resources :log_definition_files
+          #resources :jmx_definition_files
         end
-        resources :settings
+        #resources :jmeter_settings
       end
     end
     match 'v:api/*path', :to => redirect("/api/v1/%{path}")
     match '*path', :to => redirect("/api/v1/%{path}")
   end
 
-
-
-  resources :log_definition_files
-  resources :jmx_definition_files
-
   match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
+
   resources :projects do
     resources :jmeter_runs do
       member do
@@ -34,10 +30,12 @@ Site::Application.routes.draw do
         get 'kill'
       end
     end
-    resources :settings do
-    end
   end
 
+  resources :log_definition_files
+  resources :jmx_definition_files
+  get "dashboard/clear_queue"
+  get "definition_files/index"
   get "dashboard/index"
   root :to => 'dashboard#index'
 
