@@ -18,7 +18,6 @@ log/
 *.sql
 *.sqlite
 tmp/
-public/testplans/
 public/definition_files
 
 # OS generated files #
