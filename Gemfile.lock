@@ -44,16 +44,9 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-<<<<<<< HEAD
-    coffee-script-source (1.3.3)
-    commonjs (0.2.6)
-    daemons (1.1.8)
-    delayed_job (3.0.3)
-=======
     coffee-script-source (1.4.0)
     daemons (1.1.9)
     delayed_job (3.0.4)
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
       activesupport (~> 3.0)
     delayed_job_active_record (0.3.3)
       activerecord (>= 2.1.0, < 4)
@@ -72,50 +65,32 @@ GEM
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
-<<<<<<< HEAD
-    jquery-rails (2.0.2)
-      railties (>= 3.2.0, < 5.0)
-      thor (~> 0.14)
-    json (1.7.4)
-    less (2.2.1)
-      commonjs (~> 0.2.6)
-    less-rails (2.2.3)
-      actionpack (>= 3.1)
-      less (~> 2.2.0)
-    libv8 (3.3.10.4)
-=======
-    jquery-rails (2.1.4)
+    jquery-rails (2.2.0)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
     libv8 (3.11.8.13)
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
     mail (2.4.4)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.19)
     minitest (4.4.0)
-    minitest-reporters (0.14.2)
+    minitest-reporters (0.14.4)
       ansi
       builder
       minitest (>= 2.12, < 5.0)
       powerbar
-<<<<<<< HEAD
-    multi_json (1.3.6)
-    mysql2 (0.3.11)
-    nested_form (0.2.2)
-    nokogiri (1.5.5)
-=======
     multi_json (1.5.0)
+    mysql2 (0.3.11)
     nested_form (0.3.1)
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
+    nokogiri (1.5.6)
     open4 (1.3.0)
     polyglot (0.3.3)
     powerbar (1.0.11)
       ansi (~> 1.4.0)
       hashie (>= 1.1.0)
-    rack (1.4.3)
+    rack (1.4.4)
     rack-cache (1.2)
       rack (>= 0.4)
     rack-ssl (1.3.2)
@@ -140,15 +115,11 @@ GEM
     rake (10.0.3)
     rdoc (3.12)
       json (~> 1.4)
-<<<<<<< HEAD
+    ref (1.0.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    sass (3.1.20)
-=======
-    ref (1.0.2)
     sass (3.2.5)
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
-    sass-rails (3.2.5)
+    sass-rails (3.2.6)
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
@@ -159,10 +130,9 @@ GEM
       hike (~> 1.2)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sqlite3 (1.3.6)
     state_machine (1.1.2)
-    therubyracer (0.11.1)
-      libv8 (~> 3.11.8.7)
+    therubyracer (0.11.3)
+      libv8 (~> 3.11.8.12)
       ref
     thin (1.5.0)
       daemons (>= 1.0.9)
@@ -173,18 +143,12 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-<<<<<<< HEAD
-    twitter-bootstrap-rails (2.1.1)
+    twitter-bootstrap-rails (2.2.0)
       actionpack (>= 3.1)
-      less-rails (~> 2.2.2)
+      execjs
       railties (>= 3.1)
-      therubyracer (= 0.10.1)
-    tzinfo (0.3.33)
-    uglifier (1.2.6)
-=======
     tzinfo (0.3.35)
     uglifier (1.3.0)
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
       execjs (>= 0.3.0)
       multi_json (~> 1.0, >= 1.0.2)
 
@@ -201,16 +165,13 @@ DEPENDENCIES
   jquery-rails
   json
   minitest-reporters
+  mysql2
   nested_form
   nokogiri
   rails (= 3.2.7)
   rest-client
   sass-rails (~> 3.2.3)
-<<<<<<< HEAD
   simple_form
-=======
-  sqlite3
->>>>>>> 3ea925a5f38d7b81b1ec326ea773058485389157
   state_machine
   therubyracer
   thin

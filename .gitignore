@@ -19,7 +19,6 @@ log/
 *.sqlite
 tmp/
 public/definition_files/*
-Gemfile.lock
 
 # OS generated files #
 ######################
