@@ -2,10 +2,14 @@
 
 jone:
   project_id: 1
+  jmx_definition_file_id: 1
+  log_definition_file_id: 1
   description: MyStringlalallaa
   state: idle
 
 jtwo:
   project_id: 2
+  jmx_definition_file_id: 1
+  log_definition_file_id: 1
   description: MyStringwetr54z6
   state: idle

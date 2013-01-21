@@ -15,8 +15,8 @@ class JmeterRun < ActiveRecord::Base
   before_validation :build_settings
 
   def build_settings
-    self.jmx_file = self.jmx_definition_file.df_name
-    self.jmeter_accesslog = self.log_definition_file.df_name
+    self.jmx_file = self.jmx_definition_file.df_name unless self.jmx_definition_file.nil?
+    self.jmeter_accesslog = self.log_definition_file.df_name unless self.log_definition_file.nil?
     self.jtl_file = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
   end
 
