@@ -1,9 +1,23 @@
 class JmeterRun < ActiveRecord::Base
   include JmeterDsl
 
-  attr_accessible :description, :project_id, :state, :stderror, :stdout, :jmeter_pid,
-                  :locked, :jmeter_accesslog, :jmeter_counter, :jmeter_period, :jmeter_threads,
-                  :jmeter_troughput, :jmx_file, :jtl_file, :remote_server, :ext_opts, :log_definition_file_id,
+  attr_accessible :description,
+                  :project_id,
+                  :state,
+                  :stderror,
+                  :stdout,
+                  :jmeter_pid,
+                  :locked,
+                  :jmeter_accesslog,
+                  :jmeter_counter,
+                  :jmeter_period,
+                  :jmeter_threads,
+                  :jmeter_troughput,
+                  :jmx_file,
+                  :jtl_file,
+                  :remote_server,
+                  :ext_opts,
+                  :log_definition_file_id,
                   :jmx_definition_file_id
 
   belongs_to :project, :touch => true
@@ -100,6 +114,13 @@ class JmeterRun < ActiveRecord::Base
 
   def locked?
     return self.locked
+  end
+
+  def get_attributes_hash
+    attributes = self.attributes.select {|key, value| /^j/.match(key.to_s)}
+    attributes.merge({ :remote_server=> self.remote_server, :ext_opts=> self.ext_opts,:access_log=> self.log_definition_file.df_name})
+    attributes.delete('jmeter_pid')
+    return attributes
   end
 
   def lock
