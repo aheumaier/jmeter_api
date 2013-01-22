@@ -4,9 +4,11 @@ pone:
   name: MyString1
   environment: MyEnvString1
   platform: testplatform
+  reports_home: '/home/reports1'
 
 ptwo:
   id: 2
   name: MyString2
   environment: MyEnvString2
   platform: testplatform
+  reports_home: '/home/reports2'

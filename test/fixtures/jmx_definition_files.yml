@@ -5,6 +5,7 @@
 # below each fixture, per the syntax in the comments below
 #
 one:
+  id: 1
   df_name: 'testplan'
   df_type: 'jmx'
   df_path: '/home/aheumaier/codebox/site/public/definition_files/testplan.jmx'
@@ -13,6 +14,7 @@ one:
 # column: value
 #
 two:
+  id: 2
   df_name: 'testplan2'
   df_type: 'jmx'
   df_path: '/home/aheumaier/codebox/site/public/definition_files/testplan2.jmx'

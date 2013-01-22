@@ -3,21 +3,21 @@ require 'pp'
 
 class JmeterRunTest < ActiveSupport::TestCase
 
-  #test "should not save jmeter_run without jmx file" do
-  #  j0 = j0 = JmeterRun.new(:description => 'Some test description')
-  #  if j0.save!
-  #  assert
-  #
-  #  assert !j0.push_start, "Saved the JmeterRun without any attributes"
-  #  assert_equal 'idle',j0.state, 'State hast changed: should be idle '
-  #  end
-  #end
-  #
-  #test "should not save jmeter_run without jtl file" do
-  #  j0 = JmeterRun.new
-  #  assert !j0.push_start, "Saved the JmeterRun without any attributes"
-  #  assert_equal 'idle',j0.state, 'State hast changed: should be idle '
-  #end
+  # Use fixtures data vendors and clients
+  fixtures :projects, :jmeter_runs, :jmx_definition_files
+
+  test "should not save jmeter_run without jmx file" do
+    j0 = j0 = JmeterRun.new(:description => 'Some test description')
+    assert_raise ActiveRecord::RecordInvalid do
+      j0.save!
+    end
+  end
+
+  test "should not save jmeter_run without jtl file" do
+    j0 = JmeterRun.new
+    assert !j0.push_start, "Saved the JmeterRun without any attributes"
+    assert_equal 'idle',j0.state, 'State hast changed: should be idle '
+  end
 
   test "should not save jmeter_run without project_id" do
     assert_raise ActiveRecord::RecordInvalid do
@@ -37,12 +37,11 @@ class JmeterRunTest < ActiveSupport::TestCase
     project = projects(:pone)
     j0 = nil
     assert_difference('JmeterRun.count') do
-      j0 = JmeterRun.new( :project_id => 1)
+      j0 = JmeterRun.new( :jmx_definition_file_id => 1, :project_id => 1)
       j0.save!
     end
     assert_equal 'JmeterRun', j0.class.to_s
-    assert_equal 'default jmeter run description. CHANGE ME',j0.description, "Saved the JmeterRun withoutout
-setting defaults"
+    assert_equal 'CHANGE ME - default jmeter run description.',j0.description, "Saved the JmeterRun withoutout setting defaults"
     assert_equal 'idle',j0.state, 'State hast changed: should be idle '
     assert_equal false,j0.locked, 'Lock hast changed: should be false '
     assert_equal 1,j0.jmeter_counter, 'Counter hast changed: should be 1 '
@@ -57,5 +56,4 @@ setting defaults"
       jmeter_run.push_start
     end
   end
-
 end

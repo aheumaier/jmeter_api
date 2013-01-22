@@ -2,6 +2,10 @@ require 'test_helper'
 require 'pp'
 
 class ProjectTest < ActiveSupport::TestCase
+
+  # Use fixtures data vendors and clients
+  fixtures :projects
+
   setup do
     @project = projects(:pone)
   end
