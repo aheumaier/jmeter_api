@@ -32,3 +32,7 @@ public/definition_files/*
 Icon?
 ehthumbs.db
 Thumbs.db
+
+# NetBeans generated files #
+############################
+nbproject/*
