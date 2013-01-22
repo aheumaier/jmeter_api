@@ -22,7 +22,23 @@ module Api
         respond_with JmeterRun.find_by_param(params[:id])
       end
 
+      ##
+      # Creates a new JMeter-Run
+      #
+      # * *Args*    :
+      #   - :project_id ->
+      #   - :jmeter_run ->
+      # * *Returns* :
+      #   -
+      # * *Raises* :
+      #   - ++ ->
+      #
+
       def create
+
+        puts "---"*20
+        puts params.inspect
+
         @project ||=  Project.find_by_param(params[:project_id])
         @jmeter_run = @project.jmeter_runs.build(params[:jmeter_run])
         if @jmeter_run.save
