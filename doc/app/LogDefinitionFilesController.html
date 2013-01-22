@@ -126,6 +126,8 @@
   
     <li><a href="./JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
   
+    <li><a href="./JmeterDsl/Jmeter/JmeterCore.html">JmeterDsl::Jmeter::JmeterCore</a>
+  
     <li><a href="./JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
   
     <li><a href="./JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
@@ -143,8 +145,6 @@
     <li><a href="./JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
   
     <li><a href="./JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
-  
-    <li><a href="./JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
   
     <li><a href="./Api.html">Api</a>
   
@@ -168,13 +168,15 @@
   
     <li><a href="./DefinitionFileUploader.html">DefinitionFileUploader</a>
   
+    <li><a href="./DefinitionFilesController.html">DefinitionFilesController</a>
+  
+    <li><a href="./DefinitionFilesHelper.html">DefinitionFilesHelper</a>
+  
     <li><a href="./JmeterRun.html">JmeterRun</a>
   
     <li><a href="./JmeterRunsController.html">JmeterRunsController</a>
   
     <li><a href="./JmeterRunsHelper.html">JmeterRunsHelper</a>
-  
-    <li><a href="./JmeterSetting.html">JmeterSetting</a>
   
     <li><a href="./JmeterWorker.html">JmeterWorker</a>
   
@@ -362,7 +364,7 @@
   <span class="ruby-ivar">@log_definition_files</span> = <span class="ruby-constant">LogDefinitionFile</span>.<span class="ruby-identifier">all</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.haml</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@log_definition_files</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -397,7 +399,7 @@
   <span class="ruby-ivar">@log_definition_file</span> = <span class="ruby-constant">LogDefinitionFile</span>.<span class="ruby-identifier">new</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># new.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># new.html.haml</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@log_definition_file</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -432,7 +434,7 @@
   <span class="ruby-ivar">@log_definition_file</span> = <span class="ruby-constant">LogDefinitionFile</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.haml</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-identifier">json</span><span class="ruby-operator">:</span> <span class="ruby-ivar">@log_definition_file</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>

@@ -4,7 +4,7 @@
 <head>
 <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
 
-<title>class Logger - Rails Application Documentation</title>
+<title>module DefinitionFilesHelper - Rails Application Documentation</title>
 
 <link type="text/css" media="screen" href="./rdoc.css" rel="stylesheet">
 
@@ -20,7 +20,7 @@
 <script type="text/javascript" charset="utf-8" src="./js/darkfish.js"></script>
 
 
-<body id="top" class="class">
+<body id="top" class="module">
 <nav id="metadata">
   <nav id="home-section" class="section">
   <h3 class="section-header">
@@ -47,7 +47,7 @@
     <nav id="file-list-section" class="section">
   <h3 class="section-header">Defined In</h3>
   <ul>
-    <li>lib/jmeter-dsl/logger-colors.rb
+    <li>app/helpers/definition_files_helper.rb
   </ul>
 </nav>
 
@@ -56,27 +56,9 @@
 
   <div id="class-metadata">
     
-    <nav id="parent-class-section" class="section">
-  <h3 class="section-header">Parent</h3>
-  
-  <p class="link"><a href="Object.html">Object</a>
-  
-</nav>
-
     
-    <!-- Method Quickref -->
-<nav id="method-list-section" class="section">
-  <h3 class="section-header">Methods</h3>
-
-  <ul class="link-list">
     
-    <li><a href="#method-i-format_message">#format_message</a>
     
-    <li><a href="#method-i-format_message_colorless">#format_message_colorless</a>
-    
-  </ul>
-</nav>
-
   </div>
 
   <div id="project-metadata">
@@ -202,7 +184,7 @@
 </nav>
 
 <div id="documentation">
-  <h1 class="class">class Logger</h1>
+  <h1 class="module">module DefinitionFilesHelper</h1>
 
   <div id="description" class="description">
     
@@ -222,82 +204,6 @@
 
     <!-- Methods -->
     
-     <section id="public-instance-5Buntitled-5D-method-details" class="method-section section">
-      <h3 class="section-header">Public Instance Methods</h3>
-
-    
-      <div id="method-i-format_message" class="method-detail ">
-        
-        <div class="method-heading">
-          <span class="method-name">format_message</span><span
-            class="method-args">(level, *args)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-          <div class="method-source-code" id="format_message-source">
-            <pre><span class="ruby-comment"># File lib/jmeter-dsl/logger-colors.rb, line 35</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">format_message</span>(<span class="ruby-identifier">level</span>, *<span class="ruby-identifier">args</span>)
-  <span class="ruby-keyword">if</span> <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">Colors</span><span class="ruby-operator">::</span><span class="ruby-constant">SCHEMA</span>[<span class="ruby-ivar">@logdev</span>.<span class="ruby-identifier">dev</span>]
-    <span class="ruby-identifier">color</span> = <span class="ruby-keyword">begin</span>
-      <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">Colors</span>.<span class="ruby-identifier">const_get</span>            <span class="ruby-constant">Logger</span><span class="ruby-operator">::</span><span class="ruby-constant">Colors</span><span class="ruby-operator">::</span><span class="ruby-constant">SCHEMA</span>[<span class="ruby-ivar">@logdev</span>.<span class="ruby-identifier">dev</span>][<span class="ruby-constant">Logger</span>.<span class="ruby-identifier">const_get</span>(<span class="ruby-identifier">level</span>.<span class="ruby-identifier">sub</span> <span class="ruby-string">&quot;ANY&quot;</span>,<span class="ruby-string">&quot;UNKNOWN&quot;</span>)].<span class="ruby-identifier">to_s</span>.<span class="ruby-identifier">upcase</span>
-    <span class="ruby-keyword">rescue</span> <span class="ruby-constant">NameError</span>
-      <span class="ruby-string">&quot;0;0&quot;</span>
-    <span class="ruby-keyword">end</span>
-    <span class="ruby-node">&quot;\e[#{ color }m#{ format_message_colorless(level, *args) }\e[0;0m&quot;</span>
-  <span class="ruby-keyword">else</span>
-    <span class="ruby-identifier">format_message_colorless</span>(<span class="ruby-identifier">level</span>, *<span class="ruby-identifier">args</span>)
-  <span class="ruby-keyword">end</span>
-<span class="ruby-keyword">end</span></pre>
-          </div><!-- format_message-source -->
-          
-        </div>
-
-        
-        <div class="aliases">
-          Also aliased as: <a href="Logger.html#method-i-format_message_colorless">format_message_colorless</a>
-        </div>
-        
-
-        
-      </div><!-- format_message-method -->
-
-    
-      <div id="method-i-format_message_colorless" class="method-detail method-alias">
-        
-        <div class="method-heading">
-          <span class="method-name">format_message_colorless</span><span
-            class="method-args">(level, *args)</span>
-          <span class="method-click-advice">click to toggle source</span>
-        </div>
-        
-
-        <div class="method-description">
-          
-          
-          
-
-          
-        </div>
-
-        
-
-        
-        <div class="aliases">
-          Alias for: <a href="Logger.html#method-i-format_message">format_message</a>
-        </div>
-        
-      </div><!-- format_message_colorless-method -->
-
-    
-    </section><!-- public-instance-method-details -->
-  
   </section><!-- 5Buntitled-5D -->
 
 </div><!-- documentation -->

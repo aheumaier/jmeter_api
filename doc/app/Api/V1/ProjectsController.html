@@ -121,6 +121,8 @@
   
     <li><a href="../../JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
   
+    <li><a href="../../JmeterDsl/Jmeter/JmeterCore.html">JmeterDsl::Jmeter::JmeterCore</a>
+  
     <li><a href="../../JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
   
     <li><a href="../../JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
@@ -138,8 +140,6 @@
     <li><a href="../../JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
   
     <li><a href="../../JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
-  
-    <li><a href="../../JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
   
     <li><a href="../../Api.html">Api</a>
   
@@ -163,13 +163,15 @@
   
     <li><a href="../../DefinitionFileUploader.html">DefinitionFileUploader</a>
   
+    <li><a href="../../DefinitionFilesController.html">DefinitionFilesController</a>
+  
+    <li><a href="../../DefinitionFilesHelper.html">DefinitionFilesHelper</a>
+  
     <li><a href="../../JmeterRun.html">JmeterRun</a>
   
     <li><a href="../../JmeterRunsController.html">JmeterRunsController</a>
   
     <li><a href="../../JmeterRunsHelper.html">JmeterRunsHelper</a>
-  
-    <li><a href="../../JmeterSetting.html">JmeterSetting</a>
   
     <li><a href="../../JmeterWorker.html">JmeterWorker</a>
   
@@ -246,7 +248,7 @@
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 18</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">create</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -276,7 +278,7 @@
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 28</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 22</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">destroy</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -306,7 +308,7 @@
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 8</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 6</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">all</span>
 <span class="ruby-keyword">end</span></pre>
@@ -336,7 +338,7 @@
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 13</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 10</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find_by_param</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -366,7 +368,7 @@
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 23</span>
+            <pre><span class="ruby-comment"># File app/controllers/api/v1/projects_controller.rb, line 18</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-identifier">respond_with</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">update</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>], <span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
 <span class="ruby-keyword">end</span></pre>

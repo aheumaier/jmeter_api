@@ -55,6 +55,7 @@
     <li>lib/jmeter-dsl/gaussian_random_timer.rb
     <li>lib/jmeter-dsl/http_sampler.rb
     <li>lib/jmeter-dsl/if_controller.rb
+    <li>lib/jmeter-dsl/jmeter_core.rb
     <li>lib/jmeter-dsl/jmeter_ext.rb
     <li>lib/jmeter-dsl/once_only.rb
     <li>lib/jmeter-dsl/regex_extractor.rb
@@ -125,6 +126,8 @@
   
     <li><a href="./JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
   
+    <li><a href="./JmeterDsl/Jmeter/JmeterCore.html">JmeterDsl::Jmeter::JmeterCore</a>
+  
     <li><a href="./JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
   
     <li><a href="./JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
@@ -142,8 +145,6 @@
     <li><a href="./JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
   
     <li><a href="./JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
-  
-    <li><a href="./JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
   
     <li><a href="./Api.html">Api</a>
   
@@ -167,13 +168,15 @@
   
     <li><a href="./DefinitionFileUploader.html">DefinitionFileUploader</a>
   
+    <li><a href="./DefinitionFilesController.html">DefinitionFilesController</a>
+  
+    <li><a href="./DefinitionFilesHelper.html">DefinitionFilesHelper</a>
+  
     <li><a href="./JmeterRun.html">JmeterRun</a>
   
     <li><a href="./JmeterRunsController.html">JmeterRunsController</a>
   
     <li><a href="./JmeterRunsHelper.html">JmeterRunsHelper</a>
-  
-    <li><a href="./JmeterSetting.html">JmeterSetting</a>
   
     <li><a href="./JmeterWorker.html">JmeterWorker</a>
   
@@ -250,7 +253,7 @@
 
           
           <div class="method-source-code" id="dsl_eval-source">
-            <pre><span class="ruby-comment"># File lib/jmeter-dsl/dsl.rb, line 3</span>
+            <pre><span class="ruby-comment"># File lib/jmeter-dsl/dsl.rb, line 5</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">dsl_eval</span>(<span class="ruby-identifier">dsl</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">block_context</span> = <span class="ruby-identifier">eval</span>(<span class="ruby-string">&quot;self&quot;</span>, <span class="ruby-identifier">block</span>.<span class="ruby-identifier">binding</span>)
   <span class="ruby-identifier">proxy_context</span> = <span class="ruby-constant">JmeterDsl</span><span class="ruby-operator">::</span><span class="ruby-constant">Jmeter</span><span class="ruby-operator">::</span><span class="ruby-constant">FallbackContextProxy</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">dsl</span>, <span class="ruby-identifier">block_context</span>)

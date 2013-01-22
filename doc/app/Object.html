@@ -70,7 +70,7 @@
 
   <ul class="link-list">
     
-    <li><a href="#method-i-test">#test</a>
+    <li><a href="#method-i-jmetertest">#jmetertest</a>
     
   </ul>
 </nav>
@@ -113,6 +113,8 @@
   
     <li><a href="./JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
   
+    <li><a href="./JmeterDsl/Jmeter/JmeterCore.html">JmeterDsl::Jmeter::JmeterCore</a>
+  
     <li><a href="./JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
   
     <li><a href="./JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
@@ -130,8 +132,6 @@
     <li><a href="./JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
   
     <li><a href="./JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
-  
-    <li><a href="./JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
   
     <li><a href="./Api.html">Api</a>
   
@@ -155,13 +155,15 @@
   
     <li><a href="./DefinitionFileUploader.html">DefinitionFileUploader</a>
   
+    <li><a href="./DefinitionFilesController.html">DefinitionFilesController</a>
+  
+    <li><a href="./DefinitionFilesHelper.html">DefinitionFilesHelper</a>
+  
     <li><a href="./JmeterRun.html">JmeterRun</a>
   
     <li><a href="./JmeterRunsController.html">JmeterRunsController</a>
   
     <li><a href="./JmeterRunsHelper.html">JmeterRunsHelper</a>
-  
-    <li><a href="./JmeterSetting.html">JmeterSetting</a>
   
     <li><a href="./JmeterWorker.html">JmeterWorker</a>
   
@@ -222,10 +224,10 @@
       <h3 class="section-header">Public Instance Methods</h3>
 
     
-      <div id="method-i-test" class="method-detail ">
+      <div id="method-i-jmetertest" class="method-detail ">
         
         <div class="method-heading">
-          <span class="method-name">test</span><span
+          <span class="method-name">jmetertest</span><span
             class="method-args">(&block)</span>
           <span class="method-click-advice">click to toggle source</span>
         </div>
@@ -237,21 +239,21 @@
           
 
           
-          <div class="method-source-code" id="test-source">
+          <div class="method-source-code" id="jmetertest-source">
             <pre><span class="ruby-comment"># File lib/jmeter-dsl/dsl.rb, line 231</span>
-<span class="ruby-keyword">def</span> <span class="ruby-identifier">test</span>(&amp;<span class="ruby-identifier">block</span>)
+<span class="ruby-keyword">def</span> <span class="ruby-identifier">jmetertest</span>(&amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">t</span> = <span class="ruby-constant">JmeterDsl</span>.<span class="ruby-identifier">dsl_eval</span>(<span class="ruby-constant">JmeterDsl</span><span class="ruby-operator">::</span><span class="ruby-constant">Jmeter</span><span class="ruby-operator">::</span><span class="ruby-constant">DSL</span>.<span class="ruby-identifier">new</span>, &amp;<span class="ruby-identifier">block</span>)
   <span class="ruby-identifier">t</span>.<span class="ruby-identifier">out</span>
   <span class="ruby-identifier">t</span>
 <span class="ruby-keyword">end</span></pre>
-          </div><!-- test-source -->
+          </div><!-- jmetertest-source -->
           
         </div>
 
         
 
         
-      </div><!-- test-method -->
+      </div><!-- jmetertest-method -->
 
     
     </section><!-- public-instance-method-details -->

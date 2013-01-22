@@ -125,6 +125,8 @@
   
     <li><a href="./JmeterDsl/Jmeter/IfController.html">JmeterDsl::Jmeter::IfController</a>
   
+    <li><a href="./JmeterDsl/Jmeter/JmeterCore.html">JmeterDsl::Jmeter::JmeterCore</a>
+  
     <li><a href="./JmeterDsl/Jmeter/OnceOnly.html">JmeterDsl::Jmeter::OnceOnly</a>
   
     <li><a href="./JmeterDsl/Jmeter/RegexExtractor.html">JmeterDsl::Jmeter::RegexExtractor</a>
@@ -142,8 +144,6 @@
     <li><a href="./JmeterDsl/Jmeter/UserDefinedVariable.html">JmeterDsl::Jmeter::UserDefinedVariable</a>
   
     <li><a href="./JmeterDsl/Jmeter/XpathExtractor.html">JmeterDsl::Jmeter::XpathExtractor</a>
-  
-    <li><a href="./JmeterDsl/JmeterExt.html">JmeterDsl::JmeterExt</a>
   
     <li><a href="./Api.html">Api</a>
   
@@ -167,13 +167,15 @@
   
     <li><a href="./DefinitionFileUploader.html">DefinitionFileUploader</a>
   
+    <li><a href="./DefinitionFilesController.html">DefinitionFilesController</a>
+  
+    <li><a href="./DefinitionFilesHelper.html">DefinitionFilesHelper</a>
+  
     <li><a href="./JmeterRun.html">JmeterRun</a>
   
     <li><a href="./JmeterRunsController.html">JmeterRunsController</a>
   
     <li><a href="./JmeterRunsHelper.html">JmeterRunsHelper</a>
-  
-    <li><a href="./JmeterSetting.html">JmeterSetting</a>
   
     <li><a href="./JmeterWorker.html">JmeterWorker</a>
   
@@ -245,23 +247,20 @@
 
         <div class="method-description">
           
-          
+          <p>POST /projects POST /projects.json</p>
           
 
           
           <div class="method-source-code" id="create-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 56</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 53</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">create</span>
   <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
   <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">find_or_create_reports_home</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:project</span>])
-
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">save</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-ivar">@project</span>, <span class="ruby-value">:notice</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">'Project was successfully created.'</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:created</span>, <span class="ruby-value">:location</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
     <span class="ruby-keyword">else</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:action</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;new&quot;</span> }
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">errors</span>, <span class="ruby-value">:status</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-value">:unprocessable_entity</span> }
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -286,19 +285,18 @@
 
         <div class="method-description">
           
-          
+          <p>DELETE /projects/1 DELETE /projects/1.json</p>
           
 
           
           <div class="method-source-code" id="destroy-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 89</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 82</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">destroy</span>
   <span class="ruby-ivar">@project</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
   <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">destroy</span>
 
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
     <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">redirect_to</span> <span class="ruby-identifier">projects_url</span> }
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">head</span> <span class="ruby-value">:no_content</span> }
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- destroy-source -->
@@ -322,12 +320,12 @@
 
         <div class="method-description">
           
-          
+          <p>GET /projects/1/edit</p>
           
 
           
           <div class="method-source-code" id="edit-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 49</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 46</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">edit</span>
   <span class="ruby-ivar">@project</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 <span class="ruby-keyword">end</span></pre>
@@ -352,17 +350,16 @@
 
         <div class="method-description">
           
-          
+          <p>GET /projects GET /projects.json</p>
           
 
           
           <div class="method-source-code" id="index-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 5</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 4</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">index</span>
   <span class="ruby-ivar">@projects</span> <span class="ruby-operator">||=</span>  <span class="ruby-constant">Project</span>.<span class="ruby-identifier">all</span>
   <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.erb</span>
-    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@projects</span> }
+    <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># index.html.haml</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
           </div><!-- index-source -->
@@ -386,19 +383,19 @@
 
         <div class="method-description">
           
-          
+          <p>GET /projects/new GET /projects/new.json</p>
           
 
           
           <div class="method-source-code" id="new-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 36</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 33</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">new</span>
   <span class="ruby-ivar">@project</span> = <span class="ruby-constant">Project</span>.<span class="ruby-identifier">new</span>
-  <span class="ruby-ivar">@project</span>.<span class="ruby-identifier">jmeter_runs</span>.<span class="ruby-identifier">build</span>
+  <span class="ruby-comment">#@project.jmeter_runs.build()</span>
 
 
  <span class="ruby-comment"># respond_to do |format|</span>
-  <span class="ruby-comment">#  format.html # new.html.erb</span>
+  <span class="ruby-comment">#  format.html # new.html.haml</span>
    <span class="ruby-comment"># format.json { render :json =&gt; @project }</span>
   <span class="ruby-comment">#end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -423,24 +420,23 @@
 
         <div class="method-description">
           
-          
+          <p>GET /projects/1 GET /projects/1.json</p>
           
 
           
           <div class="method-source-code" id="show-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 16</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 14</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">show</span>
   <span class="ruby-ivar">@project</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find_by_param</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
+  <span class="ruby-ivar">@jmeter_runs</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">JmeterRun</span>.<span class="ruby-identifier">find_all_by_project_id</span>(<span class="ruby-ivar">@project</span>.<span class="ruby-identifier">id</span>)
 
   <span class="ruby-keyword">if</span> <span class="ruby-ivar">@project</span>
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.erb</span>
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-ivar">@project</span> }
+      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> <span class="ruby-comment"># show.html.haml</span>
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">else</span>
     <span class="ruby-identifier">respond_to</span> <span class="ruby-keyword">do</span> <span class="ruby-operator">|</span><span class="ruby-identifier">format</span><span class="ruby-operator">|</span>
       <span class="ruby-identifier">format</span>.<span class="ruby-identifier">html</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:text</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Entry not found \n&quot;</span>}
-      <span class="ruby-identifier">format</span>.<span class="ruby-identifier">json</span> { <span class="ruby-identifier">render</span> <span class="ruby-value">:json</span> =<span class="ruby-operator">&gt;</span> <span class="ruby-string">&quot;Entry not found \n&quot;</span> }
     <span class="ruby-keyword">end</span>
   <span class="ruby-keyword">end</span>
 <span class="ruby-keyword">end</span></pre>
@@ -465,12 +461,12 @@
 
         <div class="method-description">
           
-          
+          <p>PUT /projects/1 PUT /projects/1.json</p>
           
 
           
           <div class="method-source-code" id="update-source">
-            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 74</span>
+            <pre><span class="ruby-comment"># File app/controllers/projects_controller.rb, line 68</span>
 <span class="ruby-keyword">def</span> <span class="ruby-identifier">update</span>
   <span class="ruby-ivar">@project</span> <span class="ruby-operator">||=</span> <span class="ruby-constant">Project</span>.<span class="ruby-identifier">find</span>(<span class="ruby-identifier">params</span>[<span class="ruby-value">:id</span>])
 
