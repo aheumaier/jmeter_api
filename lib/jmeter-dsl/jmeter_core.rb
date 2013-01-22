@@ -2,26 +2,28 @@ module JmeterDsl
   module Jmeter
     class JmeterCore
 
-      attr_accessor :bin, :work_dir,
-                    :jmeter_pid,
+      attr_accessor :bin,
                     :access_log,
                     :counter,
-                    :access_log,
                     :counter,
                     :duration,
                     :jmx_file,
                     :jtl_file,
-                    :jmeter_log,
                     :jmeter__save__saveservice__url,
                     :jmeter__save__saveservice__requestHeaders ,
                     :jmeter__save__saveservice__responseHeaders ,
                     :summariser__name,
                     :summariser__interval,
                     :summariser__log,
-                    :summariser__out
+                    :summariser__out,
+                    :jmeter_pid
 
+
+      #
+      # Set up a complete runnable JmeterObject
+      # Expects runtime paramameters amn jmx file
+      #
       def initialize(  params_hash )
-        @jmeter_log = 'bin/jmeter.log'
         @jmetersave__saveservice__url = true
         @jmetersave__saveservice__url__requestHeaders = true
         @jmeter__save__saveservice__responseHeaders = true
@@ -39,15 +41,19 @@ module JmeterDsl
         end
       end
 
+      #
+      # Fires up the Jmter Proces in an shell env
+      # Return the full process status as stdout & stderr
+      #
       def runner
-        puts 'JmeterInit called'
-        jmeter_command = self.bin+' -n '+' '+build_jmeter_opts( self.to_hash )
+        jmeter_command = self.bin+' -n '+' '+build_jmeter_opts
+        puts jmeter_command
         status = POpen4::popen4( "echo #{jmeter_command}" ) do |stdout, stderr, stdin, pid|
           self.jmeter_pid = pid
-          @stderror = stderr.read.strip
-          @stderr.read.strip
-          @stdout = stdout.read.strip
-        #  jmeter_obj.save
+          #stderror = stderr.read.strip
+          #@stderr.read.strip
+          #@stdout = stdout.read.strip
+          #  jmeter_obj.save
         end
       end
 
@@ -61,13 +67,41 @@ module JmeterDsl
 
       private
 
-      def build_jmeter_opts( attr_hash )
-        puts 'calling build_jmeter_opts'
+      def build_jmeter_opts
         opts = ''
-        attr_hash.each do |key, value|
-          opts << '-J'+key.to_s.gsub('__', '.')+'='+value.to_s+' '
+        opts << set_jmx_file
+        opts << set_jtl_file
+        opts <<  set_log_file
+        opts << set_summarizer
+        opts << set_accesslog
+        opts << set_threads
+        opts << set_period
+        opts << set_counter
+        opts << set_troughput
+
         end
         return opts
+      end
+
+      def set_summarizer(opt_str = '')
+        self.to_hash.each do |key, value|
+          opt_str << '-J'+key.to_s.gsub('__', '.')+'='+value.to_s+' ' if key.match(/summariser/)
+          opt_str << '-J'+key.to_s.gsub('__', '.')+'='+value.to_s+' ' if key.match(/saveservice/)
+        end
+        return opt_str
+      end
+
+      def set_jmx_file
+        store_dir = '../definition_files/' # JmxDefinitionFile.last.df.store_dir
+        '-t '+store_dir+self.jmx_file+' '
+      end
+
+      def set_jtl_file
+        '-j '+self.jtl_file+' '
+      end
+
+      def set_log_file
+        '-l jmeter.log '
       end
 
       def jmeter_obj
