@@ -7,6 +7,7 @@ class CreateJmxDefinitionFiles < ActiveRecord::Migration
       t.string :df_path
       t.string :df_file_dir
       t.string :df
+      t.boolean  :default_template, :default => false
     end
   end
 end

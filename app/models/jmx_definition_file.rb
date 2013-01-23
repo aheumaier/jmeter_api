@@ -1,5 +1,5 @@
 class JmxDefinitionFile < ActiveRecord::Base
-  attr_accessible :df_name, :df_type, :df_path, :df_file_dir, :df
+  attr_accessible :df_name, :df_type, :df_path, :df_file_dir, :df, :default_template
   mount_uploader :df, DefinitionFileUploader
 
   has_many :jmeter_runs, :dependent => :destroy
@@ -12,6 +12,10 @@ class JmxDefinitionFile < ActiveRecord::Base
     self.df_path = self.df.path
     self.df_name = self.df.file.filename
   end
+
+
+
+
 
 
 end

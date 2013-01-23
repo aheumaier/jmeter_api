@@ -3,7 +3,7 @@ require 'test_helper'
 
 class TestJmeterCore < MiniTest::Unit::TestCase
   def setup
-    @params_hash = {"jmeter_accesslog"=>"www.eltern.de.20110426_21-22.log", "jmeter_counter"=>1, "jmeter_period"=>3600, "jmeter_threads"=>20, "jmeter_troughput"=>600, "jmx_file"=>"testplan.jmx", "jtl_file"=>"jmeter_run_log_1358787193.jtl", "jmx_definition_file_id"=>5}
+    @params_hash = {"jprop_accesslog"=>"mobile.eltern.de.20110426_21-22.log", "jprop_counter"=>1, "jprop_period"=>3600, "jprop_threads"=>20, "jprop_throughput"=>600, "jprop_jmx"=>"testplan.jmx", "jprop_jtl"=>"jmeter_run_log_1358948262.jtl", "jprop_remote_server"=>nil}
   end
 
   def test_should_create_jmetercore_object

@@ -37,14 +37,14 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
     t.string   "stdout"
     t.integer  "jmeter_pid",             :default => 0
     t.boolean  "locked",                 :default => false
-    t.string   "jmeter_accesslog"
-    t.integer  "jmeter_counter",         :default => 1
-    t.integer  "jmeter_period",          :default => 3600
-    t.integer  "jmeter_threads",         :default => 20
-    t.integer  "jmeter_troughput",       :default => 600
-    t.string   "jmx_file"
-    t.string   "jtl_file"
-    t.string   "remote_server"
+    t.string   "jprop_accesslog"
+    t.integer  "jprop_counter",          :default => 1
+    t.integer  "jprop_period",           :default => 3600
+    t.integer  "jprop_threads",          :default => 20
+    t.integer  "jprop_throughput",       :default => 600
+    t.string   "jprop_jmx"
+    t.string   "jprop_jtl"
+    t.string   "jprop_remote_server"
     t.string   "ext_opts"
     t.integer  "log_definition_file_id"
     t.integer  "jmx_definition_file_id"
@@ -58,13 +58,14 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
   end
 
   create_table "jmx_definition_files", :force => true do |t|
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                          :null => false
+    t.datetime "updated_at",                          :null => false
     t.string   "df_name"
     t.string   "df_type"
     t.string   "df_path"
     t.string   "df_file_dir"
     t.string   "df"
+    t.boolean  "default_template", :default => false
   end
 
   create_table "log_definition_files", :force => true do |t|
