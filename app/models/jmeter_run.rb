@@ -3,61 +3,38 @@ class JmeterRun < ActiveRecord::Base
 
   attr_accessible :description,
                   :project_id,
+                  :log_definition_file_id,
+                  :jmx_definition_file_id,
                   :state,
                   :stderror,
                   :stdout,
                   :jmeter_pid,
                   :locked,
-                  :jmeter_accesslog,
-                  :jmeter_counter,
-                  :jmeter_period,
-                  :jmeter_threads,
-                  :jmeter_troughput,
-                  :jmx_file,
-                  :jtl_file,
-                  :remote_server,
-                  :ext_opts,
-                  :log_definition_file_id,
-                  :jmx_definition_file_id
+
+                  :jprop_accesslog,
+                  :jprop_counter,
+                  :jprop_period,
+                  :jprop_threads,
+                  :jprop_throughput,
+                  :jprop_jmx,
+                  :jprop_jtl,
+                  :jprop_remote_server,
+                  :ext_opts
+
 
   belongs_to :project, :touch => true
   belongs_to :jmx_definition_file, :touch => true
   belongs_to :log_definition_file, :touch => true
 
-  validates_presence_of :jmx_file, :jtl_file, :description, :project_id
+  validates_presence_of :jprop_jmx, :jprop_jtl, :description, :project_id
 
   before_validation :build_settings
 
   def build_settings
-    self.jmx_file = self.jmx_definition_file.df_name unless self.jmx_definition_file.nil?
-    self.jmeter_accesslog = self.log_definition_file.df_name unless self.log_definition_file.nil?
-    self.jtl_file = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
+    self.jprop_jmx = self.jmx_definition_file.df_name unless self.jmx_definition_file.nil?
+    self.jprop_accesslog = self.log_definition_file.df_name unless self.log_definition_file.nil?
+    self.jprop_jtl = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
   end
-
-  #
-  #def update_settings(params)
-  #  params.each do |key,value|
-  #    case key
-  #      when 'jmeter_threads'
-  #        self.jmeter_threads = value
-  #      when 'jmeter_counter'
-  #        self.jmeter_counter = value
-  #      when 'jmeter_period'
-  #        self.jmeter_period = value
-  #      when 'jmeter_troughput'
-  #        self.jmeter_troughput = value
-  #      when 'jmx_file'
-  #        self.jmx_file = value
-  #      when 'jtl_file'
-  #        self.jtl_file = value
-  #      when 'remote_server'
-  #        self.remote_server = value
-  #      when 'jtl_path'
-  #        self.jtl_file = value
-  #      else
-  #        logger.debug "DEBUG: :"  + key + ' not used'
-  #    end
-  #  end
 
   state_machine :initial => :idle do
     before_transition :idle => :running, :do => :perform_test
@@ -100,7 +77,7 @@ class JmeterRun < ActiveRecord::Base
 
   def kill_process
     Rails.logger.debug "Killing jmeter process ..."
-    self.stdout = %[/bin/stoptest.sh]
+    self.jprop_stdout = %[/bin/stoptest.sh]
   end
 
   def validate_results
@@ -108,18 +85,17 @@ class JmeterRun < ActiveRecord::Base
   end
 
   def send_error_results
-    Rails.logger.error self.stdout
-    Rails.logger.error self.stderror
+    Rails.logger.error self.jprop_stdout
+    Rails.logger.error self.jprop_stderror
   end
 
   def locked?
     return self.locked
   end
 
-  def get_attributes_hash
-    attributes = self.attributes.select {|key, value| /^j/.match(key.to_s)}
-    attributes.merge({ :remote_server=> self.remote_server, :ext_opts=> self.ext_opts,:access_log=> self.log_definition_file.df_name})
-    attributes.delete('jmeter_pid')
+  def get_jmeter_attributes
+    attributes = self.attributes.select {|key, value| /^jprop_/.match(key.to_s)}
+    attributes.merge(:jprop_ext_opts=> self.ext_opts)
     return attributes
   end
 

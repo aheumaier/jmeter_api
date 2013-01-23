@@ -1,5 +1,5 @@
 defaults: &defaults
-  jmeter_bin_path: "bin/jmeter.sh"
+  jmeter_bin_path: "./jmeter.sh"
   jmeter_theads: 4
   jmeter_jtl_path: "reports/"
   jmeter_jmx_path: "/definition_files"

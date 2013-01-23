@@ -28,11 +28,12 @@ class TestJmeterDsl < MiniTest::Unit::TestCase
   end
 
   #def test_plan_should_raise_no_errors
-  #    jmetertest do
-  #      threads 10 do
-  #        visit 'Google Search', 'http://google.com'
-  #      end
-  #    end.run.wont_raise Exeption => e
+  jmetertest do
+    threads 10 do
+      visit 'Google Search', 'http://google.com'
+    end
+  end.
+  #run.wont_raise Exeption => e
   #end
 
 end

@@ -2,53 +2,46 @@ module JmeterDsl
   module Jmeter
     class JmeterCore
 
-      attr_accessor :bin, :work_dir,
-                    :jmeter_pid,
-                    :access_log,
+      attr_accessor :accesslog,
                     :counter,
-                    :access_log,
-                    :counter,
+                    :threads,
                     :duration,
-                    :jmx_file,
-                    :jtl_file,
-                    :jmeter_log,
-                    :jmeter__save__saveservice__url,
-                    :jmeter__save__saveservice__requestHeaders ,
-                    :jmeter__save__saveservice__responseHeaders ,
-                    :summariser__name,
-                    :summariser__interval,
-                    :summariser__log,
-                    :summariser__out
+                    :throughput,
+                    :jmx,
+                    :jtl,
+                    :jmeter_pid,
+                    :jmeter_stderror,
+                    :jmeter_stdout
 
+      #
+      # Set up a complete runnable JmeterObject
+      # Expects runtime paramameters amn jmx file
+      #
       def initialize(  params_hash )
-        @jmeter_log = 'bin/jmeter.log'
-        @jmetersave__saveservice__url = true
-        @jmetersave__saveservice__url__requestHeaders = true
-        @jmeter__save__saveservice__responseHeaders = true
-        @summariser__name = 'summary'
-        @summariser__interval =180
-        @summariser__log = true
-        @sumariser__out = false
-        @bin = APP_CONFIG['jmeter_bin_path'] || 'bin/jmeter.sh'
-        @work_dir = APP_CONFIG['jmeter_work_dir'] || 'bin'
+        @bin = APP_CONFIG['jmeter_bin_path'] || './jmeter.sh'
+        @work_dir = APP_CONFIG['jmeter_work_dir'] || 'public/bin'
+        @store_dir = '/home/aheumaier/codebox/site/public/definition_files/'
         @jmeter_pid = nil
+        @jmeterproperties = ''
+        @defined_properties = %w[accesslog threads counter duration throughput]
 
-        # setting runtime params from jmeter_run model
         params_hash.each do |key, value|
-          instance_variable_set("@#{key.to_s}", value)
+          if  key.match(/^jprop_/)
+            instance_variable_set("@#{key.to_s.gsub('jprop_', '')}", value)
+          end
         end
       end
 
+      #
+      # Fires up the Jmter Proces in an shell env
+      # Return the full process status as stdout & stderr
+      #
       def runner
-        puts 'JmeterInit called'
-        jmeter_command = self.bin+' -n '+' '+build_jmeter_opts( self.to_hash )
-        status = POpen4::popen4( "echo #{jmeter_command}" ) do |stdout, stderr, stdin, pid|
-          self.jmeter_pid = pid
-          @stderror = stderr.read.strip
-          @stderr.read.strip
-          @stdout = stdout.read.strip
-        #  jmeter_obj.save
-        end
+        build_jmeter_opts
+        jmeter_command = @bin+' -n '+' '+ @jmeterproperties
+        change_to_workdir()
+        puts jmeter_command
+        #system(jmeter_command)
       end
 
       def to_hash
@@ -59,26 +52,28 @@ module JmeterDsl
         hash
       end
 
-      private
-
-      def build_jmeter_opts( attr_hash )
-        puts 'calling build_jmeter_opts'
-        opts = ''
-        attr_hash.each do |key, value|
-          opts << '-J'+key.to_s.gsub('__', '.')+'='+value.to_s+' '
-        end
-        return opts
-      end
-
-      def jmeter_obj
-        if APP_CONFIG['jmeter-script']
-          "/app1/jmeter/jmetertest-thumbnailer.sh -f /app1/jmeter/UNITY/access_log.thumbnailer-anaco-vi.app.webcloud.guj.de.20120725.log -r SERVICE.THUMBNAILER-`date +\%Y\%m\%d` -H service.thumbnailer -x /app1/jmeter/UNITY/Grenzwert.service.thumbnailer.jmx "
-        else
-          puts APP_CONFIG['jmeter_bin_path'] + "/jmeter -n" + ' ' + jmeter_opts
-          "cd /tmp && " + APP_CONFIG['jmeter_bin_path'] + "/jmeter -n" + ' ' + jmeter_opts
+      def build_jmeter_opts
+        instance_variables.each do |var|
+          add_jmeterproperty({ var.to_s.delete("@") => instance_variable_get(var) })
         end
       end
 
+      def add_jmeterproperty( property )
+        property.each do |key, value|
+          if @defined_properties.include?(key.to_s)
+            @jmeterproperties << ' -J'+key+'='+value.to_s
+          elsif key.match(/jmx/)
+            @jmeterproperties << ' -t '+@store_dir+value
+          elsif key.match(/jtl/)
+            @jmeterproperties << ' -l '+@store_dir+value
+          end
+        end
+      end
+
+      def change_to_workdir
+        Dir.chdir('/home/aheumaier/codebox/site/public/bin')`
+      end
     end
   end
 end
+

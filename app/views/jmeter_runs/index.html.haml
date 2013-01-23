@@ -24,8 +24,8 @@
     %tr
       %td= localize(jmeter_run.created_at, :format => :short)
       %td= truncate(jmeter_run.description, :length => 25, :separator => ' ')
-      %td= truncate(jmeter_run.jmx_file, :length => 25, :separator => ' ')
-      %td= truncate(jmeter_run.jmeter_accesslog, :length => 25, :separator => ' ')
+      %td= truncate(jmeter_run.jprop_jmx, :length => 25, :separator => ' ')
+      %td= truncate(jmeter_run.jprop_accesslog, :length => 25, :separator => ' ')
       %td
         .btn-toolbar
           .btn-group

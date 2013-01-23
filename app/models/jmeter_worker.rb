@@ -10,7 +10,7 @@ class JmeterWorker < Struct.new(:jmeter_run_id)
     jmeter_run_obj.lock unless jmeter_run_obj.locked?
 
     # instantiate JmeterCore Object
-    jmeter_core_inst = JmeterDsl::Jmeter::JmeterCore.new(jmeter_run_obj.get_attributes_hash)
+    jmeter_core_inst = JmeterDsl::Jmeter::JmeterCore.new(jmeter_run_obj.get_jmeter_attributes)
 
     # run test plan
     status = jmeter_core_inst.runner
