@@ -32,8 +32,7 @@ class TestJmeterDsl < MiniTest::Unit::TestCase
     threads 10 do
       visit 'Google Search', 'http://google.com'
     end
-  end.
+  end
   #run.wont_raise Exeption => e
   #end
-
 end
