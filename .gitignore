@@ -36,3 +36,7 @@ Thumbs.db
 # NetBeans generated files #
 ############################
 nbproject/*
+
+# RDoc #
+########
+doc/
