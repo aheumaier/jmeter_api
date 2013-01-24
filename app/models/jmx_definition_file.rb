@@ -12,4 +12,9 @@ class JmxDefinitionFile < ActiveRecord::Base
     self.df_path = self.df.path
     self.df_name = self.df.file.filename
   end
+
+  def is_default?
+    return self.default_template
+  end
+
 end

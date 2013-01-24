@@ -13,9 +13,17 @@
   .field
     %label= f.label :jmx_file
     = f.select :jmx_definition_file_id, JmxDefinitionFile.all.collect {|p| [ p.df_name, p.id ] }
+    = f.check_box :jmx_definition_file_id, :class => "checkbox", :id => "jmx_default_file"
+    Default Template?
   .fieldset
     %label= f.label :log_file
     = f.select :log_definition_file_id, LogDefinitionFile.all.collect {|p| [ p.df_name, p.id ] }
   %br
     .actions
       = f.submit
+
+
+
+  %script{:type => "text/javascript"}
+    :plain
+      console.log("yeah");
