@@ -41,6 +41,8 @@ class JmeterRun < ActiveRecord::Base
     before_transition :running => :killed, :do => :kill_process
     before_transition :running => :finished, :do => :validate_results
     before_transition :running => :failed, :do => :send_error_results
+    before_transition :killed => :running, :do => :perform_test
+    before_transition :finished => :running, :do => :perform_test
      
     event :push_start do 
       transition :idle => :running
@@ -54,20 +56,16 @@ class JmeterRun < ActiveRecord::Base
       transition :running => :finished
     end
 
-    event :kill do
-      transition :running => :killed
-    end
-
     event :fatal_error do
       transition :running => :failed
     end
-
-    event :finish do
-      transition :running => :finished
-    end
    
-    state :running, :pending do
+    state :running, :idle do
       validates_presence_of :description
+    end
+
+    event :repeat do
+      transition [:finished,:killed,:failed] => :running
     end
   end
 
@@ -77,7 +75,8 @@ class JmeterRun < ActiveRecord::Base
 
   def kill_process
     Rails.logger.debug "Killing jmeter process ..."
-    self.jprop_stdout = %[/bin/stoptest.sh]
+    Dir.chdir(Rails.root+'public/bin')
+    self.stderror = %x{./stoptest.sh}
   end
 
   def validate_results
@@ -85,8 +84,8 @@ class JmeterRun < ActiveRecord::Base
   end
 
   def send_error_results
-    Rails.logger.error self.jprop_stdout
-    Rails.logger.error self.jprop_stderror
+    Rails.logger.error self.stdout
+    Rails.logger.error self.stderror
   end
 
   def locked?

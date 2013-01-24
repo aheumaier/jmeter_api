@@ -55,10 +55,8 @@ module Api
       #
       def create
         @project ||=  Project.find_by_param(params[:project_id])
-        puts @project.inspect
 
         @jmeter_run = @project.jmeter_runs.build(params[:jmeter_run])
-        puts @jmeter_run.inspect
 
         if @jmeter_run.save
           render :json => @jmeter_run.id
@@ -103,6 +101,12 @@ module Api
 
       def current
         respond_with JmeterRun.current(params[:project_id])
+      end
+
+      # GET /jmeter_runs/1/repeat
+      def repeat
+        @jmeter_run ||=  JmeterRun.find(params[:id])
+        @jmeter_run.repeat unless @jmeter_run.running?
       end
     end
   end
