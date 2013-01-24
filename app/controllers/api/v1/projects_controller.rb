@@ -22,6 +22,10 @@ module Api
       def destroy
         respond_with Project.destroy(params[:id])
       end
+
+      def exists
+        respond_with Project.find_or_create_by_param(params[:id])
+      end
     end
   end
 end

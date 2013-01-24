@@ -4,6 +4,9 @@ Site::Application.routes.draw do
     namespace :v1 do
       match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
       resources :projects do
+        member do
+          get 'exists'
+        end
         resources :jmeter_runs do
           member do
             get 'status'
