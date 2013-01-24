@@ -13,7 +13,12 @@
 
   - @jmx_definition_files.each do |jmx_definition_file|
     %tr
-      %td= jmx_definition_file.df.file.filename unless jmx_definition_file.df.file.nil?
+      - if jmx_definition_file.default_template?
+        %td
+          %b= jmx_definition_file.df.file.filename unless jmx_definition_file.df.file.nil?
+          *
+      - else
+        %td= jmx_definition_file.df.file.filename unless jmx_definition_file.df.file.nil?
       %td= jmx_definition_file.df_type
       %td
         .btn-toolbar
