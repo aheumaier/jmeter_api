@@ -5,6 +5,7 @@ class JmxDefinitionFile < ActiveRecord::Base
   has_many :jmeter_runs, :dependent => :destroy
   accepts_nested_attributes_for :jmeter_runs
 
+  validates :default_template, :uniqueness => true
   before_validation :set_metadata
 
   def set_metadata
@@ -12,4 +13,13 @@ class JmxDefinitionFile < ActiveRecord::Base
     self.df_path = self.df.path
     self.df_name = self.df.file.filename
   end
+
+  def self.defaults?
+    if JmxDefinitionFile.where(:default_template => true).count == 0
+      return false
+    else
+      return true
+    end
+  end
+
 end
