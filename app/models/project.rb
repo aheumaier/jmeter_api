@@ -17,8 +17,8 @@ class Project < ActiveRecord::Base
     end
   end
 
-  def self.find_or_create_by_param(id)
-    if id.to_s.match(/^[\d]+(\.[\d]+){0,1}$/)
+  def self.find_or_create_by_param(params)
+    if params[:id].to_s.match(/^[\d]+(\.[\d]+){0,1}$/)
       Project.find_or_create_by_id(id)
     else
       Project.find_or_create_by_name(id)

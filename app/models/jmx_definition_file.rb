@@ -12,10 +12,4 @@ class JmxDefinitionFile < ActiveRecord::Base
     self.df_path = self.df.path
     self.df_name = self.df.file.filename
   end
-
-
-
-
-
-
 end

@@ -24,7 +24,7 @@ module Api
       end
 
       def exists
-        respond_with Project.find_or_create_by_param(params[:id])
+        respond_with Project.find_or_create_by_param(params)
       end
     end
   end
