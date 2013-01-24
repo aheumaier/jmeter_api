@@ -71,7 +71,7 @@ module JmeterDsl
       end
 
       def change_to_workdir
-        Dir.chdir('/home/aheumaier/codebox/site/public/bin')
+        Dir.chdir(Rails.root+'public/bin')
       end
     end
   end
