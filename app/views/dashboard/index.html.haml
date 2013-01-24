@@ -15,8 +15,9 @@
   %tr
     %th Jobs in Queue
     %th Jobs failed
-    %th Jobs Idle
     %th Jobs Running
+    %th Jobs Idle
+    %th
   %tr
     %td
       %span.badge.badge-info
@@ -26,11 +27,29 @@
       %span.badge.badge-important
         = @jobs_failed.count
     %td
-      %span.badge.badge-info
-        = @jmeter_runs_idle.count
-    %td
       %span.badge.badge-warning
         =  @jmeter_runs_running.count
+    %td
+      %span.badge
+        = @jmeter_runs_idle.count
+    %td
+      = link_to 'Clear Queue', dashboard_clear_queue_path
 
-= link_to 'Clear Queue', dashboard_clear_queue_path
+%p
+
+%h3
+  Last JmeterRuns
+
+%table.table
+  %tr
+    %th RunID
+    %th Started
+    %th Desciption
+    %th
+  %tr
+    - @jmeter_runs_running.each do |run|
+      %td= run.id
+      %td= run.created_at
+      %td= run.description
+      %td= run.state
 
