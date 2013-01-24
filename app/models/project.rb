@@ -18,10 +18,12 @@ class Project < ActiveRecord::Base
   end
 
   def self.find_or_create_by_param(params)
+    Rails.logger.info params
     if params[:id].to_s.match(/^[\d]+(\.[\d]+){0,1}$/)
-      Project.find_or_create_by_id(id)
+
+      Project.find_or_create_by_id(params[:name], params[:platform], params[:environment])
     else
-      Project.find_or_create_by_name(id)
+      Project.find_or_create_by_name(:name => params[:name], :platform=>params[:platform], :environment=> params[:environment])
     end
   end
 

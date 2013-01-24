@@ -3,8 +3,8 @@ Site::Application.routes.draw do
   namespace :api do # JSON REST ::API
     namespace :v1 do
       match 'projects/:project_id/jmeter_runs/current'  => 'jmeter_runs#current'
+      match 'projects/exists'  => 'projects#exists'
       resources :projects do
-        match 'projects/exists'  => 'projects#exists'
         resources :jmeter_runs do
           member do
             get 'status'
