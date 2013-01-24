@@ -1,6 +1,6 @@
 class ProjectsController < ApplicationController
+
   # GET /projects
-  # GET /projects.json
   def index
     @projects ||=  Project.all
     respond_to do |format|
@@ -9,8 +9,6 @@ class ProjectsController < ApplicationController
   end
 
   # GET /projects/1
-  # GET /projects/1.json
-
   def show
     @project ||= Project.find_by_param(params[:id])
     @jmeter_runs ||= JmeterRun.find_all_by_project_id(@project.id)
@@ -28,28 +26,20 @@ class ProjectsController < ApplicationController
 
 
 # GET /projects/new
-# GET /projects/new.json
-
   def new
     @project = Project.new
-    #@project.jmeter_runs.build()
 
-
-   # respond_to do |format|
+  # respond_to do |format|
     #  format.html # new.html.haml
-     # format.json { render :json => @project }
     #end
   end
 
 # GET /projects/1/edit
-
   def edit
     @project ||= Project.find(params[:id])
   end
 
 # POST /projects
-# POST /projects.json
-
   def create
     @project = Project.new(params[:project])
     @project.find_or_create_reports_home(params[:project])
@@ -63,8 +53,6 @@ class ProjectsController < ApplicationController
   end
 
 # PUT /projects/1
-# PUT /projects/1.json
-
   def update
     @project ||= Project.find(params[:id])
 
@@ -78,7 +66,6 @@ class ProjectsController < ApplicationController
   end
 
 # DELETE /projects/1
-# DELETE /projects/1.json
   def destroy
     @project ||= Project.find(params[:id])
     @project.destroy
@@ -88,4 +75,3 @@ class ProjectsController < ApplicationController
     end
   end
 end
-
