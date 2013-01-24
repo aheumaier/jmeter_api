@@ -9,7 +9,9 @@
 
   %p
     = f.file_field :df
-
+  %p
+    = f.check_box :default_template, :class => "checkbox"
+    Default Template?
 
   .actions
     = f.submit 'Save'
