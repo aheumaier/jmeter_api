@@ -22,16 +22,16 @@ class JmxDefinitionFile < ActiveRecord::Base
     end
   end
 
-  def set_as_default()
+  def self.clear_default_template
+    JmxDefinitionFile.where(:default_template => true).each do |default|
+      default.update_attribute(:default_template, false)
+    end
+  end
 
-    puts "=="*20
-    puts self.inspect
-    
-    
-    
-    self.default_template = true
+  def set_as_default
+    JmxDefinitionFile.clear_default_template
+    self.default_template=(true)
     self.save!
-
   end
 
 end
