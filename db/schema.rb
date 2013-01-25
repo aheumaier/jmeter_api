@@ -37,8 +37,8 @@ ActiveRecord::Schema.define(:version => 20130109144057) do
     t.string   "stdout"
     t.integer  "jmeter_pid",             :default => 0
     t.boolean  "locked",                 :default => false
-    t.string   "jprop_accesslog"
-    t.integer  "jprop_counter",          :default => 1
+    t.string   "jprop_access_log"
+    t.integer  "jprop_counter",          :default => -1
     t.integer  "jprop_period",           :default => 3600
     t.integer  "jprop_threads",          :default => 20
     t.integer  "jprop_throughput",       :default => 600

@@ -13,7 +13,7 @@ class JmeterRun < ActiveRecord::Base
                   :jmeter_pid,
                   :locked,
 
-                  :jprop_accesslog,
+                  :jprop_access_log,
                   :jprop_counter,
                   :jprop_period,
                   :jprop_threads,
@@ -35,7 +35,7 @@ class JmeterRun < ActiveRecord::Base
 
   def build_settings
     self.jprop_jmx = self.jmx_definition_file.df_name unless self.jmx_definition_file.nil?
-    self.jprop_accesslog = self.log_definition_file.df_name unless self.log_definition_file.nil?
+    self.jprop_access_log = self.log_definition_file.df_name unless self.log_definition_file.nil?
     self.jprop_jtl = "jmeter_run_log_" + Time.now.to_i.to_s + ".jtl"
   end
 

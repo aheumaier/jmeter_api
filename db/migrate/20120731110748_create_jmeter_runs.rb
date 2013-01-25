@@ -8,8 +8,8 @@ class CreateJmeterRuns < ActiveRecord::Migration
       t.string   :stdout, :default => nil
       t.integer  :jmeter_pid, :default => false
       t.boolean  :locked, :default => false
-      t.string   :jprop_accesslog, :default => nil
-      t.integer  :jprop_counter, :default => 1
+      t.string   :jprop_access_log, :default => nil
+      t.integer  :jprop_counter, :default => -1
       t.integer  :jprop_period, :default => 3600
       t.integer  :jprop_threads, :default => 20
       t.integer  :jprop_throughput, :default => 600
