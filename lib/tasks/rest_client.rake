@@ -1,7 +1,7 @@
 desc "Do restful call to Jmeter Server Action"
 
-@platform = "gala.de".to_s.gsub(".", "_")
 @project  = "new9"
+@platform = "gala.de".to_s.gsub(".", "_")
 @env = "webistrano_stage"
 
 #@url_p = "http://service.loadtest.webstage.svc.guj.de:80/api/v1/projects"

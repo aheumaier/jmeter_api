@@ -27,7 +27,6 @@ class JmxDefinitionFilesController < ApplicationController
   end
 
   # GET /jmx_definition_files/1/edit
-
   def edit
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
   end
@@ -68,4 +67,25 @@ class JmxDefinitionFilesController < ApplicationController
       format.html { redirect_to definition_files_index_path }
     end
   end
+
+  # GET /jmx_definition_files/1/set_as_default
+  def set_as_default()
+
+    JmxDefinitionFile.all.each do |jdf|
+      #if jdf.save!
+      puts jdf
+        jdf.default_template = false
+        jdf.save!
+      #end
+    end
+
+    @jmx_definition_file = JmxDefinitionFile.find(params[:id])
+    @jmx_definition_file.set_as_default
+
+    respond_to do |format|
+      format.html { redirect_to definition_files_index_path }
+    end
+
+  end
+
 end

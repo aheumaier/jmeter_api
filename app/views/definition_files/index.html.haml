@@ -23,9 +23,11 @@
       %td
         .btn-toolbar
           .btn-group
-            %a.btn{:href => jmx_definition_file_path(jmx_definition_file)}
+            %a.btn{:href => jmx_definition_file_path(jmx_definition_file), :title => 'View'}
               %i.icon-eye-open
-            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}", :data => {:method=>'delete', :confirm => 'This removes all dependent JmeterRuns!'} }
+            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}/set_as_default", :data => {:confirm => 'This sets the default template!'}, :title => 'Set as default template'}
+              %i.icon-screenshot
+            %a.btn{:href => "/jmx_definition_files/#{jmx_definition_file.id}", :data => {:method=>'delete', :confirm => 'This removes all dependent JmeterRuns!'}, :title => 'Delete'}
               %i.icon-trash
 
   - @log_definition_files.each do |log_definition_file|

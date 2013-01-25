@@ -22,4 +22,16 @@ class JmxDefinitionFile < ActiveRecord::Base
     end
   end
 
+  def set_as_default()
+
+    puts "=="*20
+    puts self.inspect
+    
+    
+    
+    self.default_template = true
+    self.save!
+
+  end
+
 end
