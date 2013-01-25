@@ -10,6 +10,7 @@ Site::Application.routes.draw do
             get 'status'
             get 'start'
             get 'kill'
+            get 'repeat'
           end
           #resources :log_definition_files
           #resources :jmx_definition_files
@@ -29,6 +30,7 @@ Site::Application.routes.draw do
         get 'status'
         get 'start'
         get 'kill'
+        get 'repeat'
       end
     end
   end

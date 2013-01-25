@@ -20,7 +20,7 @@ module JmeterDsl
       def initialize( params_hash )
         @bin = APP_CONFIG['jmeter_bin_path'] || './jmeter.sh'
         @work_dir = APP_CONFIG['jmeter_work_dir'] || 'public/bin'
-        @store_dir = '/home/aheumaier/codebox/site/public/definition_files/'
+        @store_dir = Rails.root+'public/definition_files/'
         @jmeter_pid = nil
         @jmeterproperties = ''
         @defined_properties = %w[accesslog threads counter duration throughput]
@@ -61,11 +61,15 @@ module JmeterDsl
       def add_jmeterproperty( property )
         property.each do |key, value|
           if @defined_properties.include?(key.to_s)
-            @jmeterproperties << ' -J'+key+'='+value.to_s
+            if key.match(/accesslog/)
+              @jmeterproperties << ' -J'+key+'='+@store_dir.to_path+value.to_s
+            else
+              @jmeterproperties << ' -J'+key+'='+value.to_s
+            end
           elsif key.match(/jmx/)
-            @jmeterproperties << ' -t '+@store_dir+value
+            @jmeterproperties << ' -t '+@store_dir.to_path+value
           elsif key.match(/jtl/)
-            @jmeterproperties << ' -l '+@store_dir+value
+            @jmeterproperties << ' -l '+@store_dir.to_path+value
           end
         end
       end

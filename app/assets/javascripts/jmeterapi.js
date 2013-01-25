@@ -10,3 +10,8 @@ $("#jmx_default_template").live("click", function() {
         $("#jmeter_run_jmx_definition_file_id").attr("disabled", "disabled")
     }
 });
+
+$("tr").click(function() {
+    var href=this.attr("data-link");
+    console.log(href);
+})

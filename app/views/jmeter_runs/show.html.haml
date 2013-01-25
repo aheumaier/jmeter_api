@@ -34,8 +34,10 @@
     .btn-group
       %a.btn{ :href=>start_project_jmeter_run_path(@project)}
         %i.icon-play
+      %a.btn{ :href=>repeat_project_jmeter_run_path(@project)}
+        %i.icon-refresh
       %a.btn{ :href=> kill_project_jmeter_run_path(@project), :data => {:confirm => 'Killing curent Job!'}}
-        %i.icon-stop
+        %i.icon-remove
       .btn
         %i.icon-flag
         = @jmeter_run.state

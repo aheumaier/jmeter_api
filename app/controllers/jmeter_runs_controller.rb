@@ -105,7 +105,7 @@ class JmeterRunsController < ApplicationController
     @project = @jmeter_run.project_id
     @jmeter_run_state =  @jmeter_run.kill
     respond_to do |format|
-      format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run), :notice => 'JmeterRun was successfully  killed.' }
+      format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run), :notice => @jmeter_run.stderror }
     end
   end
 
@@ -117,4 +117,17 @@ class JmeterRunsController < ApplicationController
       format.html { render :text => @jmeter_run  }
     end
   end
+
+  # GET /jmeter_runs/1/repeat
+  def repeat
+    @jmeter_run ||=  JmeterRun.find(params[:id])
+    @project = @jmeter_run.project_id
+    @jmeter_run_state =  @jmeter_run.repeat
+
+    respond_to do |format|
+      format.html { redirect_to project_jmeter_run_path(@project, @jmeter_run), :notice => 'JmeterRun was successfully  restarted.'  }
+    end
+  end
+
+
 end
