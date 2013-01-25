@@ -70,16 +70,6 @@ class JmxDefinitionFilesController < ApplicationController
 
   # GET /jmx_definition_files/1/set_as_default
   def set_as_default()
-
-    JmxDefinitionFile.all.each do |jdf|
-      #if jdf.save!
-        jdf.default_template = false
-
-        puts jdf.inspect
-        jdf.save!
-      #end
-    end
-
     @jmx_definition_file = JmxDefinitionFile.find(params[:id])
     @jmx_definition_file.set_as_default
 
