@@ -11,7 +11,8 @@ $("#jmx_default_template").live("click", function() {
     }
 });
 
-$("tr").click(function() {
-    var href=this.attr("data-link");
+$("tr.jmeter_runs_table_row").live("click", function() {
+    var href = $(this).data("link");
     console.log(href);
-})
+    window.location.href = href;
+});

@@ -73,8 +73,9 @@ class JmxDefinitionFilesController < ApplicationController
 
     JmxDefinitionFile.all.each do |jdf|
       #if jdf.save!
-      puts jdf
         jdf.default_template = false
+
+        puts jdf.inspect
         jdf.save!
       #end
     end
