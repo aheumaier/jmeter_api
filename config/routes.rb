@@ -35,6 +35,8 @@ Site::Application.routes.draw do
     end
   end
 
+  match 'jmx_definition_files/:id/set_as_default'  => 'jmx_definition_files#set_as_default'
+
   resources :log_definition_files
   resources :jmx_definition_files
   get "dashboard/clear_queue"

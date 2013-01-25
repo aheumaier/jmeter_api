@@ -17,7 +17,7 @@ module JmeterDsl
       # Set up a complete runnable JmeterObject
       # Expects runtime paramameters amn jmx file
       #
-      def initialize(  params_hash )
+      def initialize( params_hash )
         @bin = APP_CONFIG['jmeter_bin_path'] || './jmeter.sh'
         @work_dir = APP_CONFIG['jmeter_work_dir'] || 'public/bin'
         @store_dir = Rails.root+'public/definition_files/'

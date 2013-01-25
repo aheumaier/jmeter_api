@@ -19,11 +19,11 @@
       %td
         .btn-toolbar
           .btn-group
-            <a class="btn" href=#{'/projects/'+project.name}>
-            %i.icon-eye-open
-            <a class="btn" href=#{edit_project_path(project)}>
-            %i.icon-pencil
-            %a.btn{:href => "/projects/#{project.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'} }
+            %a.btn{:href => '/projects/'+project.name, :title => 'View'}
+              %i.icon-eye-open
+            %a.btn{:href => edit_project_path(project), :title => 'Edit'}
+              %i.icon-pencil
+            %a.btn{:href => "/projects/#{project.id}", :data => {:method=>'delete', :confirm => 'Are you sure?'}, :title => 'Delete' }
               %i.icon-trash
 = link_to 'New Project', new_project_path
 %br/
