@@ -47,7 +47,7 @@
     %th Desciption
     %th
   - @jmeter_runs_running.each do |run|
-    %tr{"data-link" => project_jmeter_run_path(run.project_id,run)}
+    %tr.jmeter_runs_table_row{"data-link" => project_jmeter_run_path(run.project_id,run)}
       %td= run.id
       %td= run.created_at
       %td= run.description
