@@ -1,6 +1,8 @@
 class JmeterRun < ActiveRecord::Base
   include JmeterDsl
 
+
+
   attr_accessible :description,
                   :project_id,
                   :log_definition_file_id,
@@ -24,10 +26,11 @@ class JmeterRun < ActiveRecord::Base
 
   belongs_to :project, :touch => true
   belongs_to :jmx_definition_file, :touch => true
+  accepts_nested_attributes_for :jmx_definition_file
   belongs_to :log_definition_file, :touch => true
 
   validates_presence_of :jprop_jmx, :jprop_jtl, :description, :project_id
-
+  validates_associated :project, :jmx_definition_file,:log_definition_file
   before_validation :build_settings
 
   def build_settings

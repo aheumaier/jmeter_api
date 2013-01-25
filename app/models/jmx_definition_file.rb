@@ -3,9 +3,7 @@ class JmxDefinitionFile < ActiveRecord::Base
   mount_uploader :df, DefinitionFileUploader
 
   has_many :jmeter_runs, :dependent => :destroy
-  accepts_nested_attributes_for :jmeter_runs
 
-  validates :default_template, :uniqueness => true
   before_validation :set_metadata
 
   def set_metadata
