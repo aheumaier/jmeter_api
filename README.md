@@ -34,4 +34,4 @@ See LICENSE file.
 Support
 -------
 
-Please log tickets and issues at andreas.heumaier@microsoft.com
+Please log tickets and issues at andreas.heumaier at microsoft.com
