@@ -34,4 +34,4 @@ See LICENSE file.
 Support
 -------
 
-Please log tickets and issues at a.heumaier@metaways.de
+Please log tickets and issues at andreas.heumaier@microsoft.com
